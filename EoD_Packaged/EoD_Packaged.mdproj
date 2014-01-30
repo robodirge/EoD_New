@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ItemType>PackagingProject</ItemType>
+    <ProductVersion>10.0.0</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{96F86284-D977-4283-BDE3-E9624A5BF74A}</ProjectGuid>
+    <Packages>
+      <Packages>
+        <Package name="EoD">
+          <Builder targetFile="..\..\..\..\delete me\EOD_DeleteME\EoD.tar" platform="Windows" configuration="Release|x86" ctype="BinariesZipPackageBuilder">
+            <ChildEntries>
+              <SolutionItemReference path="..\EoD\EoD.csproj" />
+              <SolutionItemReference path="EoD_Packaged.mdproj" />
+            </ChildEntries>
+            <ExcludedFiles>
+              <File>EoD,ProgramFiles,EoD.pdb</File>
+            </ExcludedFiles>
+            <RootEntry path="..\EoD.sln" id=":root:" />
+          </Builder>
+        </Package>
+      </Packages>
+    </Packages>
+  </PropertyGroup>
+</Project>

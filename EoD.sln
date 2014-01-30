@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EoD", "EoD\EoD.csproj", "{6451C98D-6844-48A7-BE85-556E563A2FED}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{27B69863-0CEC-48F5-BFD6-E4F886E6E5DC}"
+	ProjectSection(SolutionItems) = preProject
+		EoD\Resources\zoonou = EoD\Resources\zoonou
+	EndProjectSection
+EndProject
+Project("{9344BDBB-3E7F-41FC-A0DD-8665D75EE146}") = "EoD_Packaged", "EoD_Packaged\EoD_Packaged.mdproj", "{96F86284-D977-4283-BDE3-E9624A5BF74A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6451C98D-6844-48A7-BE85-556E563A2FED}.Debug|x86.ActiveCfg = Debug|x86
+		{6451C98D-6844-48A7-BE85-556E563A2FED}.Debug|x86.Build.0 = Debug|x86
+		{6451C98D-6844-48A7-BE85-556E563A2FED}.Release|x86.ActiveCfg = Release|x86
+		{6451C98D-6844-48A7-BE85-556E563A2FED}.Release|x86.Build.0 = Release|x86
+		{96F86284-D977-4283-BDE3-E9624A5BF74A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{96F86284-D977-4283-BDE3-E9624A5BF74A}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = EoD\EoD.csproj
+	EndGlobalSection
+EndGlobal
