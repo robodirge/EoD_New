@@ -41,7 +41,7 @@ public partial class MainWindow: Gtk.Window{
 		button11.WidthRequest = 100;
 		button10.Label = "Info";
 		button11.Label = "Spell Check";
-
+		MainButtonControls1.Sensitive = true;
 	}
 
 	public void SHLevel5(){
@@ -52,6 +52,8 @@ public partial class MainWindow: Gtk.Window{
 		// Section 1:
 		MainVboxSubContainerM1.HideAll();
 		MainVboxSubContainerM1.Show();
+		MainHboxSubContainerM1H1.Show();
+		M1H1MainLabelHeader1.Show();
 		hbox8.ShowAll();
 		label8.Hide();
 		hseparator6.Show();
@@ -61,6 +63,8 @@ public partial class MainWindow: Gtk.Window{
 		// Section 2:
 		MainVboxSubContainerM2.HideAll();
 		MainVboxSubContainerM2.Show();
+		MainHboxSubContainerM2H1.Show();
+		M2H1MainLabelHeader1.Show();
 		GtkScrolledWindow1.ShowAll();
 		hseparator8.Show();
 		hseparator3.Show();
@@ -156,8 +160,11 @@ DO NOT:
 
 		if(bSmokes){
 			//ReportSectionSix(); // Enviro chooser page
-			programControl = 6;
-			ReportSectionSix();
+			//programControl = 6;
+			//ReportSectionSix();
+
+			programControl = 7;
+			ReportSectionSeven();
 		}
 		else{
 			programControl = 7;

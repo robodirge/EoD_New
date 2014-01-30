@@ -28,6 +28,7 @@ public partial class MainWindow: Gtk.Window{
 		MainButtonControls1.Sensitive = false;
 		button8.Label = "Set File Location";
 		label10.Text = "No path selected";
+		button8.WidthRequest = 150;
 		button8.Sensitive = true;
 	}
 
@@ -124,6 +125,7 @@ public partial class MainWindow: Gtk.Window{
 					btemp1 = true;
 				}
 			}else{
+				btemp1 = true;
 				fc.Destroy();
 			}
 		}while(!btemp1);
@@ -195,6 +197,7 @@ public partial class MainWindow: Gtk.Window{
 		
 		if(bSmokes){
 			sTemp += (@"For cross environment checks/smoke tests, please see the environments detailed in the table at the end of the report*.
+
 ");
 		}
 
@@ -332,7 +335,7 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.Font.Bold = 1;
 		wordApplication.Selection.TypeText(@"Issue Summary");
 		table.Cell(2,1).Select();
-		wordApplication.Selection.TypeText(@"Have any issues been found that block test progress?:");
+		wordApplication.Selection.TypeText(@"Have any issues been found that block test progress?");
 		table.Cell(3,1).Select();
 		wordApplication.Selection.TypeText(@"Issues blocking testing:");
 		table.Cell(4,1).Select();

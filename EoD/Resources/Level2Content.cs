@@ -238,10 +238,10 @@ public partial class MainWindow: Gtk.Window{
 	protected void Level2Check3Toggled (){
 		if(M3H2MainCheck3.Active){
 			MainButtonControls1.Sensitive = true;
-			bScripting = true;
+			bIssueVoption = true;
 		}
 		else{
-			bScripting = false;
+			bIssueVoption = false;
 			if((M3H2MainCheck1.Active)||(M3H2MainCheck2.Active)){
 			}
 			else{

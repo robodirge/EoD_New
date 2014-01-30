@@ -265,8 +265,10 @@ public partial class MainWindow: Gtk.Window{
 			ReportSectionFive();
 			break;
 		case 7:
-			programControl = 6;
-			ReportSectionSix();
+			//programControl = 6;
+			//ReportSectionSix();
+			programControl = 5;
+			ReportSectionFive();
 			break;
 		default:
 			break;

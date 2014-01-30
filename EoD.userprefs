@@ -1,32 +1,21 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EoD\Resources\Level7DocPage.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EoD\Resources\Level5Dialog.cs">
     <Files>
-      <File FileName="EoD\Resources\MainWindow.cs" Line="242" Column="1" />
+      <File FileName="EoD\Resources\MainWindow.cs" Line="265" Column="24" />
       <File FileName="EoD\Resources\Level1Content.cs" Line="56" Column="3" />
+      <File FileName="EoD\Resources\Level2Content.cs" Line="244" Column="17" />
       <File FileName="EoD\Resources\Level3Content.cs" Line="29" Column="15" />
       <File FileName="EoD\Resources\Level4Content.cs" Line="43" Column="35" />
-      <File FileName="EoD\Resources\Level7DocPage.cs" Line="20" Column="2" />
+      <File FileName="EoD\Resources\Level5Content.cs" Line="145" Column="1" />
+      <File FileName="EoD\Resources\Level5Dialog.cs" Line="60" Column="4" />
+      <File FileName="EoD\Resources\Level6Content.cs" Line="20" Column="3" />
+      <File FileName="EoD\Resources\Level7DocPage.cs" Line="95" Column="3" />
+      <File FileName="c:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD_New\EoD\Resources\Program.cs" Line="15" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="112" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="113" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="114" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="116" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="117" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="118" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="120" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="121" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="122" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="123" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="124" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="127" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="126" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="128" column="1" />
-      <Breakpoint file="C:\Users\Ben\Desktop\Develop_WIP\GitRepo\EndOfDay_\EoD\EoD\Resources\Level7DocPage.cs" line="129" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

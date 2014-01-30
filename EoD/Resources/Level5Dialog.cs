@@ -41,17 +41,18 @@ namespace EoD
 
 		protected void OnDeleteEvent (object sender, DeleteEventArgs a){
 			//if (sToSpellCheck != ""){
-			//	app.Documents.Close(WdSaveOptions.wdDoNotSaveChanges);
-			//	app.Quit();
+			app.Documents.Close(WdSaveOptions.wdDoNotSaveChanges);
+				app.Quit();
+				app.Dispose();
 			//}
 		}
 
 		public void AppQuit(){
-			if (sToSpellCheck != ""){
-				app.Documents.Close(WdSaveOptions.wdDoNotSaveChanges);
+			//if (sToSpellCheck != ""){
+			app.Documents.Close(WdSaveOptions.wdDoNotSaveChanges);
 				app.Quit();
-
-			}
+				app.Dispose();
+			//}
 		}
 
 		public string getText(){
@@ -104,7 +105,6 @@ namespace EoD
 				button23.Sensitive = false;
 			}
 			else{
-
 				Word.Range rng;
 				object first = 0;
 				object last = doc1.Characters.Count - 1;
@@ -134,15 +134,7 @@ namespace EoD
 					}
 				}
 
-				//doc1.CheckSpelling(
-				//	optional, optional, optional, optional, optional, optional,
-				//	optional, optional, optional, optional, optional, optional);
-
 				label1.Text = errors + " Errors";
-				//object first = 0;
-				//object last = doc1.Characters.Count - 1;
-				//M2MainTextView1.Buffer.Text = doc1.Range(first, last).Text;
-				//textBox1.Text = doc1.Range(ref first, ref last).Text;
 			}
 		}
 		
@@ -156,12 +148,9 @@ namespace EoD
 			Word.SpellingSuggestions correctionSpelling;
 
 			if(selection.GetSelected(out model, out iter)){
-				//Console.WriteLine("Selected item: " + model.GetValue(iter, 0).ToString() + " - " + model.GetValue(iter, 1).ToString());
-
 				ibob = Convert.ToInt32(model.GetValue(iter, 1).ToString());
-
 				correctionSpelling = app.GetSpellingSuggestions(spellErrorsColl[ibob].Text);
-				//Console.WriteLine(spellErrorsColl[0].Text + " 0");
+
 				if(correctionSpelling.Count > 1){
 					for(int x = 1; x <= correctionSpelling.Count; x++){
 						tsSpellingCorrection.AppendValues(correctionSpelling[x].Name);
@@ -209,11 +198,6 @@ namespace EoD
 			}
 
 			if(selection2.GetSelected(out model2, out iter2)){
-				//Console.WriteLine("Selected item: " + model.GetValue(iter, 0).ToString());
-				//spellErrorsColl[ibob].Text = model2.GetValue(iter2, 0).ToString();
-
-				//object first = 0;
-				//object last = doc1.Characters.Count - 1;
 				Word.Range rng;
 				rng = doc1.Range(first, last);
 				rng.Select();
@@ -247,21 +231,8 @@ namespace EoD
 
 		}
 
-		protected void OnButton23Clicked (object sender, EventArgs e){
-			/*
-			if (sToSpellCheck != ""){
-				app.Documents.Close(WdSaveOptions.wdDoNotSaveChanges);
-				app.Quit();
-			}
-			//DeleteEventArgs a = e;
-			OnDeleteEvent(sender, null);
-			*/
-		}
-
-		protected void CheckSpelling (object sender, EventArgs e)
-		{
+		protected void CheckSpelling (object sender, EventArgs e){
 			CheckSpelling();
-
 		}
 	}
 }
