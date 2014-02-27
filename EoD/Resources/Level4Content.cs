@@ -76,25 +76,25 @@ public partial class MainWindow: Gtk.Window{
 		 */
 
 		if(M5MainEntryField1.Text == ""){
-			sMetric1 = "00";
+			sMetric1 = "0";
 		}else{
 			sMetric1 = M5MainEntryField1.Text;
 		}
 
 		if(M5MainEntryField2.Text == ""){
-			sMetric2 = "00";
+			sMetric2 = "0";
 		}else{
 			sMetric2 = M5MainEntryField2.Text;
 		}
 
 		if(M5MainEntryField3.Text == ""){
-			sMetric3 = "00";
+			sMetric3 = "0";
 		}else{
 			sMetric3 = M5MainEntryField3.Text;
 		}
 
 		if(M5MainEntryField4.Text == ""){
-			sMetric4 = "00";
+			sMetric4 = "0";
 		}else{
 			sMetric4 = M5MainEntryField4.Text;
 		}

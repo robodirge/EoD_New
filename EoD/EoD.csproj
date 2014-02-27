@@ -91,6 +91,8 @@
     <Compile Include="gtk-gui\EoD.Level5Dialog.cs" />
     <Compile Include="Resources\Level6Content.cs" />
     <Compile Include="Resources\Level7DocPage.cs" />
+    <Compile Include="Resources\Window.cs" />
+    <Compile Include="gtk-gui\EoD.Window.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>

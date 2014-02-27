@@ -19,6 +19,7 @@ public partial class MainWindow: Gtk.Window{
 
 		M1H1MainLabelHeader1.Text = "Test tasks completed:";
 		M1MainTextView1.Sensitive = true;
+		M1MainTextView1.WrapMode = WrapMode.Word;
 		M1MainTextView1.Buffer.Text = "";
 		M1MainTextView1.HeightRequest = 200;
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Always);
@@ -26,6 +27,7 @@ public partial class MainWindow: Gtk.Window{
 		M2H1MainLabelHeader1.Text = "Brief overview of testing:";
 		M2MainTextView1.Sensitive = true;
 		M2MainTextView1.Buffer.Text = "";
+		M2MainTextView1.WrapMode = WrapMode.Word;
 		M2MainTextView1.HeightRequest = 200;
 
 		GtkScrolledWindow1.SetPolicy(PolicyType.Never,PolicyType.Always);
@@ -77,7 +79,7 @@ public partial class MainWindow: Gtk.Window{
 	public void level5Toggled8 (){
 		string sTemp = (@"Brief explanation of the work you have undertaken. Be specific here as to what you have done. Relate it back to the tasks that were required of you in the brief. 
 E.g. Copy/link and rendering checks of 18 IKEA Kitchen emails across all specified environments.
-E.g. Retests including issue verifications of all issues marked as resolved in the tracker.
+E.g. Retests including verification of all issues marked as resolved in the tracker.
 E.g. Commenced test execution against the fully scripted test plan on ...environments.
 E.g. Conducted tests of all the changes detailed in the 'xyz.doc' document provided by the client.
 

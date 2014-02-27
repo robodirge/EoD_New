@@ -18,18 +18,22 @@ public partial class MainWindow: Gtk.Window{
 	Word.Application wordApplication = null;
 	Word.Document newDocument = null;
 
+
 	public void ReportSectionSeven(){
 		SHLevel7();
-		MainLabelTitle.Text = "Word Document Creation";
+		MainLabelTitle.Text = "Daily Report Creation";
 		
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Never);
-		M1H1MainLabelHeader1.Text = "Select a file location then click 'Next'";
+		M1H1MainLabelHeader1.WidthRequest = 700;
+		M1H1MainLabelHeader1.Text = ("                                                                Select a file location then click 'Finish'.");
 
 		MainButtonControls1.Sensitive = false;
 		button8.Label = "Set File Location";
 		label10.Text = "No path selected";
 		button8.WidthRequest = 150;
 		button8.Sensitive = true;
+		MainButtonControls1.Label = "Finish";
+
 	}
 
 	public void SHLevel7(){
@@ -52,6 +56,7 @@ public partial class MainWindow: Gtk.Window{
 	#region doc Start
 
 	public void CreateDoc (){
+
 		wordApplication = new Word.Application();
 		wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 		newDocument = wordApplication.Documents.Add();
@@ -104,8 +109,10 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Quit();
 		wordApplication.Dispose();
 
+
 		Process.Start(documentFile);
 		Application.Quit();
+
 
 	}
 
@@ -119,7 +126,21 @@ public partial class MainWindow: Gtk.Window{
 				mytempfilename = fc.CurrentFolder;
 
 				if(mytempfilename != null){
+					MainVboxSubContainerM2.HideAll();
+					MainVboxSubContainerM2.Show();
+					MainHboxSubContainerM2H1.Show();
+					M2H1MainLabelHeader1.Show();
+					M2H1MainLabelHeader1.WidthRequest = 500;
+					M2H1MainLabelHeader1.Justify = Justification.Center;
+
+					M2H1MainLabelHeader1.Text = (@"
+					
+                                                   When you click 'Finish' the daily report will be created.
+
+                                                    This application will close once completed.");
+
 					label10.Text = "Path: " + mytempfilename;
+
 					fc.Destroy();
 					MainButtonControls1 .Sensitive = true;
 					btemp1 = true;

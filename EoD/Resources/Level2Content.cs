@@ -11,6 +11,7 @@ public partial class MainWindow: Gtk.Window{
 		MainLabelTitle.Text = "Report Details";
 		// Supply content for Client fields
 		M1H1MainLabelHeader1.Text = "Testers initials:";
+		label10.Text = "Other initials - add / between sets"; 
 		M1MainEntryField1.Text = "";
 		M1MainEntryField1.Sensitive = false;
 
@@ -29,7 +30,10 @@ public partial class MainWindow: Gtk.Window{
 		M3H2MainCheck2.Active = false;
 		M3H2MainCheck3.Active = false;
 
-		MainButtonControls1.Sensitive = false;
+		if(bIssueVoption)
+			MainButtonControls1.Sensitive = true;
+		else
+			MainButtonControls1.Sensitive = false;
 
 		InitialsSetup();
 		MainButtonControls3.Sensitive = true;
@@ -60,6 +64,7 @@ public partial class MainWindow: Gtk.Window{
 		MainHboxSubContainerM3H1.Show();
 		M3H1MainLabelHeader1.Show();
 		MainHboxSubContainerM3H2.ShowAll();
+		M3H2MainCheck3.Hide();
 
 		MainVboxSubContainerM4.HideAll();
 		MainVboxSubContainerM5.HideAll();
@@ -141,6 +146,16 @@ public partial class MainWindow: Gtk.Window{
 				InCheck12.Label = initArray[x];
 				InCheck12.Active = false;
 				break;
+			case 12: 
+				initArray[x] = "LHW";
+				InCheck13.Label = initArray[x];
+				InCheck13.Active = false;
+				break;
+			case 13: 
+				initArray[x] = "WT";
+				InCheck14.Label = initArray[x];
+				InCheck14.Active = false;
+				break;
 			default:
 				break;
 			}
@@ -154,8 +169,8 @@ public partial class MainWindow: Gtk.Window{
 
 		InCheck15.Label = "Other";
 		*/
-		InCheck13.Sensitive = false;
-		InCheck14.Sensitive = false;
+		//InCheck13.Sensitive = false;
+		//InCheck14.Sensitive = false;
 		InCheck15.Sensitive = false;
 	}
 
@@ -204,7 +219,6 @@ public partial class MainWindow: Gtk.Window{
 		}
 	}
 
-
 	protected void Level2Check1Toggled (){
 		if(M3H2MainCheck1.Active){
 			bScripting = true;
@@ -212,7 +226,7 @@ public partial class MainWindow: Gtk.Window{
 		}
 		else{
 			bScripting = false;
-			if((M3H2MainCheck2.Active)||(M3H2MainCheck3.Active)){
+			if((M3H2MainCheck2.Active)||(bIssueVoption == true)){
 			}
 			else{
 				MainButtonControls1.Sensitive = false;
@@ -227,7 +241,7 @@ public partial class MainWindow: Gtk.Window{
 		}
 		else{
 			bTestExe = false;
-			if((M3H2MainCheck1.Active)||(M3H2MainCheck3.Active)){
+			if((M3H2MainCheck1.Active)||(bIssueVoption == true)){
 			}
 			else{
 				MainButtonControls1.Sensitive = false;

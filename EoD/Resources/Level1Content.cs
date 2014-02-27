@@ -53,6 +53,8 @@ public partial class MainWindow: Gtk.Window{
 		M5H1MainLabelHeader1.Text = "Was a primary environment used for testing?";	// "Test environment(s)";
 		M5H2MainCheck1.Label = "Cross environment checks/smoke tests";
 		M5H2MainCheck1.Active = false;
+		M5H2MainCheck2.Label = "Issue Verification & Retest";
+		M5H2MainCheck2.Active = false;
 
 		radiobutton11.Active = true;
 		M5MainEntryField1.Sensitive = false;
@@ -133,6 +135,7 @@ public partial class MainWindow: Gtk.Window{
 		hseparator11.Show();
 		MainHboxSubContainerM5H2.Show();
 		M5H2MainCheck1.Show();
+		M5H2MainCheck2.Show();
 		hseparator7.Show();
 	}
 	
@@ -449,6 +452,12 @@ public partial class MainWindow: Gtk.Window{
 			bSmokes = true;
 		}else{
 			bSmokes = false;
+		}
+
+		if(M5H2MainCheck2.Active){
+			bIssueVoption = true;
+		}else{
+			bIssueVoption = false;
 		}
 
 		return;

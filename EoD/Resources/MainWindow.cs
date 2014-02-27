@@ -15,9 +15,10 @@ public partial class MainWindow: Gtk.Window{
 	public static string sBlockingNumbers;
 	public static string sBlockingyN;
 	public static bool bSmokes;
+	public static bool bRetests;
 	public static bool bInitEnabled;
-	public string[] initArray = new string[12];
-	public bool[] initEnabledArray = new bool[12];
+	public string[] initArray = new string[14];
+	public bool[] initEnabledArray = new bool[14];
 	public static string sAllinitials;
 	public static string sDateTested;
 	public bool bIssueVoption;
@@ -385,6 +386,24 @@ public partial class MainWindow: Gtk.Window{
 		}
 	}
 
+	protected void OnInCheck13Toggled (object sender, EventArgs e){
+		if(InCheck13.Active){
+			initEnabledArray[12] = true;
+		}
+		else{
+			initEnabledArray[12] = false;
+		}
+	}
+
+	protected void OnInCheck14Toggled (object sender, EventArgs e){
+		if(InCheck14.Active){
+			initEnabledArray[13] = true;
+		}
+		else{
+			initEnabledArray[13] = false;
+		}
+	}
+
 	 
 	protected void OnInitradiobutton1Toggled (object sender, EventArgs e){
 			switch (programControl){
@@ -447,6 +466,8 @@ public partial class MainWindow: Gtk.Window{
 			break;
 		}
 	}
+
+
 
 
 	#endregion
