@@ -32,7 +32,15 @@ public partial class MainWindow: Gtk.Window{
 	public static string sMetric3;
 	public static string sMetric4;
 
+	public static string sPrim1;
+	public static string sPrim2;
+	public static string sPrim3;
+	public static string sPrim4;
+	public static string sPrim5;
+	public static string sPrim6;
+	public static string sPrim7;
 
+	public static int primNOCounter;
 
 	public int addCounter;
 
@@ -248,6 +256,7 @@ public partial class MainWindow: Gtk.Window{
 		case 2:
 			programControl = 1;
 			ReportSectionOne();
+			backlevel1();
 			break;
 		case 3:
 			programControl = 2;

@@ -1,6 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="EoD\Resources\Level1Content.cs">
+    <Files>
+      <File FileName="EoD\Resources\Level1Content.cs" Line="524" Column="23" />
+      <File FileName="EoD\Resources\Level2Content.cs" Line="1" Column="1" />
+      <File FileName="EoD\Resources\MainWindow.cs" Line="35" Column="29" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

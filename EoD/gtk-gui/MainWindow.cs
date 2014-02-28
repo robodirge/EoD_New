@@ -1632,8 +1632,6 @@ public partial class MainWindow
 		this.InCheck10.Toggled += new global::System.EventHandler (this.OnInCheck10Toggled);
 		this.InCheck11.Toggled += new global::System.EventHandler (this.OnInCheck11Toggled);
 		this.InCheck12.Toggled += new global::System.EventHandler (this.OnInCheck12Toggled);
-		this.InCheck13.Toggled += new global::System.EventHandler (this.OnInCheck13Toggled);
-		this.InCheck14.Toggled += new global::System.EventHandler (this.OnInCheck14Toggled);
 		this.Initradiobutton1.Toggled += new global::System.EventHandler (this.OnInitradiobutton1Toggled);
 		this.radiobutton4.Toggled += new global::System.EventHandler (this.OnRadiobutton4Toggled);
 		this.button10.Clicked += new global::System.EventHandler (this.OnButton10Clicked);

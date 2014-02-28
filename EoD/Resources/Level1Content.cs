@@ -77,6 +77,14 @@ public partial class MainWindow: Gtk.Window{
 		addCounter = 2;
 		programControl = 1;
 
+
+		M5MainEntryField1.Text = "";
+		M5MainEntryField3.Text = "";
+		M5MainEntryField3.Text = "";
+		M5MainEntryField4.Text = "";
+		M5MainEntryField5.Text = "";
+		M5MainEntryField6.Text = "";
+		M5MainEntryField7.Text = "";
 		return;
 	}
 
@@ -208,6 +216,63 @@ public partial class MainWindow: Gtk.Window{
 		return;
 	}
 
+	protected void backlevel1(){
+		M1MainEntryField1.Text = clientNameString;
+		M2MainEntryField1.Text = projectNameString;
+
+		if(urlUsedString != "N/A"){
+			radiobutton6.Active = true;
+			M3MainTextView1.Buffer.Text = urlUsedString;
+		}
+
+		if(buildVersionString != "N/A"){
+			radiobutton8.Active = true;
+			M4MainTextView1.Buffer.Text = buildVersionString;
+		}
+
+		if(primEnabled){
+			//for x	//primNOCounter
+			radiobutton10.Active = true;
+			addCounter =1;
+			Console.WriteLine(primNOCounter);
+			for(int f = 0; f < primNOCounter; f++){
+				PrimAdd ();
+				Console.WriteLine(f);
+				switch(f){
+				case 0:
+					M5MainEntryField1.Text = primListArray[0];
+					break;
+				case 1:
+					M5MainEntryField2.Text = primListArray[1];
+					break;
+				case 2:
+					M5MainEntryField3.Text = primListArray[2];
+					break;
+				case 3:
+					M5MainEntryField4.Text = primListArray[3];
+					break;
+				case 4:
+					M5MainEntryField5.Text = primListArray[4];
+					break;
+				case 5:
+					M5MainEntryField6.Text = primListArray[5];
+					break;
+				case 6:
+					M5MainEntryField7.Text = primListArray[6];
+					break;
+				}
+			}
+		}
+
+		if(bSmokes){
+			M5H2MainCheck1.Active = true;
+		}
+
+		if(bIssueVoption){
+			M5H2MainCheck2.Active = true;
+		}
+	}
+
 	protected void Level1ButtonControls1Clicked (){
 		//MainWindow myMainClass = new MainWindow();
 		bool clientNameBool = false;
@@ -235,6 +300,8 @@ public partial class MainWindow: Gtk.Window{
 				}
 			}
 		}
+
+
 
 		if((clientNameBool) && (projectNameBool) && (primBool)){
 			SetLevel1Options();
@@ -319,45 +386,45 @@ public partial class MainWindow: Gtk.Window{
 	protected void PrimAdd (){
 		//MainWindow myMainClass = new MainWindow();
 		switch (addCounter){
+		case 1:
+			hbox1.ShowAll();
+			//button1.Hide();
+			label1.Text = "Primary environment 1:";
+			addCounter++;
+			break;
 		case 2:
 			hbox2.ShowAll();
 			button1.Hide();
-			M5MainEntryField2.Text = "";
 			label2.Text = "Primary environment 2:";
 			addCounter++;
 			break;
 		case 3:
 			hbox3.ShowAll();
 			button2.Hide();
-			M5MainEntryField3.Text = "";
 			label3.Text = "Primary environment 3:";
 			addCounter++;
 			break;
 		case 4:
 			hbox4.ShowAll();
 			button3.Hide();
-			M5MainEntryField4.Text = "";
 			label4.Text = "Primary environment 4:";
 			addCounter++;
 			break;
 		case 5:
 			hbox5.ShowAll();
 			button4.Hide();
-			M5MainEntryField5.Text = "";
 			label5.Text = "Primary environment 5:";
 			addCounter++;
 			break;
 		case 6:
 			hbox6.ShowAll();
 			button5.Hide();
-			M5MainEntryField6.Text = "";
 			label6.Text = "Primary environment 6:";
 			addCounter++;
 			break;
 		case 7:
 			hbox7.ShowAll();
 			button6.Hide();
-			M5MainEntryField7.Text = "";
 			label7.Text = "Primary environment 7:";
 			addCounter++;
 			break;
@@ -375,32 +442,41 @@ public partial class MainWindow: Gtk.Window{
 		if(radiobutton10.Active){
 			primEnabled = true;
 			int iTempCount = 1; // Has to be 1 as field1 cant be ""
-			tempContainer[iCount] = 1; iCount++;
+			tempContainer[iCount] = 1; iCount++; 
+			sPrim1 = M5MainEntryField1.Text;
 			if((hbox2.Visible) && (M5MainEntryField2.Text != "")){
 				iTempCount++;
 				tempContainer[iCount] = 2; iCount++;
+				sPrim2 = M5MainEntryField2.Text;
 			}
 			if((hbox3.Visible) && (M5MainEntryField3.Text != "")){
 				iTempCount++;
 				tempContainer[iCount] = 3; iCount++;
+				sPrim3 = M5MainEntryField3.Text;
 			}
 			if((hbox4.Visible) && (M5MainEntryField4.Text != "")){
 				iTempCount++;
 				tempContainer[iCount] = 4; iCount++;
+				sPrim4= M5MainEntryField4.Text;
 			}
 			if((hbox5.Visible) && (M5MainEntryField5.Text != "")){
 				iTempCount++;
+				sPrim5 = M5MainEntryField5.Text;
 				tempContainer[iCount] = 5; iCount++;
 			}
 			if((hbox6.Visible) && (M5MainEntryField6.Text != "")){
 				iTempCount++;
+				sPrim6 = M5MainEntryField6.Text;
 				tempContainer[iCount] = 6; iCount++;
 			}
 			if((hbox7.Visible) && (M5MainEntryField7.Text != "")){
 				iTempCount++;
+				sPrim7 = M5MainEntryField7.Text;
 				tempContainer[iCount] = 7; iCount++;
 			}
 
+			primNOCounter = iCount;
+			Console.WriteLine(primNOCounter);
 			primListArray = new string[iTempCount];
 			//value is - apply to an array which is global!
 
@@ -437,15 +513,21 @@ public partial class MainWindow: Gtk.Window{
 		}
 
 		if(radiobutton6.Active){
-			urlUsedString = M3MainTextView1.Buffer.Text;
+			if(M3MainTextView1.Buffer.Text == "")
+				urlUsedString = @"N/A";
+			else
+				urlUsedString = M3MainTextView1.Buffer.Text;
 		}else{
 			urlUsedString = @"N/A";
 		}
 
 		if(radiobutton8.Active){
-			buildVersionString = M4MainTextView1.Buffer.Text;
+			if(M4MainTextView1.Buffer.Text == "")
+				buildVersionString = @"N/A";
+			else
+				buildVersionString = M4MainTextView1.Buffer.Text;
 		}else{
-			buildVersionString = "N/A";
+			buildVersionString = @"N/A";
 		}
 
 		if(M5H2MainCheck1.Active){
