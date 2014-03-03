@@ -21,9 +21,17 @@ public partial class MainWindow: Gtk.Window{
 	public bool[] initEnabledArray = new bool[14];
 	public static string sAllinitials;
 	public static string sDateTested;
+	public static string Otherinitials;
+	public static bool pageControl;
+
 	public bool bIssueVoption;
 	public bool bTestExe;
 	public bool bScripting;
+
+
+	public bool bTestExe1;
+	public bool bScripting1;
+
 	public static string sTTC;
 	public static string sBOOT;
 	public static string mytempfilename;
@@ -51,7 +59,29 @@ public partial class MainWindow: Gtk.Window{
 
 	public void main(){
 		this.Build();
+		onSetUpVar();
 		ReportSectionOne();
+	}
+
+	public void onSetUpVar(){
+		sTTC = "";
+		sBOOT = "";
+
+		sMetric1 = "";
+		sMetric2 = "";
+		sMetric3 = "";
+		sMetric4 = "";
+
+		top5ListArray = new string[5];
+		top5ListArray[0] = "";
+		top5ListArray[1] = "";
+		top5ListArray[2] = "";
+		top5ListArray[3] = "";
+		top5ListArray[4] = "";
+
+		mytempfilename = "";
+		sBlockingNumbers = "";
+		sBlockingyN = "No";
 	}
 
 	//<param> Application closes </param>
@@ -95,7 +125,6 @@ public partial class MainWindow: Gtk.Window{
 			break;
 		case 2:
 			Level2Button();
-			////Console.Writeline("asd");
 			break;
 		case 3:
 			Level3Button();
@@ -259,32 +288,58 @@ public partial class MainWindow: Gtk.Window{
 			backlevel1();
 			break;
 		case 3:
+			if((M1MainTextView1.Buffer.Text != "")&&(radiobutton2.Active)){
+				sBlockingyN = "Yes";
+				sBlockingNumbers = M1MainTextView1.Buffer.Text;
+			}else{
+				sBlockingyN = "No";
+				sBlockingNumbers = "N/A";
+			}
+
+			top5ListArray[0] = M5MainEntryField1.Text;
+			top5ListArray[1] = M5MainEntryField2.Text;
+			top5ListArray[2] = M5MainEntryField3.Text;
+			top5ListArray[3] = M5MainEntryField4.Text;
+			top5ListArray[4] = M5MainEntryField5.Text;
+
 			programControl = 2;
 			ReportSectionTwo();
+			backlevel2();
 			break;
 		case 4:
+			sMetric1 = M5MainEntryField1.Text;
+			sMetric2 = M5MainEntryField2.Text;
+			sMetric3 = M5MainEntryField3.Text;
+			sMetric4 = M5MainEntryField4.Text;
+
+
 			programControl = 3;
 			ReportSectionThree();
+			backlevel3();
 			break;
 		case 5:
+			sTTC = M1MainTextView1.Buffer.Text;
+			sBOOT =  M2MainTextView1.Buffer.Text;
 			programControl = 4;
 			ReportSectionFour();
+			backlevel4();
 			break;
 		case 6:
 			programControl = 5;
 			ReportSectionFive();
+			backlevel5();
 			break;
 		case 7:
-			//programControl = 6;
-			//ReportSectionSix();
 			programControl = 5;
 			ReportSectionFive();
+			backlevel5();
 			break;
 		default:
 			break;
 		}
 	}
 
+	#region Initials
 
 	protected void OnInCheck1Toggled (object sender, EventArgs e){
 		if(InCheck1.Active){
@@ -375,7 +430,6 @@ public partial class MainWindow: Gtk.Window{
 			initEnabledArray[9] = false;
 		}
 	}
-	
 
 	protected void OnInCheck11Toggled (object sender, EventArgs e){
 		if(InCheck11.Active){
@@ -413,7 +467,8 @@ public partial class MainWindow: Gtk.Window{
 		}
 	}
 
-	 
+	#endregion 
+
 	protected void OnInitradiobutton1Toggled (object sender, EventArgs e){
 			switch (programControl){
 			case 1:
@@ -475,9 +530,7 @@ public partial class MainWindow: Gtk.Window{
 			break;
 		}
 	}
-
-
-
+		
 
 	#endregion
 }

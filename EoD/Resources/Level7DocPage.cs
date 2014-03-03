@@ -27,13 +27,19 @@ public partial class MainWindow: Gtk.Window{
 		M1H1MainLabelHeader1.WidthRequest = 700;
 		M1H1MainLabelHeader1.Text = ("                                                                Select a file location then click 'Finish'.");
 
-		MainButtonControls1.Sensitive = false;
 		button8.Label = "Set File Location";
-		label10.Text = "No path selected";
+
+		if(mytempfilename == ""){
+			label10.Text = "No path selected";
+			MainButtonControls1.Sensitive = false;
+		}else{
+			label10.Text = "Path: " + mytempfilename;
+			MainButtonControls1.Sensitive = true;
+		}
+
 		button8.WidthRequest = 150;
 		button8.Sensitive = true;
 		MainButtonControls1.Label = "Finish";
-
 	}
 
 	public void SHLevel7(){
@@ -142,7 +148,7 @@ public partial class MainWindow: Gtk.Window{
 					label10.Text = "Path: " + mytempfilename;
 
 					fc.Destroy();
-					MainButtonControls1 .Sensitive = true;
+					MainButtonControls1.Sensitive = true;
 					btemp1 = true;
 				}
 			}else{

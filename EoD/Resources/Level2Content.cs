@@ -14,6 +14,7 @@ public partial class MainWindow: Gtk.Window{
 		label10.Text = "Other initials - add / between sets"; 
 		M1MainEntryField1.Text = "";
 		M1MainEntryField1.Sensitive = false;
+		Initradiobutton1.Active = false;
 
 		// Supply content for Project fields
 		M2H1MainLabelHeader1.Text = "Date tested:";
@@ -35,7 +36,9 @@ public partial class MainWindow: Gtk.Window{
 		else
 			MainButtonControls1.Sensitive = false;
 
-		InitialsSetup();
+		if(!pageControl)
+			InitialsSetup();
+
 		MainButtonControls3.Sensitive = true;
 	}
 
@@ -77,6 +80,124 @@ public partial class MainWindow: Gtk.Window{
 		hseparator4.Show();
 		hseparator9.Show();
 		hseparator7.Show();
+	}
+
+	public void backlevel2(){
+		M3H2MainCheck1.Active = false;
+		M3H2MainCheck2.Active = false;
+		M3H2MainCheck3.Active = false;
+
+		if(Otherinitials != ""){
+			Initradiobutton1.Active = true;
+			InCheck15Toggled();
+			M1MainEntryField1.Text = Otherinitials;
+		}
+
+		M2MainEntryField1.Text = sDateTested;
+
+		for(int x = 0; x < initEnabledArray.Length; x++){
+			if(initEnabledArray[x] == true){
+				switch(x){
+				case 0:
+					initArray[x] = "BV";
+					InCheck1.Label = initArray[x];
+					InCheck1.Active = true;
+					break;
+				case 1:
+					initArray[x] = "ELR";
+					InCheck2.Label = initArray[x];
+					InCheck2.Active = true;
+					break;
+				case 2:
+					initArray[x] = "SA";
+					InCheck3.Label = initArray[x];
+					InCheck3.Active = true;
+					break;
+				case 3:
+					initArray[x] = "AF";
+					InCheck4.Label = initArray[x];
+					InCheck4.Active = true;
+					break;
+				case 4:
+					initArray[x] = "TY";
+					InCheck5.Label = initArray[x];
+					InCheck5.Active = true;
+					break;
+				case 5:
+					initArray[x] = "TG";
+					InCheck6.Label = initArray[x];
+					InCheck6.Active = true;
+					break;
+				case 6:
+					initArray[x] = "GH";
+					InCheck7.Label = initArray[x];
+					InCheck7.Active = true;
+					break;
+				case 7:
+					initArray[x] = "LW";
+					InCheck8.Label = initArray[x];
+					InCheck8.Active = true;
+					break;
+				case 8: 
+					initArray[x] = "JG";
+					InCheck9.Label = initArray[x];
+					InCheck9.Active = true;
+					break;
+				case 9: 
+					initArray[x] = "KH";
+					InCheck10.Label = initArray[x];
+					InCheck10.Active = true;
+					break;
+				case 10: 
+					initArray[x] = "MG";
+					InCheck11.Label = initArray[x];
+					InCheck11.Active = true;
+					break;
+				case 11: 
+					initArray[x] = "SS";
+					InCheck12.Label = initArray[x];
+					InCheck12.Active = true;
+					break;
+				case 12: 
+					initArray[x] = "LHW";
+					InCheck13.Label = initArray[x];
+					InCheck13.Active = true;
+					break;
+				case 13: 
+					initArray[x] = "WT";
+					InCheck14.Label = initArray[x];
+					InCheck14.Active = true;
+					break;
+				default:
+					break;
+				}
+			}
+		}
+
+
+		if(bScripting1){
+			bScripting = true;
+			M3H2MainCheck1.Active = true;
+		}
+		else{
+			M3H2MainCheck1.Active = false;
+		}
+			
+		if(bTestExe1){
+			bTestExe = true;
+			M3H2MainCheck2.Active = true;
+		}
+		else{
+			M3H2MainCheck2.Active = false;
+		}
+
+		if(bIssueVoption || bTestExe || bScripting){
+			MainButtonControls1.Sensitive = true;
+		}else{
+			MainButtonControls1.Sensitive = false;
+		}
+			
+		return;
 	}
 
 	public void InitialsSetup(){
@@ -161,16 +282,6 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 
-		
-		/*
-		InCheck13.Label = "BV";
-		InCheck14.Label = "BV";
-
-
-		InCheck15.Label = "Other";
-		*/
-		//InCheck13.Sensitive = false;
-		//InCheck14.Sensitive = false;
 		InCheck15.Sensitive = false;
 	}
 
@@ -212,9 +323,19 @@ public partial class MainWindow: Gtk.Window{
 			//sAllinitials
 			if((Initradiobutton1.Active) &&(M1MainEntryField1.Text != "")){
 				sAllinitials += M1MainEntryField1.Text;
+				Otherinitials = M1MainEntryField1.Text;
+				sAllinitials = sAllinitials.TrimEnd('/');
 			}else{
+				Otherinitials = "";
 				sAllinitials = sAllinitials.TrimEnd('/');
 			}
+
+			pageControl = true;
+			bTestExe1 = bTestExe;
+			bScripting1 = bScripting;
+			M3H2MainCheck1.Active = false;
+			M3H2MainCheck2.Active = false;
+
 			ReportSectionThree();
 		}
 	}

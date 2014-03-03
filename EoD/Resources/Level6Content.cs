@@ -11,7 +11,7 @@ public partial class MainWindow: Gtk.Window{
 		SHLevel6();
 
 		MainLabelTitle.Text = "Environments";
-
+		MainButtonControls1.Label = "Next";
 		
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Never);
 		M1H1MainLabelHeader1.Text = "Select your enviroments";

@@ -44,6 +44,10 @@ public partial class MainWindow: Gtk.Window{
 		button10.Label = "Info";
 		button11.Label = "Spell Check";
 		MainButtonControls1.Sensitive = true;
+
+		MainButtonControls1.Label = "Next";
+		M1MainTextView1.Buffer.Text = sTTC;
+		M2MainTextView1.Buffer.Text = sBOOT;
 	}
 
 	public void SHLevel5(){
@@ -72,6 +76,12 @@ public partial class MainWindow: Gtk.Window{
 		hseparator3.Show();
 		MainHboxSubContainerM2H2.Show();
 		hbox10.ShowAll();
+	}
+
+	public void backlevel5(){
+		M1MainTextView1.Buffer.Text = sTTC;
+		M2MainTextView1.Buffer.Text = sBOOT;
+		return;
 	}
 
 	#region Content
@@ -161,10 +171,6 @@ DO NOT:
 
 
 		if(bSmokes){
-			//ReportSectionSix(); // Enviro chooser page
-			//programControl = 6;
-			//ReportSectionSix();
-
 			programControl = 7;
 			ReportSectionSeven();
 		}

@@ -18,7 +18,7 @@ public partial class MainWindow: Gtk.Window{
 		MainLabelTitle.Text = "Issue Summary";
 		
 		M1MainTextView1.HeightRequest = 40;
-		M1MainTextView1.Buffer.Text = "";
+		M1MainTextView1.Buffer.Text = sBlockingNumbers;
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Always);
 		
 		M1H1MainLabelHeader1.Text = "Issues that have blocked testing?";
@@ -54,12 +54,23 @@ public partial class MainWindow: Gtk.Window{
 		M5MainEntryField4.Sensitive = true;
 		M5MainEntryField5.Sensitive = true;
 
-		M5MainEntryField1.Text = "";
-		M5MainEntryField2.Text = "";
-		M5MainEntryField3.Text = "";
-		M5MainEntryField4.Text = "";
-		M5MainEntryField5.Text = "";
-		
+		M5MainEntryField1.Text = top5ListArray[0];
+		M5MainEntryField2.Text = top5ListArray[1];
+		M5MainEntryField3.Text = top5ListArray[2];
+		M5MainEntryField4.Text = top5ListArray[3];
+		M5MainEntryField5.Text = top5ListArray[4];
+
+
+		if(sBlockingyN == "Yes"){
+			M1MainTextView1.Buffer.Text = sBlockingNumbers;
+			radiobutton2.Active = true;
+			Level3Check2Toggled();
+		}else{
+			M1MainTextView1.Buffer.Text = "";
+			radiobutton2.Active = false;
+			Level3Check2Toggled();
+		}
+	
 	}
 
 	public void SHLevel3(){
@@ -94,88 +105,15 @@ public partial class MainWindow: Gtk.Window{
 		button5.Hide();
 	}
 
-	#region spellcheck
-	/*
-	public void CheckSpelling(){
-		Word.Application app = new Word.Application();
-	
-		int errors = 0;
+	public void backlevel3(){
 
-		if (M2MainTextView1.Buffer.Text == ""){
-			//Console.Writeline("no content");
-		}
-		else
-		{
-			app.Visible = false;
 
-			// Setting these variables is comparable to passing null to the function.
-			// This is necessary because the C# null cannot be passed by reference.
-			object template = Missing.Value;
-			object newTemplate = Missing.Value;
-			object documentType = Missing.Value;
-			object visible = true;
+		M5MainEntryField1.Text = top5ListArray[0];
+		M5MainEntryField2.Text = top5ListArray[1];
+		M5MainEntryField3.Text = top5ListArray[2];
+		M5MainEntryField4.Text = top5ListArray[3];
+		M5MainEntryField5.Text = top5ListArray[4];
 
-			Word._Document doc1 = app.Documents.Add(template, newTemplate, documentType, visible);
-
-			//Console.Writeline(M2MainTextView1.Buffer.Text);
-
-			doc1.Words.First.InsertBefore(M2MainTextView1.Buffer.Text);
-
-			doc1.Content.LanguageID = WdLanguageID.wdEnglishUK;
-
-			Word.ProofreadingErrors spellErrorsColl = doc1.SpellingErrors;
-			errors = spellErrorsColl.Count;
-
-			//Console.Writeline(errors);
-
-			object optional = Missing.Value;
-
-			//	if(errors > 0 ){
-			//	for(int x = 1; x <= spellErrorsColl.Count; x++){
-			//		//Console.Writeline(spellErrorsColl[x].Text);
-			//	}
-			//}
-
-			Word.SpellingSuggestions correctionSpelling;
-
-			//correctionSpelling = app.GetSpellingSuggestions(spellErrorsColl[1].Text);
-
-			if(errors > 0){
-				for(int p = 1; p <= spellErrorsColl.Count; p++){
-
-					correctionSpelling = app.GetSpellingSuggestions(spellErrorsColl[p].Text);
-
-					for(int x = 1; x <= correctionSpelling.Count; x++){
-						//Console.Writeline(correctionSpelling[x].Name);
-					} 
-				}
-			}
-			//doc1.CheckSpelling(
-			//	optional, optional, optional, optional, optional, optional,
-			//	optional, optional, optional, optional, optional, optional);
-
-			label8.Text = errors + " errors corrected ";
-			object first = 0;
-			object last = doc1.Characters.Count - 1;
-			M2MainTextView1.Buffer.Text = doc1.Range(first, last).Text;
-			//textBox1.Text = doc1.Range(ref first, ref last).Text;
-		}
-		app.Quit();
-
-	}
-	*/
-	#endregion
-
-	public void Level3Toggled6 (){
-	}
-
-	protected void Level3Toggled8 (){
-	}
-
-	protected void Level3Toggled10 (){
-	}
-
-	protected void Level3ButtonControls1Clicked (){
 	}
 
 	protected void Level3Button (){
@@ -193,14 +131,14 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 
-		top5ListArray = new string[5];
+
 
 		bool bAllBlank = true;
 
 		for(int x = 1; x < 6; x++){
 			switch(x){
 			case 1:
-				if(M5MainEntryField1.Text == ""){
+				if((M5MainEntryField1.Text == "") || (M5MainEntryField1.Text == "N/A")){
 					top5ListArray[0] = "N/A"; 
 					bAllBlank = false;
 				}
@@ -209,7 +147,7 @@ public partial class MainWindow: Gtk.Window{
 				}
 				break;
 			case 2:
-				if(M5MainEntryField2.Text == ""){
+				if((M5MainEntryField2.Text == "") || (M5MainEntryField2.Text == "N/A")){
 					top5ListArray[1] = "N/A"; 
 					bAllBlank = false;
 				}
@@ -218,7 +156,7 @@ public partial class MainWindow: Gtk.Window{
 				}
 				break;
 			case 3:
-				if(M5MainEntryField3.Text == ""){
+				if((M5MainEntryField3.Text == "") || (M5MainEntryField3.Text == "N/A")){
 					top5ListArray[2] = "N/A";
 					bAllBlank = false;
 				} 
@@ -227,7 +165,7 @@ public partial class MainWindow: Gtk.Window{
 				}
 				break;
 			case 4:
-				if(M5MainEntryField4.Text == ""){
+				if((M5MainEntryField4.Text == "") || (M5MainEntryField4.Text == "N/A")){
 					top5ListArray[3] = "N/A"; 
 					bAllBlank = false;
 				}
@@ -236,7 +174,7 @@ public partial class MainWindow: Gtk.Window{
 				}
 				break;
 			case 5:
-				if(M5MainEntryField5.Text == ""){
+				if((M5MainEntryField5.Text == "") || (M5MainEntryField5.Text == "N/A")){
 					top5ListArray[4] = "N/A"; 
 					bAllBlank = false;
 				}
@@ -265,7 +203,6 @@ public partial class MainWindow: Gtk.Window{
 						}
 					}
 				}
-				//Console.Writeline(top5ListArray[x]);
 			}
 
 			M5MainEntryField1.Text = top5ListArray[0];
@@ -281,7 +218,7 @@ public partial class MainWindow: Gtk.Window{
 		}
 
 		if(bNextSection1){
-			if(M1MainTextView1.Buffer.Text != ""){
+			if((M1MainTextView1.Buffer.Text != "")&&(radiobutton2.Active)){
 				sBlockingyN = "Yes";
 				sBlockingNumbers = M1MainTextView1.Buffer.Text;
 			}else{

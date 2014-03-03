@@ -231,13 +231,10 @@ public partial class MainWindow: Gtk.Window{
 		}
 
 		if(primEnabled){
-			//for x	//primNOCounter
 			radiobutton10.Active = true;
 			addCounter =1;
-			Console.WriteLine(primNOCounter);
 			for(int f = 0; f < primNOCounter; f++){
 				PrimAdd ();
-				Console.WriteLine(f);
 				switch(f){
 				case 0:
 					M5MainEntryField1.Text = primListArray[0];
@@ -300,11 +297,10 @@ public partial class MainWindow: Gtk.Window{
 				}
 			}
 		}
-
-
-
+			
 		if((clientNameBool) && (projectNameBool) && (primBool)){
 			SetLevel1Options();
+			pageControl = false;
 			programControl = 2; 
 			ReportSectionTwo();
 		}

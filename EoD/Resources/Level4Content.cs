@@ -33,10 +33,10 @@ public partial class MainWindow: Gtk.Window{
 		label3.Justify = Justification.Left;
 		label4.Justify = Justification.Left;
 
-		M5MainEntryField1.Text = "";
-		M5MainEntryField2.Text = "";
-		M5MainEntryField3.Text = "";
-		M5MainEntryField4.Text = "";
+		M5MainEntryField1.Text = sMetric1;
+		M5MainEntryField2.Text = sMetric2;
+		M5MainEntryField3.Text = sMetric3;
+		M5MainEntryField4.Text = sMetric4;
 	}
 
 	public void SHLevel4(){
@@ -63,18 +63,15 @@ public partial class MainWindow: Gtk.Window{
 		button4.Hide();
 	}
 
-	protected void level4ButtonControls1Clicked (){
+	public void backlevel4(){
+		M5MainEntryField1.Text = sMetric1;
+		M5MainEntryField2.Text = sMetric2;
+		M5MainEntryField3.Text = sMetric3;
+		M5MainEntryField4.Text = sMetric4;
+		return;
 	}
 
 	protected void level4Button (){
-		//get&set data vars
-
-		//Create Doc
-		/*
-		 * USe vars with data stored
-		 * 
-		 */
-
 		if(M5MainEntryField1.Text == ""){
 			sMetric1 = "0";
 		}else{
@@ -102,12 +99,6 @@ public partial class MainWindow: Gtk.Window{
 		programControl = 5;
 		ReportSectionFive();
 	}
-
-	protected void level4Check1Toggled (){
-	}
-
-	protected void level4Check2Toggled (){
-	}
-
+		
 }
 
