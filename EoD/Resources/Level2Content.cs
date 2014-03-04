@@ -11,16 +11,24 @@ public partial class MainWindow: Gtk.Window{
 		MainLabelTitle.Text = "Report Details";
 		// Supply content for Client fields
 		M1H1MainLabelHeader1.Text = "Testers initials:";
-		label10.Text = "Other initials - add / between sets"; 
-		M1MainEntryField1.Text = "";
-		M1MainEntryField1.Sensitive = false;
-		Initradiobutton1.Active = false;
+		label10.Text = "Other initials - add / between sets: "; 
+		M1MainEntryField1.Text = Otherinitials;
+
+		if(bisEnabled){
+			Initradiobutton1.Active = true;
+		}
+		else{
+			Initradiobutton2.Active = true;
+		}
+
+		InCheck15Toggled();
 
 		// Supply content for Project fields
 		M2H1MainLabelHeader1.Text = "Date tested:";
 
-		M2MainEntryField1.Text = DateTime.Now.ToString("dd/MM/yyyy"); /// Could make a calender
-		
+		//M2MainEntryField1.Text = DateTime.Now.ToString("dd/MM/yyyy"); /// Could make a calender
+		M2MainEntryField1.Text  = sDateTested;
+
 		M3H1MainLabelHeader1.Text = "Test activities:";
 
 		M3H2MainCheck1.Label = "Scripting & Planning";
@@ -40,6 +48,8 @@ public partial class MainWindow: Gtk.Window{
 			InitialsSetup();
 
 		MainButtonControls3.Sensitive = true;
+
+		EnableCells();
 	}
 
 	public void SHLevel2(){
@@ -88,7 +98,11 @@ public partial class MainWindow: Gtk.Window{
 		M3H2MainCheck3.Active = false;
 
 		if(Otherinitials != ""){
-			Initradiobutton1.Active = true;
+			if(bisEnabled)
+				Initradiobutton1.Active = true;
+			else
+				Initradiobutton1.Active = false;
+
 			InCheck15Toggled();
 			M1MainEntryField1.Text = Otherinitials;
 		}
@@ -99,72 +113,58 @@ public partial class MainWindow: Gtk.Window{
 			if(initEnabledArray[x] == true){
 				switch(x){
 				case 0:
-					initArray[x] = "BV";
 					InCheck1.Label = initArray[x];
 					InCheck1.Active = true;
 					break;
 				case 1:
-					initArray[x] = "ELR";
 					InCheck2.Label = initArray[x];
 					InCheck2.Active = true;
 					break;
 				case 2:
-					initArray[x] = "SA";
 					InCheck3.Label = initArray[x];
 					InCheck3.Active = true;
 					break;
 				case 3:
-					initArray[x] = "AF";
 					InCheck4.Label = initArray[x];
 					InCheck4.Active = true;
 					break;
 				case 4:
-					initArray[x] = "TY";
 					InCheck5.Label = initArray[x];
 					InCheck5.Active = true;
 					break;
 				case 5:
-					initArray[x] = "TG";
 					InCheck6.Label = initArray[x];
 					InCheck6.Active = true;
 					break;
 				case 6:
-					initArray[x] = "GH";
 					InCheck7.Label = initArray[x];
 					InCheck7.Active = true;
 					break;
 				case 7:
-					initArray[x] = "LW";
 					InCheck8.Label = initArray[x];
 					InCheck8.Active = true;
 					break;
 				case 8: 
-					initArray[x] = "JG";
 					InCheck9.Label = initArray[x];
 					InCheck9.Active = true;
 					break;
 				case 9: 
-					initArray[x] = "KH";
 					InCheck10.Label = initArray[x];
 					InCheck10.Active = true;
 					break;
 				case 10: 
-					initArray[x] = "MG";
 					InCheck11.Label = initArray[x];
 					InCheck11.Active = true;
 					break;
 				case 11: 
-					initArray[x] = "SS";
 					InCheck12.Label = initArray[x];
 					InCheck12.Active = true;
 					break;
 				case 12: 
-					initArray[x] = "LHW";
 					InCheck13.Label = initArray[x];
 					InCheck13.Active = true;
 					break;
 				case 13: 
-					initArray[x] = "WT";
 					InCheck14.Label = initArray[x];
 					InCheck14.Active = true;
 					break;
@@ -174,7 +174,12 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 
+		EnableCells();
 
+		return;
+	}
+
+	public void EnableCells(){
 		if(bScripting1){
 			bScripting = true;
 			M3H2MainCheck1.Active = true;
@@ -182,7 +187,7 @@ public partial class MainWindow: Gtk.Window{
 		else{
 			M3H2MainCheck1.Active = false;
 		}
-			
+
 		if(bTestExe1){
 			bTestExe = true;
 			M3H2MainCheck2.Active = true;
@@ -196,93 +201,97 @@ public partial class MainWindow: Gtk.Window{
 		}else{
 			MainButtonControls1.Sensitive = false;
 		}
-			
-		return;
 	}
 
 	public void InitialsSetup(){
 		vbox2.Visible = true;
-		Initradiobutton2.Active = true;
-		//initArray = new string[12];
+		//Initradiobutton2.Active = true;
 
-		for(int x = 0; x < initArray.Length; x++){
-			switch(x){
-			case 0:
-				initArray[x] = "BV";
-				InCheck1.Label = initArray[x];
-				InCheck1.Active = false;
-				break;
-			case 1:
-				initArray[x] = "ELR";
-				InCheck2.Label = initArray[x];
-				InCheck2.Active = false;
-				break;
-			case 2:
-				initArray[x] = "SA";
-				InCheck3.Label = initArray[x];
-				InCheck3.Active = false;
-				break;
-			case 3:
-				initArray[x] = "AF";
-				InCheck4.Label = initArray[x];
-				InCheck4.Active = false;
-				break;
-			case 4:
-				initArray[x] = "TY";
-				InCheck5.Label = initArray[x];
-				InCheck5.Active = false;
-				break;
-			case 5:
-				initArray[x] = "TG";
-				InCheck6.Label = initArray[x];
-				InCheck6.Active = false;
-				break;
-			case 6:
-				initArray[x] = "GH";
-				InCheck7.Label = initArray[x];
-				InCheck7.Active = false;
-				break;
-			case 7:
-				initArray[x] = "LW";
-				InCheck8.Label = initArray[x];
-				InCheck8.Active = false;
-				break;
-			case 8: 
-				initArray[x] = "JG";
-				InCheck9.Label = initArray[x];
-				InCheck9.Active = false;
-				break;
-			case 9: 
-				initArray[x] = "KH";
-				InCheck10.Label = initArray[x];
-				InCheck10.Active = false;
-				break;
-			case 10: 
-				initArray[x] = "MG";
-				InCheck11.Label = initArray[x];
-				InCheck11.Active = false;
-				break;
-			case 11: 
-				initArray[x] = "SS";
-				InCheck12.Label = initArray[x];
-				InCheck12.Active = false;
-				break;
-			case 12: 
-				initArray[x] = "LHW";
-				InCheck13.Label = initArray[x];
-				InCheck13.Active = false;
-				break;
-			case 13: 
-				initArray[x] = "WT";
-				InCheck14.Label = initArray[x];
-				InCheck14.Active = false;
-				break;
-			default:
-				break;
+		for(int x = 0; x < initEnabledArray.Length; x++){
+			if(initEnabledArray[x] == true){
+				switch(x){
+				case 0:
+					InCheck1.Label = initArray[x];
+					InCheck1.Active = true;
+					break;
+				case 1:
+					InCheck2.Label = initArray[x];
+					InCheck2.Active = true;
+					break;
+				case 2:
+					InCheck3.Label = initArray[x];
+					InCheck3.Active = true;
+					break;
+				case 3:
+					InCheck4.Label = initArray[x];
+					InCheck4.Active = true;
+					break;
+				case 4:
+					InCheck5.Label = initArray[x];
+					InCheck5.Active = true;
+					break;
+				case 5:
+					InCheck6.Label = initArray[x];
+					InCheck6.Active = true;
+					break;
+				case 6:
+					InCheck7.Label = initArray[x];
+					InCheck7.Active = true;
+					break;
+				case 7:
+					InCheck8.Label = initArray[x];
+					InCheck8.Active = true;
+					break;
+				case 8: 
+					InCheck9.Label = initArray[x];
+					InCheck9.Active = true;
+					break;
+				case 9: 
+					InCheck10.Label = initArray[x];
+					InCheck10.Active = true;
+					break;
+				case 10: 
+					InCheck11.Label = initArray[x];
+					InCheck11.Active = true;
+					break;
+				case 11: 
+					InCheck12.Label = initArray[x];
+					InCheck12.Active = true;
+					break;
+				case 12: 
+					InCheck13.Label = initArray[x];
+					InCheck13.Active = true;
+					break;
+				case 13: 
+					InCheck14.Label = initArray[x];
+					InCheck14.Active = true;
+					break;
+				default:
+					break;
+				}
 			}
 		}
 
 		InCheck15.Sensitive = false;
+	}
+
+	public void ResetAll(){
+		InCheck1.Active = false;
+		InCheck2.Active = false;
+		InCheck3.Active = false;
+		InCheck4.Active = false;
+		InCheck5.Active = false;
+		InCheck6.Active = false;
+		InCheck7.Active = false;
+		InCheck8.Active = false;
+		InCheck9.Active = false;
+		InCheck10.Active = false;
+		InCheck11.Active = false;
+		InCheck12.Active = false;
+		InCheck13.Active = false;
+		InCheck14.Active = false;
+		//InCheck15.Active = true;
+		return;
 	}
 
 	protected void Level2Button (){
@@ -335,6 +344,12 @@ public partial class MainWindow: Gtk.Window{
 			bScripting1 = bScripting;
 			M3H2MainCheck1.Active = false;
 			M3H2MainCheck2.Active = false;
+
+			if(Initradiobutton1.Active == true)
+				bisEnabled = true;
+			else
+				bisEnabled = false;
+
 
 			ReportSectionThree();
 		}

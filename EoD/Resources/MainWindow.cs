@@ -28,6 +28,7 @@ public partial class MainWindow: Gtk.Window{
 	public bool bTestExe;
 	public bool bScripting;
 
+	public bool bisEnabled;
 
 	public bool bTestExe1;
 	public bool bScripting1;
@@ -82,6 +83,92 @@ public partial class MainWindow: Gtk.Window{
 		mytempfilename = "";
 		sBlockingNumbers = "";
 		sBlockingyN = "No";
+
+		Otherinitials = "";
+		bisEnabled = false;
+		sDateTested = DateTime.Now.ToString("dd/MM/yyyy");
+
+		bTestExe1 = false;
+		bTestExe = false;
+		bScripting1 = false;
+		bScripting = false;
+
+		for(int x = 0; x < initArray.Length; x++){
+			switch(x){
+			case 0:
+				initArray[x] = "BV";
+				InCheck1.Label = initArray[x];
+				InCheck1.Active = false;
+				break;
+			case 1:
+				initArray[x] = "ELR";
+				InCheck2.Label = initArray[x];
+				InCheck2.Active = false;
+				break;
+			case 2:
+				initArray[x] = "SA";
+				InCheck3.Label = initArray[x];
+				InCheck3.Active = false;
+				break;
+			case 3:
+				initArray[x] = "AF";
+				InCheck4.Label = initArray[x];
+				InCheck4.Active = false;
+				break;
+			case 4:
+				initArray[x] = "TY";
+				InCheck5.Label = initArray[x];
+				InCheck5.Active = false;
+				break;
+			case 5:
+				initArray[x] = "TG";
+				InCheck6.Label = initArray[x];
+				InCheck6.Active = false;
+				break;
+			case 6:
+				initArray[x] = "GH";
+				InCheck7.Label = initArray[x];
+				InCheck7.Active = false;
+				break;
+			case 7:
+				initArray[x] = "LW";
+				InCheck8.Label = initArray[x];
+				InCheck8.Active = false;
+				break;
+			case 8: 
+				initArray[x] = "JG";
+				InCheck9.Label = initArray[x];
+				InCheck9.Active = false;
+				break;
+			case 9: 
+				initArray[x] = "KH";
+				InCheck10.Label = initArray[x];
+				InCheck10.Active = false;
+				break;
+			case 10: 
+				initArray[x] = "MG";
+				InCheck11.Label = initArray[x];
+				InCheck11.Active = false;
+				break;
+			case 11: 
+				initArray[x] = "SS";
+				InCheck12.Label = initArray[x];
+				InCheck12.Active = false;
+				break;
+			case 12: 
+				initArray[x] = "LHW";
+				InCheck13.Label = initArray[x];
+				InCheck13.Active = false;
+				break;
+			case 13: 
+				initArray[x] = "WT";
+				InCheck14.Label = initArray[x];
+				InCheck14.Active = false;
+				break;
+			default:
+				break;
+			}
+		}
 	}
 
 	//<param> Application closes </param>
@@ -98,12 +185,11 @@ public partial class MainWindow: Gtk.Window{
 			Level1Check2Toggled();
 			break;
 		case 2:
-			//Console.Writeline("asd");
 			break;
 		default:
 			break;
 		}
-	}//
+	}
 
 	protected void OnM5H2MainCheck1Toggled (object sender, EventArgs e){
 		switch (programControl){
@@ -111,12 +197,11 @@ public partial class MainWindow: Gtk.Window{
 			Level1Check1Toggled();
 			break;
 		case 2:
-			//Console.Writeline("asd");
 			break;
 		default:
 			break;
 		}
-	}//
+	}
 
 	protected void OnMainButtonControls1Clicked (object sender, EventArgs e){
 		switch (programControl){
@@ -152,7 +237,6 @@ public partial class MainWindow: Gtk.Window{
 			PrimAdd();
 			break;
 		case 2:
-			//Console.Writeline("asd");
 			break;
 		default:
 			break;
@@ -179,7 +263,6 @@ public partial class MainWindow: Gtk.Window{
 			Level1Toggled8();
 			break;
 		case 2:
-			//Console.Writeline("asd");
 			break;
 		default:
 			break;
@@ -197,10 +280,6 @@ public partial class MainWindow: Gtk.Window{
 		default:
 			break;
 		}
-	}
-
-	//ATM Blank   
-	protected void OnRadiobutton4Toggled (object sender, EventArgs e){
 	}
 
 	protected void OnRadiobutton2Toggled (object sender, EventArgs e){
@@ -283,6 +362,19 @@ public partial class MainWindow: Gtk.Window{
 		case 1:
 			break;
 		case 2:
+			bTestExe1 = bTestExe;
+			bScripting1 = bScripting;
+
+			if(Initradiobutton1.Active == false){
+				Otherinitials = "";
+				bisEnabled = false;
+			}else{
+				Otherinitials = M1MainEntryField1.Text;
+				bisEnabled = true;
+			}
+
+			sDateTested = M2MainEntryField1.Text;
+
 			programControl = 1;
 			ReportSectionOne();
 			backlevel1();

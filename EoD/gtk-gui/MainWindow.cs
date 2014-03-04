@@ -1492,7 +1492,6 @@ public partial class MainWindow
 		this.MainHboxSubContainerM5H2.Add (this.M5H2MainCheck1);
 		global::Gtk.Box.BoxChild w138 = ((global::Gtk.Box.BoxChild)(this.MainHboxSubContainerM5H2 [this.M5H2MainCheck1]));
 		w138.Position = 0;
-		w138.Fill = false;
 		// Container child MainHboxSubContainerM5H2.Gtk.Box+BoxChild
 		this.M5H2MainCheck2 = new global::Gtk.CheckButton ();
 		this.M5H2MainCheck2.CanFocus = true;
@@ -1503,7 +1502,6 @@ public partial class MainWindow
 		this.MainHboxSubContainerM5H2.Add (this.M5H2MainCheck2);
 		global::Gtk.Box.BoxChild w139 = ((global::Gtk.Box.BoxChild)(this.MainHboxSubContainerM5H2 [this.M5H2MainCheck2]));
 		w139.Position = 1;
-		w139.Fill = false;
 		// Container child MainHboxSubContainerM5H2.Gtk.Box+BoxChild
 		this.M5H2MainCheck3 = new global::Gtk.CheckButton ();
 		this.M5H2MainCheck3.CanFocus = true;
@@ -1514,8 +1512,6 @@ public partial class MainWindow
 		this.MainHboxSubContainerM5H2.Add (this.M5H2MainCheck3);
 		global::Gtk.Box.BoxChild w140 = ((global::Gtk.Box.BoxChild)(this.MainHboxSubContainerM5H2 [this.M5H2MainCheck3]));
 		w140.Position = 2;
-		w140.Expand = false;
-		w140.Fill = false;
 		this.MainVboxSubContainerM5.Add (this.MainHboxSubContainerM5H2);
 		global::Gtk.Box.BoxChild w141 = ((global::Gtk.Box.BoxChild)(this.MainVboxSubContainerM5 [this.MainHboxSubContainerM5H2]));
 		w141.Position = 4;
@@ -1633,7 +1629,6 @@ public partial class MainWindow
 		this.InCheck11.Toggled += new global::System.EventHandler (this.OnInCheck11Toggled);
 		this.InCheck12.Toggled += new global::System.EventHandler (this.OnInCheck12Toggled);
 		this.Initradiobutton1.Toggled += new global::System.EventHandler (this.OnInitradiobutton1Toggled);
-		this.radiobutton4.Toggled += new global::System.EventHandler (this.OnRadiobutton4Toggled);
 		this.button10.Clicked += new global::System.EventHandler (this.OnButton10Clicked);
 		this.button11.Clicked += new global::System.EventHandler (this.OnButton11Clicked);
 		this.radiobutton6.Toggled += new global::System.EventHandler (this.OnRadiobutton6Toggled);

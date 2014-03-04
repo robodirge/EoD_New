@@ -739,7 +739,6 @@
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
                         <property name="Group">group2</property>
-                        <signal name="Toggled" handler="OnRadiobutton4Toggled" />
                       </widget>
                       <packing>
                         <property name="Position">0</property>
@@ -1870,8 +1869,7 @@
                   </widget>
                   <packing>
                     <property name="Position">0</property>
-                    <property name="AutoSize">False</property>
-                    <property name="Fill">False</property>
+                    <property name="AutoSize">True</property>
                   </packing>
                 </child>
                 <child>
@@ -1886,8 +1884,7 @@
                   </widget>
                   <packing>
                     <property name="Position">1</property>
-                    <property name="AutoSize">False</property>
-                    <property name="Fill">False</property>
+                    <property name="AutoSize">True</property>
                   </packing>
                 </child>
                 <child>
@@ -1901,9 +1898,7 @@
                   </widget>
                   <packing>
                     <property name="Position">2</property>
-                    <property name="AutoSize">False</property>
-                    <property name="Expand">False</property>
-                    <property name="Fill">False</property>
+                    <property name="AutoSize">True</property>
                   </packing>
                 </child>
               </widget>
