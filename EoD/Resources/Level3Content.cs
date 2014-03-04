@@ -79,6 +79,8 @@ public partial class MainWindow: Gtk.Window{
 		//-------------------------------
 		MainVboxSubContainerM1.Show();
 		MainHboxSubContainerM1H1.ShowAll();
+		M1H1MainLabelHeader1.ShowAll();
+		MainHboxSubContainerM1H1Sub1.ShowAll();
 		hbox8.ShowAll();
 		MainHboxSubContainerM1H2.HideAll();
 		//---------other  -----------

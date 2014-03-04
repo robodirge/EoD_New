@@ -28,14 +28,24 @@ public partial class MainWindow: Gtk.Window{
 		M1H1MainLabelHeader1.Text = ("                                                                Select a file location then click 'Finish'.");
 
 		button8.Label = "Set File Location";
-
+		label10.Text = "Path: ";
 		if(mytempfilename == ""){
-			label10.Text = "No path selected";
+			//label10.Text = "No path selected";
+			M1MainTextView1.Buffer.Text = "No path selected";
 			MainButtonControls1.Sensitive = false;
 		}else{
-			label10.Text = "Path: " + mytempfilename;
+			//label10.Text = "Path: " + mytempfilename;
+			M1MainTextView1.Buffer.Text = mytempfilename;
 			MainButtonControls1.Sensitive = true;
 		}
+
+		M1MainTextView1.Sensitive = true;
+		M1MainTextView1.Editable = false;
+		M1MainTextView1.WrapMode = WrapMode.Char;
+		M1MainTextView1.HeightRequest = 50;
+		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Never);
+
+
 
 		button8.WidthRequest = 150;
 		button8.Sensitive = true;
@@ -48,6 +58,11 @@ public partial class MainWindow: Gtk.Window{
 		MainHboxSubContainerM1H1.Show();
 		M1H1MainLabelHeader1.Show();
 		MainHboxSubContainerM1H2.Show();
+
+		hbox8.Show();
+		GtkScrolledWindow.ShowAll();
+		M1MainTextView1.Show();
+
 		hbox9.Show();
 		button8.Show();
 		hbox11.Show();
@@ -145,7 +160,8 @@ public partial class MainWindow: Gtk.Window{
 
                                                     This application will close once completed.");
 
-					label10.Text = "Path: " + mytempfilename;
+					//label10.Text = "Path: " + mytempfilename;
+					M1MainTextView1.Buffer.Text = mytempfilename;
 
 					fc.Destroy();
 					MainButtonControls1.Sensitive = true;

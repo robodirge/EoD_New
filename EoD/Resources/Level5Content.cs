@@ -21,14 +21,14 @@ public partial class MainWindow: Gtk.Window{
 		M1MainTextView1.Sensitive = true;
 		M1MainTextView1.WrapMode = WrapMode.Word;
 		M1MainTextView1.Buffer.Text = "";
-		M1MainTextView1.HeightRequest = 200;
+		M1MainTextView1.HeightRequest = 100;
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Always);
 		
 		M2H1MainLabelHeader1.Text = "Brief overview of testing:";
 		M2MainTextView1.Sensitive = true;
 		M2MainTextView1.Buffer.Text = "";
 		M2MainTextView1.WrapMode = WrapMode.Word;
-		M2MainTextView1.HeightRequest = 200;
+		M2MainTextView1.HeightRequest = 300;
 
 		GtkScrolledWindow1.SetPolicy(PolicyType.Never,PolicyType.Always);
 

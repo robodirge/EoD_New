@@ -1,11 +1,8 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EoD\Resources\Level3Content.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EoD\Resources\MainWindow.cs">
     <Files>
-      <File FileName="EoD\Resources\MainWindow.cs" Line="327" Column="10" />
-      <File FileName="EoD\Resources\Level3Content.cs" Line="211" Column="46" />
-      <File FileName="EoD\Resources\Level4Content.cs" Line="67" Column="1" />
-      <File FileName="EoD\Resources\Level5Content.cs" Line="82" Column="1" />
+      <File FileName="EoD\Resources\MainWindow.cs" Line="548" Column="25" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

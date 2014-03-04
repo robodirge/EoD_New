@@ -37,6 +37,8 @@ public partial class MainWindow: Gtk.Window{
 		M5MainEntryField2.Text = sMetric2;
 		M5MainEntryField3.Text = sMetric3;
 		M5MainEntryField4.Text = sMetric4;
+
+		M1H1MainLabelHeader1.WidthRequest = 300;
 	}
 
 	public void SHLevel4(){

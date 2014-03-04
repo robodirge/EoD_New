@@ -54,7 +54,7 @@ public partial class MainWindow: Gtk.Window{
 		M5H2MainCheck1.Label = "Cross environment checks/smoke tests";
 		M5H2MainCheck1.Active = false;
 		M5H2MainCheck2.Label = "Issue Verification & Retest";
-		M5H2MainCheck2.Active = false;
+		M5H2MainCheck2.Active = false; 
 
 		radiobutton11.Active = true;
 		M5MainEntryField1.Sensitive = false;
@@ -68,9 +68,9 @@ public partial class MainWindow: Gtk.Window{
 
 		// Bottom Nav buttons
 		MainButtonControls1.Sensitive = false;
-		MainButtonControls2.Sensitive = false;
+		MainButtonControls2.Hide();
 		MainButtonControls3.Sensitive = false;
-		MainButtonControls2.Label = "Spell Check";
+		//MainButtonControls2.Label = "Spell Check";
 		MainButtonControls3.Label = "Back";
 		
 		// Var set up

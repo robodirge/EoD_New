@@ -5,6 +5,8 @@ using Gtk;
 
 public partial class MainWindow: Gtk.Window{
 
+	#region Globals
+
 	public string clientNameString;
 	public string projectNameString;
 	public string urlUsedString;
@@ -17,8 +19,8 @@ public partial class MainWindow: Gtk.Window{
 	public static bool bSmokes;
 	public static bool bRetests;
 	public static bool bInitEnabled;
-	public string[] initArray = new string[14];
-	public bool[] initEnabledArray = new bool[14];
+	public string[] initArray = new string[15];
+	public bool[] initEnabledArray = new bool[15];
 	public static string sAllinitials;
 	public static string sDateTested;
 	public static string Otherinitials;
@@ -55,6 +57,7 @@ public partial class MainWindow: Gtk.Window{
 
 	public int programControl;
 
+	#endregion
 	//<param> Application start </param>
 	public MainWindow () : base (Gtk.WindowType.Toplevel){}
 
@@ -164,6 +167,11 @@ public partial class MainWindow: Gtk.Window{
 				initArray[x] = "WT";
 				InCheck14.Label = initArray[x];
 				InCheck14.Active = false;
+				break;
+			case 14: 
+				initArray[x] = "ZHC";
+				InCheck15.Label = initArray[x];
+				InCheck15.Active = false;
 				break;
 			default:
 				break;
@@ -548,7 +556,7 @@ public partial class MainWindow: Gtk.Window{
 		else{
 			initEnabledArray[12] = false;
 		}
-	}
+	} 
 
 	protected void OnInCheck14Toggled (object sender, EventArgs e){
 		if(InCheck14.Active){
@@ -559,7 +567,18 @@ public partial class MainWindow: Gtk.Window{
 		}
 	}
 
+	protected void OnInCheck15Toggled (object sender, EventArgs e){
+		if(InCheck15.Active){
+			initEnabledArray[14] = true;
+		}
+		else{
+			initEnabledArray[14] = false;
+		}
+	} 
+
 	#endregion 
+
+	#region ensection
 
 	protected void OnInitradiobutton1Toggled (object sender, EventArgs e){
 			switch (programControl){
@@ -622,7 +641,8 @@ public partial class MainWindow: Gtk.Window{
 			break;
 		}
 	}
-		
+
+	#endregion
 
 	#endregion
 }
