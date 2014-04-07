@@ -31,9 +31,12 @@ public partial class MainWindow: Gtk.Window{
 	public bool bScripting;
 
 	public bool bisEnabled;
+	public bool bOthercon;
 
 	public bool bTestExe1;
 	public bool bScripting1;
+
+	public bool bDocRan;
 
 	public static string sTTC;
 	public static string sBOOT;
@@ -95,6 +98,8 @@ public partial class MainWindow: Gtk.Window{
 		bTestExe = false;
 		bScripting1 = false;
 		bScripting = false;
+
+		bDocRan = false;
 
 		for(int x = 0; x < initArray.Length; x++){
 			switch(x){
@@ -232,7 +237,10 @@ public partial class MainWindow: Gtk.Window{
 			Level6Button();
 			break;
 		case 7:
-			CreateDoc ();
+			if(!bDocRan)
+				CreateDoc ();
+			else
+				restartDoc();
 			break;
 		default:
 			break;

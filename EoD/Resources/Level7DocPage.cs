@@ -30,11 +30,9 @@ public partial class MainWindow: Gtk.Window{
 		button8.Label = "Set File Location";
 		label10.Text = "Path: ";
 		if(mytempfilename == ""){
-			//label10.Text = "No path selected";
 			M1MainTextView1.Buffer.Text = "No path selected";
 			MainButtonControls1.Sensitive = false;
 		}else{
-			//label10.Text = "Path: " + mytempfilename;
 			M1MainTextView1.Buffer.Text = mytempfilename;
 			MainButtonControls1.Sensitive = true;
 		}
@@ -44,8 +42,6 @@ public partial class MainWindow: Gtk.Window{
 		M1MainTextView1.WrapMode = WrapMode.Char;
 		M1MainTextView1.HeightRequest = 50;
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Never);
-
-
 
 		button8.WidthRequest = 150;
 		button8.Sensitive = true;
@@ -76,25 +72,35 @@ public partial class MainWindow: Gtk.Window{
 
 	#region doc Start
 
-	public void CreateDoc (){
-
+	public void CreateDoc(){
 		wordApplication = new Word.Application();
 		wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 		newDocument = wordApplication.Documents.Add();
 
+		startDoc();
+	}
+
+	public void restartDoc(){
+		wordApplication = new Word.Application();
+		newDocument = wordApplication.Documents.Add();
+		startDoc();
+	}
+
+	public void startDoc (){
+
 		wordApplication.Selection.Font.Size = 11;
 		wordApplication.Selection.Font.Name = "Corbel";
 
-		firstTable();  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		moveDownpar(); //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		secondTable(); //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		moveDownpar(); //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		thirdTable();  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		moveDownpar(); //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		fouthTable();  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		moveDownpar(); //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-		fithTable();   //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>	
-		moveDownpar(); //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+		firstTable();
+		moveDownpar();
+		secondTable();
+		moveDownpar();
+		thirdTable();
+		moveDownpar();
+		fouthTable();
+		moveDownpar();
+		fithTable();
+		moveDownpar();
 
 		if(bSmokes){
 			wordApplication.Selection.TypeText(@"*Environments checked in this test run");
@@ -110,30 +116,73 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.ActiveWindow.View.SeekView = WdSeekView.wdSeekMainDocument;
 		wordApplication.Selection.WholeStory();
 		wordApplication.Selection.Font.Color = WdColor.wdColorBlack;
+		string documentFile = null;
 
-		string sDateTemp = sDateTested;
-		string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
-		foreach (char c in invalid){
-			sDateTemp = sDateTemp.Replace(c.ToString(), ""); 
-		}
-		//sDateTested = sDateTested.Replace(@"/", @"");
-		string documentFile = (mytempfilename + @"\" + clientNameString + " - " + projectNameString + " - Daily Report " + sDateTemp +  @".docx");////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Needs path
+		Console.WriteLine(mytempfilename);
 
-		double wordVersion = Convert.ToDouble(wordApplication.Version, CultureInfo.InvariantCulture);
-		if (wordVersion >= 12.0){
-			newDocument.SaveAs(documentFile, WdSaveFormat.wdFormatDocumentDefault);////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Needs path
+		if(Directory.Exists(mytempfilename)){
+
+			string sDateTemp = sDateTested;
+			string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
+			foreach (char c in invalid){
+				sDateTemp = sDateTemp.Replace(c.ToString(), ""); 
+			}
+
+			documentFile = (mytempfilename + @"\" + clientNameString + " - " + projectNameString + " - Daily Report " + sDateTemp +  @".docx");
+			bool mynewloop = false;
+			int myloopint= 0;
+			do{
+				if(File.Exists(documentFile)){
+					documentFile = (mytempfilename + @"\" + clientNameString + " - " + projectNameString + " - Daily Report " + sDateTemp + " (v" + (++myloopint) + ")" + @".docx");
+				}else{
+					mynewloop = true;
+				}
+
+			}while(!mynewloop);
+
+			double wordVersion = Convert.ToDouble(wordApplication.Version, CultureInfo.InvariantCulture);
+			if (wordVersion >= 12.0){
+				newDocument.SaveAs(documentFile, WdSaveFormat.wdFormatDocumentDefault);
+			}else{
+				newDocument.SaveAs(documentFile);
+			}
+
+			// close word and dispose reference
+			object saveOption = WdSaveOptions.wdDoNotSaveChanges;
+			object orginalFormat = WdOriginalFormat.wdOriginalDocumentFormat;
+			object routeDocument = false;
+			newDocument.Close(saveOption, orginalFormat, routeDocument);
+
+			wordApplication.Quit();
+			wordApplication.Dispose();
+
+			Process.Start(documentFile);
+			Application.Quit();
+
+
 		}else{
-			newDocument.SaveAs(documentFile);////>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>Needs path
+
+			MessageDialog E1 = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, "Folder path removed - Please retry.");
+			E1.WidthRequest = 600; 
+			E1.Title= "Folder path removed";
+
+			ResponseType response = (ResponseType) E1.Run();
+			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
+
+				E1.Destroy();
+			}
+
+			object saveOption = WdSaveOptions.wdDoNotSaveChanges;
+			object orginalFormat = WdOriginalFormat.wdOriginalDocumentFormat;
+			object routeDocument = false;
+			newDocument.Close(saveOption, orginalFormat, routeDocument);
+			wordApplication.Quit();
+			wordApplication.Dispose();
+
+			bDocRan = true;
+
+			FilePickerClicked();
 		}
-
-		// close word and dispose reference
-		wordApplication.Quit();
-		wordApplication.Dispose();
-
-
-		Process.Start(documentFile);
-		Application.Quit();
-
 
 	}
 
@@ -219,33 +268,36 @@ public partial class MainWindow: Gtk.Window{
 		string sTemp = "";
 
 		if(primEnabled){
-			if(primListArray.Length > 1){
-				sTemp = (@"Primary environments: 
-");
-				for(int x = 0; x < primListArray.Length; x++){
-					sTemp += primListArray[x] + (@"
-");
-				}
-				sTemp +=(@"
-");
-			}else if(primListArray.Length == 1){
-				sTemp = (@"Primary environment:
-" + primListArray[0] + @"
+			sTemp = "Primary environments:\n";
 
-");
-			}else {
-				//Console.Writeline("No Prim Enviro");
+			if(primListArray.Length == 1){
+				sTemp += (primListArray[0] + "\n");
+			}
+
+			if(primListArray.Length > 1){
+				for(int x = 0; x < primListArray.Length; x++){
+					sTemp += (primListArray[x] + "\n");
+				}
 			}
 		}
-		
-		if(bSmokes){
-			sTemp += (@"For cross environment checks/smoke tests, please see the environments detailed in the table at the end of the report*.
 
-");
+		if(bSmokes){
+			if(primEnabled)
+				sTemp += "\n";
+
+			sTemp += ("For cross environment checks/smoke tests, please see the environments detailed in the table at the end of the report*.\n");
 		}
 
 		if(bIssueVoption){
-			sTemp += (@"Retests executed in environments the issues were originally raised in.");
+			if(primEnabled){
+				sTemp += "\n";
+			}
+
+			if((!primEnabled)&&(bSmokes)){
+				sTemp += "\n";
+			}
+				
+			sTemp += ("Retests executed in environments the issues were originally raised in.\n");
 		}
 
 		wordApplication.Selection.TypeText(sTemp);
@@ -340,8 +392,6 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}else if(bIssueVoption){
 			activtemp = activtemp + @"Issue Verification & Retest ";
-		}else{
-			//Console.Writeline("IV / Test ext / Scripting were not selected????");
 		}
 
 		table.Cell(2,2).Select();

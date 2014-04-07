@@ -20,7 +20,9 @@ public partial class MainWindow: Gtk.Window{
 		M1H1MainLabelHeader1.Text = "Test tasks completed:";
 		M1MainTextView1.Sensitive = true;
 		M1MainTextView1.WrapMode = WrapMode.Word;
-		M1MainTextView1.Buffer.Text = "";
+
+
+
 		M1MainTextView1.HeightRequest = 100;
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Always);
 		
@@ -48,6 +50,11 @@ public partial class MainWindow: Gtk.Window{
 		MainButtonControls1.Label = "Next";
 		M1MainTextView1.Buffer.Text = sTTC;
 		M2MainTextView1.Buffer.Text = sBOOT;
+
+		if(bIssueVoption)
+			M1MainTextView1.Buffer.Text =  "Retests including verification of all issues marked as resolved in the tracker.";
+		else
+			M1MainTextView1.Buffer.Text = "";
 	}
 
 	public void SHLevel5(){
@@ -88,10 +95,14 @@ public partial class MainWindow: Gtk.Window{
 
 	public void level5Toggled8 (){
 		string sTemp = (@"Brief explanation of the work you have undertaken. Be specific here as to what you have done. Relate it back to the tasks that were required of you in the brief. 
-E.g. Copy/link and rendering checks of 18 IKEA Kitchen emails across all specified environments.
-E.g. Retests including verification of all issues marked as resolved in the tracker.
-E.g. Commenced test execution against the fully scripted test plan on ...environments.
-E.g. Conducted tests of all the changes detailed in the 'xyz.doc' document provided by the client.
+
+-Copy/link and rendering checks of 18 IKEA Kitchen emails across all specified environments.
+
+-Retests including verification of all issues marked as resolved in the tracker.
+
+-Commenced test execution against the fully scripted test plan on ...environments.
+
+-Conducted tests of all the changes detailed in the 'xyz.doc' document provided by the client.
 
 If a scenario arises where you're not in work the following day - make sure this section makes it very clear to another tester what you have done.
 
@@ -110,18 +121,24 @@ If a scenario arises where you're not in work the following day - make sure this
 		string sTemp = (@"Remember this is for the client - to give them an overview of what we have done, the results we have found and our general feedback on the application. Be factual - avoid subjective statements or opinions.  Use 'We' rather than 'I'. 
 
 Things to include might be:
+-A summary of how the site/app is behaving compared to expected behaviour. 
 
--	A summary of how the site/app is behaving compared to expected behaviour. 
--	How is the testing progressing against the time scheduled? Were we able to get done today what we had planned? If not, why?
--	A brief rundown of the major problems you're seeing
--	If our testing budget is used up - could more testing be required?
--	Ensure all information is measureable.
--	User experience feedback that may be valuable to the client, that is supported by factual evidence with issues in the tracker.
+-How is the testing progressing against the time scheduled? Were we able to get done today what we had planned? If not, why?
+
+-A brief rundown of the major problems you're seeing
+
+-If our testing budget is used up - could more testing be required?
+
+-Ensure all information is measureable.
+
+-User experience feedback that may be valuable to the client, that is supported by factual evidence with issues in the tracker.
 
 DO NOT:
--	Do not offer an opinion as to whether the app is ready for release.
--	Do not provide subjective feelings (e.g. We felt that the website performed well).
--	Do not suggest that we are ahead of schedule.
+-Do not offer an opinion as to whether the app is ready for release.
+
+-Do not provide subjective feelings (e.g. We felt that the website performed well).
+
+-Do not suggest that we are ahead of schedule.
 
 ");
 

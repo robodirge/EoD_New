@@ -17,7 +17,7 @@ public partial class MainWindow: Gtk.Window{
 		// Supply text for title label 
 		MainLabelTitle.Text = "Issue Summary";
 		
-		M1MainTextView1.HeightRequest = 40;
+		M1MainTextView1.HeightRequest = 100;
 		M1MainTextView1.Buffer.Text = sBlockingNumbers;
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Always);
 		

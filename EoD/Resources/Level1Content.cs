@@ -37,7 +37,7 @@ public partial class MainWindow: Gtk.Window{
 		GtkScrolledWindow2.SetPolicy(PolicyType.Never,PolicyType.Always);
 
 		// Supply content for version fields
-		M4H1MainLabelHeader1.Text = "Is a build / version number avalible?";
+		M4H1MainLabelHeader1.Text = "Is a build / version number available?";
 
 		M4MainTextView1.Sensitive = false;
 		M4MainTextView1.Buffer.Text = "";
@@ -85,6 +85,8 @@ public partial class MainWindow: Gtk.Window{
 		M5MainEntryField5.Text = "";
 		M5MainEntryField6.Text = "";
 		M5MainEntryField7.Text = "";
+
+		bOthercon = true;
 		return;
 	}
 
@@ -161,7 +163,6 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	protected void Level1Toggled8 (){
-		//MainWindow myMainClass = new MainWindow();
 		if (radiobutton8.Active) {
 			M4MainTextView1.Sensitive = true; 
 		}
@@ -172,11 +173,8 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	protected void Level1Toggled10 (){
-		//MainWindow myMainClass = new MainWindow();
 		if (radiobutton10.Active){
-			//M5MainTextView1.Sensitive = true; 
 			MainButtonControls1.Sensitive = true;
-
 			M5MainEntryField1.Sensitive = true;
 			M5MainEntryField2.Sensitive = true;
 			M5MainEntryField3.Sensitive = true;
@@ -192,8 +190,6 @@ public partial class MainWindow: Gtk.Window{
 			button6.Sensitive = true;
 		}
 		else{
-			//M5MainTextView1.Sensitive = false;
-
 			M5MainEntryField1.Sensitive = false;
 			M5MainEntryField2.Sensitive = false;
 			M5MainEntryField3.Sensitive = false;
@@ -271,7 +267,6 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	protected void Level1ButtonControls1Clicked (){
-		//MainWindow myMainClass = new MainWindow();
 		bool clientNameBool = false;
 		clientNameString = IsInvalid(M1MainEntryField1.Text, ref clientNameBool, "Client name");
 		bool projectNameBool = false;
@@ -282,23 +277,52 @@ public partial class MainWindow: Gtk.Window{
 			M1MainEntryField1.Text = clientNameString;
 		if(projectNameBool)
 			M2MainEntryField1.Text = projectNameString;
-
+			
+		bool bURLcorrect = true;
+		bool bVercorrect = true;
 		bool primBool = true;
 
-		//Check all 7 primary fields if text not = to ""  // I could link the '+' to the enviro chooser
-		if(radiobutton10.Active){
-			if(M5MainEntryField1.Text == ""){
-				MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Primary environment 1: Text is missing. Please supply an environment and click 'Next'."));
-				PF.Title= "Missing input";
-				ResponseType response = (ResponseType) PF.Run();
-				if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
-					primBool = false;
-					PF.Destroy();
-				}
+			
+		string sErrorLog = "";
+		int iErrorCounter = 0;
+
+		if((radiobutton6.Active)&&(M3MainTextView1.Buffer.Text == "")){
+			sErrorLog += "* No URL entered. Please either supply a URL or mark the field as 'No'.\n";
+			iErrorCounter++;
+			bURLcorrect = false;
+		}
+
+		if((radiobutton8.Active)&&(M4MainTextView1.Buffer.Text == "")){
+			sErrorLog += "* No Version/build entered. Please either supply a Version/build or mark the field as 'No'.\n";
+			iErrorCounter++;
+			bVercorrect = false;
+		}
+
+		if((radiobutton10.Active)&&(M5MainEntryField1.Text == "")){
+			sErrorLog += "* Primary environment 1: Text is missing. Please supply an environment and click 'Next'.\n";
+			iErrorCounter++;
+			primBool = false;
+		}
+
+		if(sErrorLog != ""){
+			MessageDialog ErrorMessage = new MessageDialog(this,
+				DialogFlags.Modal,
+				MessageType.Warning,
+				ButtonsType.Ok,
+				(@"Error(s): " + iErrorCounter + @"
+				
+" +sErrorLog));
+
+			ErrorMessage.Title= "Error Log";
+			ResponseType response = (ResponseType) ErrorMessage.Run();
+			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
+				ErrorMessage.Destroy();
+				iErrorCounter = 0;
+				sErrorLog = "";
 			}
 		}
-			
-		if((clientNameBool) && (projectNameBool) && (primBool)){
+
+		if((clientNameBool) && (projectNameBool) && (primBool) && (bURLcorrect) && (bVercorrect) && (bOthercon)){
 			SetLevel1Options();
 			pageControl = false;
 			programControl = 2; 
@@ -309,9 +333,10 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	public string IsInvalid(string illegaltemp, ref bool bvalue, string sTitle){
-		//MainWindow myMainClass = new MainWindow();
 		illegaltemp = illegaltemp.Trim();
 		string oldstring = illegaltemp;
+		bOthercon = true;
+
 		string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
 		foreach (char c in invalid){
 			illegaltemp = illegaltemp.Replace(c.ToString(), ""); 
@@ -319,7 +344,6 @@ public partial class MainWindow: Gtk.Window{
 		
 
 		if(illegaltemp == ""){
-
 			MessageDialog E1 = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, (sTitle + " field is empty"));
 			E1.WidthRequest = 600; 
 			E1.Title= sTitle + " field is empty";
@@ -332,18 +356,33 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 		else if(oldstring != illegaltemp){
-			string errortemp = (sTitle + " Is incorrect. Are you happy for this name to be used: ") + illegaltemp;
+			string errortemp = ("'" + sTitle + "' Is incorrect. Are you happy for this name to be used:     ") + ("'" + illegaltemp + "'");
 
-			MessageDialog SN = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, errortemp);
+			MessageDialog SN;
+
+			if(errortemp.Contains("&")){
+				errortemp = ("'" + sTitle + "' Is incorrect. Cannot display the corrected string. Please see the amendment in the '" + sTitle + "' field.");
+				SN = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, errortemp);
+			}
+			else{
+				SN = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, errortemp);
+			}
+
 			SN.WidthRequest = 600; 
 			SN.Title= sTitle + " is invalid";
 
 			ResponseType response = (ResponseType) SN.Run();
+
 			if (response == ResponseType.Yes){
 				bvalue = true;
 				SN.Destroy();
 			}
-			else if (response == ResponseType.No|| response == ResponseType.DeleteEvent){
+			else if (response == ResponseType.Ok){
+				bvalue = true;
+				bOthercon = false;
+				SN.Destroy();
+			}
+			else if (response == ResponseType.No || response == ResponseType.DeleteEvent){
 				bvalue = false;
 				illegaltemp = oldstring;
 				SN.Destroy();
@@ -380,11 +419,9 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	protected void PrimAdd (){
-		//MainWindow myMainClass = new MainWindow();
 		switch (addCounter){
 		case 1:
 			hbox1.ShowAll();
-			//button1.Hide();
 			label1.Text = "Primary environment 1:";
 			addCounter++;
 			break;
@@ -430,14 +467,13 @@ public partial class MainWindow: Gtk.Window{
 		}
 	}
 
-	protected void SetLevel1Options(){  ///Needs testing!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	protected void SetLevel1Options(){
 		int[] tempContainer = new int[7];
 		int iCount = 0;
 
-		//Check all 7 primary fields if text not = to ""  // I could link the '+' to the enviro chooser
 		if(radiobutton10.Active){
 			primEnabled = true;
-			int iTempCount = 1; // Has to be 1 as field1 cant be ""
+			int iTempCount = 1;
 			tempContainer[iCount] = 1; iCount++; 
 			sPrim1 = M5MainEntryField1.Text;
 			if((hbox2.Visible) && (M5MainEntryField2.Text != "")){
@@ -474,7 +510,6 @@ public partial class MainWindow: Gtk.Window{
 			primNOCounter = iCount;
 			Console.WriteLine(primNOCounter);
 			primListArray = new string[iTempCount];
-			//value is - apply to an array which is global!
 
 			for(int x =0; x < primListArray.Length; x++){
 				switch(tempContainer[x]){
@@ -500,7 +535,6 @@ public partial class MainWindow: Gtk.Window{
 					primListArray[x] = M5MainEntryField7.Text;
 					break;
 				default:
-					//Console.Writeline("Null");
 					break;
 				}
 			}

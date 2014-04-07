@@ -25,8 +25,6 @@ public partial class MainWindow: Gtk.Window{
 
 		// Supply content for Project fields
 		M2H1MainLabelHeader1.Text = "Date tested:";
-
-		//M2MainEntryField1.Text = DateTime.Now.ToString("dd/MM/yyyy"); /// Could make a calender
 		M2MainEntryField1.Text  = sDateTested;
 
 		M3H1MainLabelHeader1.Text = "Test activities:";
@@ -209,7 +207,6 @@ public partial class MainWindow: Gtk.Window{
 
 	public void InitialsSetup(){
 		vbox2.Visible = true;
-		//Initradiobutton2.Active = true;
 
 		for(int x = 0; x < initEnabledArray.Length; x++){
 			if(initEnabledArray[x] == true){
@@ -310,6 +307,8 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 
+		string sErrorLog = "";
+		int iErrorCounter = 0;
 
 		if((M1MainEntryField1.Text == "")&&(Initradiobutton1.Active == true)){
 			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Please provide 'Other' initials."));
@@ -334,9 +333,8 @@ public partial class MainWindow: Gtk.Window{
 			label10.Visible = false;
 			sDateTested = M2MainEntryField1.Text;
 
-
 			//sAllinitials
-			if((Initradiobutton1.Active) &&(M1MainEntryField1.Text != "")){
+			if((Initradiobutton1.Active)&&(M1MainEntryField1.Text != "")){
 				sAllinitials += M1MainEntryField1.Text;
 				Otherinitials = M1MainEntryField1.Text;
 				sAllinitials = sAllinitials.TrimEnd('/');
@@ -355,8 +353,7 @@ public partial class MainWindow: Gtk.Window{
 				bisEnabled = true;
 			else
 				bisEnabled = false;
-
-
+				
 			ReportSectionThree();
 		}
 	}
