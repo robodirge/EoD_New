@@ -262,6 +262,9 @@ public partial class MainWindow: Gtk.Window{
 		}
 
 		if(bIssueVoption){
+			//sTTC != "Retests including verification of all issues marked as resolved in the tracker."
+			//if(sTTC == "")
+			//	sTTC = "Retests including verification of all issues marked as resolved in the tracker.";
 			M5H2MainCheck2.Active = true;
 		}
 	}
@@ -568,6 +571,8 @@ public partial class MainWindow: Gtk.Window{
 
 		if(M5H2MainCheck2.Active){
 			bIssueVoption = true;
+			if(sTTC == "")
+				sTTC = "Retests including verification of all issues marked as resolved in the tracker.";
 		}else{
 			bIssueVoption = false;
 		}

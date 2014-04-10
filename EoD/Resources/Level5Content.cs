@@ -48,13 +48,24 @@ public partial class MainWindow: Gtk.Window{
 		MainButtonControls1.Sensitive = true;
 
 		MainButtonControls1.Label = "Next";
-		M1MainTextView1.Buffer.Text = sTTC;
+
+
+
+
+		//M1MainTextView1.Buffer.Text = sTTC;
 		M2MainTextView1.Buffer.Text = sBOOT;
 
-		if(bIssueVoption)
-			M1MainTextView1.Buffer.Text =  "Retests including verification of all issues marked as resolved in the tracker.";
-		else
-			M1MainTextView1.Buffer.Text = "";
+		if(bIssueVoption){
+			if(sTTC != "Retests including verification of all issues marked as resolved in the tracker."){
+				M1MainTextView1.Buffer.Text = sTTC;
+			}else{
+				M1MainTextView1.Buffer.Text =  "Retests including verification of all issues marked as resolved in the tracker.";
+			}
+		}else{
+			M1MainTextView1.Buffer.Text = sTTC;
+		}
+
+
 	}
 
 	public void SHLevel5(){

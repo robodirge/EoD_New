@@ -307,9 +307,6 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 
-		string sErrorLog = "";
-		int iErrorCounter = 0;
-
 		if((M1MainEntryField1.Text == "")&&(Initradiobutton1.Active == true)){
 			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Please provide 'Other' initials."));
 			PF.WidthRequest = 600; 
