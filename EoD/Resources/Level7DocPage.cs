@@ -125,9 +125,9 @@ public partial class MainWindow: Gtk.Window{
 		fithTable();
 		moveDownpar();
 
-		if(bSmokes){
-			wordApplication.Selection.TypeText(@"*Environments checked in this test run");
-		}
+		//if(bSmokes){
+		//	wordApplication.Selection.TypeText(@"*Environments checked in this test run");
+		//}
 
 		wordApplication.ActiveWindow.View.SeekView = WdSeekView.wdSeekCurrentPageHeader;
 		string sImageLoc = Environment.CurrentDirectory + @"\Resources\ZoonouLogo.jpg";
@@ -141,7 +141,7 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.Font.Color = WdColor.wdColorBlack;
 		string documentFile = null;
 
-		Console.WriteLine(mytempfilename);
+		//Console.WriteLine(mytempfilename);
 
 		if(Directory.Exists(mytempfilename)){
 
@@ -308,7 +308,7 @@ public partial class MainWindow: Gtk.Window{
 			if(primEnabled)
 				sTemp += "\n";
 
-			sTemp += ("For cross environment checks/smoke tests, please see the environments detailed in the table at the end of the report*.\n");
+			sTemp += ("For cross environment checks/smoke tests, please see the environments detailed in the table at the end of the report.\n");
 		}
 
 		if(bIssueVoption){
