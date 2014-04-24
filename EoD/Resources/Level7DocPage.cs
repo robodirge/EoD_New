@@ -18,6 +18,28 @@ public partial class MainWindow: Gtk.Window{
 	Word.Application wordApplication = null;
 	Word.Document newDocument = null;
 
+	/*
+	public void checkWord(){
+		wordApplication = new Word.Application();
+		wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
+		String bobone = wordApplication.Version;
+		//Console.WriteLine(bobone);
+		if(bobone == "15.0"){
+			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Old version of MSWord. Tool supports 2010 and 2013, other versions may have issues."));
+			PF.Title= "Old version of MSWord";
+			ResponseType response = (ResponseType) PF.Run();
+			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
+
+				wordApplication.Quit();
+				wordApplication.Dispose();
+				Application.Quit();
+				PF.Destroy();
+			}
+		}
+
+		//wordApplication.Quit();
+		//wordApplication.Dispose();
+	}*/
 
 	public void ReportSectionSeven(){
 		SHLevel7();
@@ -91,6 +113,7 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.Font.Size = 11;
 		wordApplication.Selection.Font.Name = "Corbel";
 
+		//wordApplication.Selection.TypeParagraph();
 		firstTable();
 		moveDownpar();
 		secondTable();
@@ -110,7 +133,7 @@ public partial class MainWindow: Gtk.Window{
 		string sImageLoc = Environment.CurrentDirectory + @"\Resources\ZoonouLogo.jpg";
 		wordApplication.Selection.InlineShapes.AddPicture(sImageLoc); 
 		wordApplication.Selection.MoveRight();
-		wordApplication.ActiveWindow.Selection.TypeParagraph();
+		//wordApplication.ActiveWindow.Selection.TypeParagraph();
 		wordApplication.Selection.PageSetup.HeaderDistance = 12.00f;
 		wordApplication.Selection.PageSetup.FooterDistance = 12.00f;
 		wordApplication.ActiveWindow.View.SeekView = WdSeekView.wdSeekMainDocument;
@@ -303,7 +326,7 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.TypeText(sTemp);
 
 		String bobone = wordApplication.Version;
-
+		//Console.WriteLine(bobone);
 		if(bobone == "14.0"){
 			table.Style = "Light Shading - Accent 1";
 			table.ApplyStyleFirstColumn = false;

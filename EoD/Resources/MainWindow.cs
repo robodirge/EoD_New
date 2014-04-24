@@ -55,10 +55,9 @@ public partial class MainWindow: Gtk.Window{
 	public static string sPrim7;
 
 	public static int primNOCounter;
-
 	public int addCounter;
-
 	public int programControl;
+
 
 	#endregion
 	//<param> Application start </param>
@@ -67,8 +66,11 @@ public partial class MainWindow: Gtk.Window{
 	public void main(){
 		this.Build();
 		onSetUpVar();
+		//checkWord();
 		ReportSectionOne();
 	}
+
+
 
 	public void onSetUpVar(){
 		sTTC = "";
