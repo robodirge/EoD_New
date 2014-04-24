@@ -9,6 +9,8 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>EoD</RootNamespace>
     <AssemblyName>EoD</AssemblyName>
+    <StartupObject>EoD.MainClass</StartupObject>
+    <ApplicationIcon>Resources\Deleket-Sleek-Xp-Basic-Files.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -71,6 +73,7 @@
     <EmbeddedResource Include="Resources\ZoonouLogo.jpg">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Deleket-Sleek-Xp-Basic-Files.ico" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="gtk-gui\generated.cs" />

@@ -163,7 +163,7 @@ public partial class MainWindow
 		this.HeightRequest = 650;
 		this.Name = "MainWindow";
 		this.Title = global::Mono.Unix.Catalog.GetString ("End of Day Report");
-		this.Icon = global::Stetic.IconLoader.LoadIcon (this, "gtk-dnd", global::Gtk.IconSize.Menu);
+		this.Icon = global::Gdk.Pixbuf.LoadFromResource ("EoD.Resources.Deleket-Sleek-Xp-Basic-Files.ico");
 		this.BorderWidth = ((uint)(5));
 		this.Resizable = false;
 		this.AllowGrow = false;
