@@ -30,6 +30,8 @@ public partial class MainWindow: Gtk.Window{
 	public bool bTestExe;
 	public bool bScripting;
 
+	public bool tempbb;// = false;
+
 	public bool bisEnabled;
 	public bool bOthercon;
 
@@ -57,21 +59,20 @@ public partial class MainWindow: Gtk.Window{
 	public static int primNOCounter;
 	public int addCounter;
 	public int programControl;
-
-
 	#endregion
-	//<param> Application start </param>
+
 	public MainWindow () : base (Gtk.WindowType.Toplevel){}
 
 	public void main(){
 		this.Build();
 		onSetUpVar();
-		//checkWord();
+		checkWord();
+
+
 		ReportSectionOne();
+
 	}
-
-
-
+		
 	public void onSetUpVar(){
 		sTTC = "";
 		sBOOT = "";
@@ -100,6 +101,8 @@ public partial class MainWindow: Gtk.Window{
 		bTestExe = false;
 		bScripting1 = false;
 		bScripting = false;
+
+		tempbb = false;
 
 		bDocRan = false;
 

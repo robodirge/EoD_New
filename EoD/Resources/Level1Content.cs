@@ -14,12 +14,12 @@ public partial class MainWindow: Gtk.Window{
 		MainLabelTitle.Text = "Project Details";
 		
 		// Client fields
-		M1H1MainLabelHeader1.Text = "Client name:";
+		M1H1MainLabelHeader1.Text = "Client name: (50 Characters)";
 		M1MainEntryField1.Sensitive = true;
 		M1MainEntryField1.Text = "";
 
 		// Project fields
-		M2H1MainLabelHeader1.Text = "Project name:";
+		M2H1MainLabelHeader1.Text = "Project name: (50 Characters)";
 		M2MainEntryField1.Sensitive = true;
 		M2MainEntryField1.Text = "";
 
@@ -87,6 +87,13 @@ public partial class MainWindow: Gtk.Window{
 		M5MainEntryField7.Text = "";
 
 		bOthercon = true;
+
+		if(!tempbb){
+		//	Application.Quit();
+		//	OnDeleteEvent(null, null);
+			Environment.Exit(0);
+		}
+
 		return;
 	}
 

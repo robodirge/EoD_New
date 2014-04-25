@@ -14,32 +14,72 @@ using System.Globalization;
 using System.ComponentModel;
 using System.Diagnostics;
 
+using System.Security.Permissions;
+using Microsoft.Win32;
+
 public partial class MainWindow: Gtk.Window{
 	Word.Application wordApplication = null;
 	Word.Document newDocument = null;
 
-	/*
 	public void checkWord(){
-		wordApplication = new Word.Application();
-		wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
-		String bobone = wordApplication.Version;
-		//Console.WriteLine(bobone);
-		if(bobone == "15.0"){
-			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Old version of MSWord. Tool supports 2010 and 2013, other versions may have issues."));
-			PF.Title= "Old version of MSWord";
-			ResponseType response = (ResponseType) PF.Run();
-			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
+		RegistryKey localMachine = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Office");
 
-				wordApplication.Quit();
-				wordApplication.Dispose();
-				Application.Quit();
-				PF.Destroy();
+		string version = "Empty";
+
+		foreach(string key in localMachine.GetSubKeyNames())
+		{
+			if (key == "7.0")
+				version = "1995";
+			else if (key == "8.0")
+				version = "1997";
+			else if (key == "9.0")
+				version = "2000";
+			else if (key == "10.0")
+				version = "XP";
+			else if (key == "11.0")
+				version = "2003";
+			else if (key == "12.0")
+				version = "2007";
+			else if (key == "14.0")
+				version = "2010";
+			else if (key == "15.0")
+				version = "2013";
+				
+
+			if (version == "Empty"){
+				MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Word version not detected! The application needs Microsoft Word (2010/2013) installed"));
+				PF.Title= "MSWord not installed";
+				ResponseType response = (ResponseType) PF.Run();
+				if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
+					PF.Destroy();
+				}
+				break;
+			}else if (version != "2010" ){
+				if (version != "2013"){
+					MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, ("Different Word version detected: " + version + " The application supports Microsoft Word (2010/2013). Do you wish to continue? (Please note issues may arrise)"));
+					PF.Title= "Unsupported Word version detected";
+					ResponseType response = (ResponseType) PF.Run();
+					if (response == ResponseType.No || response == ResponseType.DeleteEvent){
+						PF.Destroy();
+					}else if(response == ResponseType.Yes){
+						tempbb = true;
+						PF.Destroy();
+					}
+					break;
+				}
+				else{
+					tempbb = true;
+					break;
+				}
+			}else if ((version == "2010" ) || (version == "2013")){
+				tempbb = true;
+				break;
 			}
+
 		}
 
-		//wordApplication.Quit();
-		//wordApplication.Dispose();
-	}*/
+		//Console.Write(version);
+	}
 
 	public void ReportSectionSeven(){
 		SHLevel7();
