@@ -22,30 +22,127 @@ public partial class MainWindow: Gtk.Window{
 	Word.Document newDocument = null;
 
 	public void checkWord(){
-		RegistryKey localMachine = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Office");
+		//RegistryKey localMachine = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Office");
+		RegistryKey localMachine = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Office\");
 
 		string version = "Empty";
+		string versionLat = "Empty";
+		version = versionLat;
+		bool emTest = false;
+		int iversionN = 0;
+
 
 		foreach(string key in localMachine.GetSubKeyNames())
 		{
-			if (key == "7.0")
-				version = "1995";
-			else if (key == "8.0")
-				version = "1997";
-			else if (key == "9.0")
-				version = "2000";
-			else if (key == "10.0")
-				version = "XP";
-			else if (key == "11.0")
-				version = "2003";
-			else if (key == "12.0")
-				version = "2007";
-			else if (key == "14.0")
+			if (key == "7.0"){
+				//version = "1995";
+				if( 1 > iversionN)
+					iversionN = 1;
+			}
+			else if (key == "8.0"){
+				//version = "1997";
+				if( 2 > iversionN)
+				iversionN = 2;
+			}
+			else if (key == "9.0"){
+				//version = "2000";
+				if( 3 > iversionN)
+				iversionN = 3;
+			}
+			else if (key == "10.0"){
+				//version = "XP";
+				if( 4 > iversionN)
+				iversionN = 4;
+			}
+			else if (key == "11.0"){
+				//version = "2003";
+				if( 5 > iversionN)
+				iversionN = 5;
+			}
+			else if (key == "12.0"){
+				//version = "2007";
+				if( 6 > iversionN)
+				iversionN = 6;
+			}
+			else if (key == "14.0"){
 				version = "2010";
-			else if (key == "15.0")
+				versionLat = "2010";
+				emTest = true;
+			}
+			else if (key == "15.0"){
 				version = "2013";
-				
+				versionLat = "2013";
+				emTest = true;
+			}
+			else{
+				break;
+			}
 
+			//Console.WriteLine(key);
+
+			/*
+			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, ("= " + key ));
+			PF.Title= "loop";
+			ResponseType response = (ResponseType) PF.Run();
+			if (response == ResponseType.No || response == ResponseType.DeleteEvent){
+				PF.Destroy();
+			}else if(response == ResponseType.Yes){
+				PF.Destroy();
+			}
+			*/
+
+		}
+
+		if(emTest){
+			tempbb = true;
+		}else if (iversionN == 0){
+			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Word version not detected! The application needs Microsoft Word (2010/2013) installed"));
+			PF.Title= "MSWord not installed";
+			ResponseType response = (ResponseType) PF.Run();
+			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
+				PF.Destroy();
+			}
+		}else{
+			switch(iversionN){
+			case 0:
+				version = "Undetected version";
+				break;
+			case 1:
+				version = "1995";
+				break;
+			case 2:
+				version = "1997";
+				break;
+			case 3:
+				version = "2000";
+				break;
+			case 4:
+				version = "XP";
+				break;
+			case 5:
+				version = "2003";
+				break;
+			case 6:
+				version = "2007";
+				break;
+			default:
+				break;
+			}
+
+
+			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, ("Older version of Word detected: " + version + " This application supports Microsoft Word (2010/2013). Do you wish to continue? (Please note issues may arrise)"));
+			PF.Title= "Unsupported Word version detected";
+			ResponseType response = (ResponseType) PF.Run();
+			if (response == ResponseType.No || response == ResponseType.DeleteEvent){
+				PF.Destroy();
+			}else if(response == ResponseType.Yes){
+				tempbb = true;
+				PF.Destroy();
+			}
+		}
+
+
+		/*
 			if (version == "Empty"){
 				MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Word version not detected! The application needs Microsoft Word (2010/2013) installed"));
 				PF.Title= "MSWord not installed";
@@ -53,7 +150,7 @@ public partial class MainWindow: Gtk.Window{
 				if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
 					PF.Destroy();
 				}
-				break;
+			//	break;
 			}else if (version != "2010" ){
 				if (version != "2013"){
 					MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, ("Different Word version detected: " + version + " The application supports Microsoft Word (2010/2013). Do you wish to continue? (Please note issues may arrise)"));
@@ -71,12 +168,13 @@ public partial class MainWindow: Gtk.Window{
 					tempbb = true;
 					break;
 				}
-			}else if ((version == "2010" ) || (version == "2013")){
-				tempbb = true;
-				break;
-			}
+			}*/
+		//else if ((version == "2010" ) || (version == "2013") || (versionLat == "2010") || (versionLat =="2013")){
+		//		tempbb = true;
+		//		break;
+		//	}
 
-		}
+			//}
 
 		//Console.Write(version);
 	}
