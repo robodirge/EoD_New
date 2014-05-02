@@ -3,7 +3,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
-    <ProductVersion>10.0.0</ProductVersion>
+    <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{6451C98D-6844-48A7-BE85-556E563A2FED}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -11,6 +11,7 @@
     <AssemblyName>EoD</AssemblyName>
     <StartupObject>EoD.MainClass</StartupObject>
     <ApplicationIcon>Resources\Deleket-Sleek-Xp-Basic-Files.ico</ApplicationIcon>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>

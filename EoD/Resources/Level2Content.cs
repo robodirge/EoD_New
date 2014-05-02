@@ -307,18 +307,23 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 
+		////
+		if((M1MainEntryField1.Text != "")&&(Initradiobutton1.Active == true)){
+			hasEnabled = true;
+		}
+
 		if((M1MainEntryField1.Text == "")&&(Initradiobutton1.Active == true)){
 			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Please provide 'Other' initials."));
 			PF.WidthRequest = 600; 
-			PF.Title= "Missing initials!Please provide 'Other' initials.";
+			PF.Title= "Missing Initials!";
 			ResponseType response = (ResponseType) PF.Run();
 			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
 				PF.Destroy();
 			}
 		}else if(!hasEnabled){
-			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Please check initials boxes or use 'Other' text field."));
+			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Please check initials boxes or use 'Other' field."));
 			PF.WidthRequest = 600; 
-			PF.Title= "Missing initials!";
+			PF.Title= "Missing Initials!";
 			ResponseType response = (ResponseType) PF.Run();
 			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
 				PF.Destroy();
@@ -401,8 +406,9 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	public void InCheck15Toggled(){
-		if (Initradiobutton1.Active)
+		if (Initradiobutton1.Active){
 			M1MainEntryField1.Sensitive = true; 
+		}
 		else{
 			M1MainEntryField1.Sensitive = false;
 		}
