@@ -8,6 +8,7 @@ namespace EoD
 		private global::Gtk.VBox vbox3;
 		private global::Gtk.ScrolledWindow GtkScrolledWindow2;
 		private global::Gtk.TextView textview1;
+		private global::Gtk.Label label2;
 		private global::Gtk.Label label1;
 		private global::Gtk.HBox hbox2;
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
@@ -32,6 +33,7 @@ namespace EoD
 			this.WidthRequest = 510;
 			this.HeightRequest = 500;
 			this.Name = "EoD.Level5Dialog";
+			this.Title = global::Mono.Unix.Catalog.GetString ("Spell Checker");
 			this.TypeHint = ((global::Gdk.WindowTypeHint)(1));
 			this.WindowPosition = ((global::Gtk.WindowPosition)(4));
 			this.Resizable = false;
@@ -66,14 +68,25 @@ namespace EoD
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.GtkScrolledWindow2]));
 			w3.Position = 0;
 			// Container child vbox3.Gtk.Box+BoxChild
+			this.label2 = new global::Gtk.Label ();
+			this.label2.Name = "label2";
+			this.label2.LabelProp = global::Mono.Unix.Catalog.GetString ("Please note this is an early build for the spell checker - issues may be present." +
+			"");
+			this.label2.Wrap = true;
+			this.vbox3.Add (this.label2);
+			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.label2]));
+			w4.Position = 1;
+			w4.Expand = false;
+			w4.Fill = false;
+			// Container child vbox3.Gtk.Box+BoxChild
 			this.label1 = new global::Gtk.Label ();
 			this.label1.WidthRequest = 400;
 			this.label1.Name = "label1";
 			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.vbox3.Add (this.label1);
-			global::Gtk.Box.BoxChild w4 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.label1]));
-			w4.Position = 1;
-			w4.Expand = false;
+			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.label1]));
+			w5.Position = 2;
+			w5.Expand = false;
 			// Container child vbox3.Gtk.Box+BoxChild
 			this.hbox2 = new global::Gtk.HBox ();
 			this.hbox2.Name = "hbox2";
@@ -88,8 +101,8 @@ namespace EoD
 			this.treeViewError1.Name = "treeViewError1";
 			this.GtkScrolledWindow.Add (this.treeViewError1);
 			this.hbox2.Add (this.GtkScrolledWindow);
-			global::Gtk.Box.BoxChild w6 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.GtkScrolledWindow]));
-			w6.Position = 0;
+			global::Gtk.Box.BoxChild w7 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.GtkScrolledWindow]));
+			w7.Position = 0;
 			// Container child hbox2.Gtk.Box+BoxChild
 			this.GtkScrolledWindow1 = new global::Gtk.ScrolledWindow ();
 			this.GtkScrolledWindow1.Name = "GtkScrolledWindow1";
@@ -100,16 +113,16 @@ namespace EoD
 			this.treeViewCorrection1.Name = "treeViewCorrection1";
 			this.GtkScrolledWindow1.Add (this.treeViewCorrection1);
 			this.hbox2.Add (this.GtkScrolledWindow1);
-			global::Gtk.Box.BoxChild w8 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.GtkScrolledWindow1]));
-			w8.Position = 1;
+			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.hbox2 [this.GtkScrolledWindow1]));
+			w9.Position = 1;
 			this.vbox3.Add (this.hbox2);
-			global::Gtk.Box.BoxChild w9 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox2]));
-			w9.Position = 2;
+			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.hbox2]));
+			w10.Position = 3;
 			this.hbox1.Add (this.vbox3);
-			global::Gtk.Box.BoxChild w10 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox3]));
-			w10.Position = 0;
-			w10.Expand = false;
-			w10.Fill = false;
+			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox3]));
+			w11.Position = 0;
+			w11.Expand = false;
+			w11.Fill = false;
 			// Container child hbox1.Gtk.Box+BoxChild
 			this.vbox2 = new global::Gtk.VBox ();
 			this.vbox2.Name = "vbox2";
@@ -118,20 +131,20 @@ namespace EoD
 			this.vseparator4 = new global::Gtk.VSeparator ();
 			this.vseparator4.Name = "vseparator4";
 			this.vbox2.Add (this.vseparator4);
-			global::Gtk.Box.BoxChild w11 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.vseparator4]));
-			w11.Position = 0;
+			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.vseparator4]));
+			w12.Position = 0;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.vseparator3 = new global::Gtk.VSeparator ();
 			this.vseparator3.Name = "vseparator3";
 			this.vbox2.Add (this.vseparator3);
-			global::Gtk.Box.BoxChild w12 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.vseparator3]));
-			w12.Position = 1;
+			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.vseparator3]));
+			w13.Position = 1;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.vseparator5 = new global::Gtk.VSeparator ();
 			this.vseparator5.Name = "vseparator5";
 			this.vbox2.Add (this.vseparator5);
-			global::Gtk.Box.BoxChild w13 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.vseparator5]));
-			w13.Position = 2;
+			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.vseparator5]));
+			w14.Position = 2;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.button7 = new global::Gtk.Button ();
 			this.button7.Sensitive = false;
@@ -140,10 +153,10 @@ namespace EoD
 			this.button7.UseUnderline = true;
 			this.button7.Label = global::Mono.Unix.Catalog.GetString ("Ignore");
 			this.vbox2.Add (this.button7);
-			global::Gtk.Box.BoxChild w14 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button7]));
-			w14.Position = 3;
-			w14.Expand = false;
-			w14.Fill = false;
+			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button7]));
+			w15.Position = 3;
+			w15.Expand = false;
+			w15.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.button8 = new global::Gtk.Button ();
 			this.button8.Sensitive = false;
@@ -152,10 +165,10 @@ namespace EoD
 			this.button8.UseUnderline = true;
 			this.button8.Label = global::Mono.Unix.Catalog.GetString ("Change");
 			this.vbox2.Add (this.button8);
-			global::Gtk.Box.BoxChild w15 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button8]));
-			w15.Position = 4;
-			w15.Expand = false;
-			w15.Fill = false;
+			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button8]));
+			w16.Position = 4;
+			w16.Expand = false;
+			w16.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.button9 = new global::Gtk.Button ();
 			this.button9.Sensitive = false;
@@ -164,10 +177,10 @@ namespace EoD
 			this.button9.UseUnderline = true;
 			this.button9.Label = global::Mono.Unix.Catalog.GetString ("Change All");
 			this.vbox2.Add (this.button9);
-			global::Gtk.Box.BoxChild w16 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button9]));
-			w16.Position = 5;
-			w16.Expand = false;
-			w16.Fill = false;
+			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button9]));
+			w17.Position = 5;
+			w17.Expand = false;
+			w17.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.button10 = new global::Gtk.Button ();
 			this.button10.CanFocus = true;
@@ -175,27 +188,27 @@ namespace EoD
 			this.button10.UseUnderline = true;
 			this.button10.Label = global::Mono.Unix.Catalog.GetString ("Check Again");
 			this.vbox2.Add (this.button10);
-			global::Gtk.Box.BoxChild w17 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button10]));
-			w17.Position = 6;
-			w17.Expand = false;
-			w17.Fill = false;
+			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.button10]));
+			w18.Position = 6;
+			w18.Expand = false;
+			w18.Fill = false;
 			// Container child vbox2.Gtk.Box+BoxChild
 			this.vseparator2 = new global::Gtk.VSeparator ();
 			this.vseparator2.Name = "vseparator2";
 			this.vbox2.Add (this.vseparator2);
-			global::Gtk.Box.BoxChild w18 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.vseparator2]));
-			w18.Position = 7;
+			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.vbox2 [this.vseparator2]));
+			w19.Position = 7;
 			this.hbox1.Add (this.vbox2);
-			global::Gtk.Box.BoxChild w19 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox2]));
-			w19.Position = 1;
-			w19.Expand = false;
-			w19.Fill = false;
+			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(this.hbox1 [this.vbox2]));
+			w20.Position = 1;
+			w20.Expand = false;
+			w20.Fill = false;
 			w1.Add (this.hbox1);
-			global::Gtk.Box.BoxChild w20 = ((global::Gtk.Box.BoxChild)(w1 [this.hbox1]));
-			w20.Position = 0;
+			global::Gtk.Box.BoxChild w21 = ((global::Gtk.Box.BoxChild)(w1 [this.hbox1]));
+			w21.Position = 0;
 			// Internal child EoD.Level5Dialog.ActionArea
-			global::Gtk.HButtonBox w21 = this.ActionArea;
-			w21.Name = "__gtksharp_103_Stetic_TopLevelDialog_ActionArea";
+			global::Gtk.HButtonBox w22 = this.ActionArea;
+			w22.Name = "__gtksharp_103_Stetic_TopLevelDialog_ActionArea";
 			// Container child __gtksharp_103_Stetic_TopLevelDialog_ActionArea.Gtk.ButtonBox+ButtonBoxChild
 			this.button23 = new global::Gtk.Button ();
 			this.button23.CanFocus = true;
@@ -203,9 +216,9 @@ namespace EoD
 			this.button23.UseUnderline = true;
 			this.button23.Label = global::Mono.Unix.Catalog.GetString ("Done");
 			this.AddActionWidget (this.button23, -10);
-			global::Gtk.ButtonBox.ButtonBoxChild w22 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w21 [this.button23]));
-			w22.Expand = false;
-			w22.Fill = false;
+			global::Gtk.ButtonBox.ButtonBoxChild w23 = ((global::Gtk.ButtonBox.ButtonBoxChild)(w22 [this.button23]));
+			w23.Expand = false;
+			w23.Fill = false;
 			if ((this.Child != null)) {
 				this.Child.ShowAll ();
 			}

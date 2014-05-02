@@ -77,27 +77,13 @@ public partial class MainWindow: Gtk.Window{
 			else{
 				break;
 			}
-
-			//Console.WriteLine(key);
-
-			/*
-			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, ("= " + key ));
-			PF.Title= "loop";
-			ResponseType response = (ResponseType) PF.Run();
-			if (response == ResponseType.No || response == ResponseType.DeleteEvent){
-				PF.Destroy();
-			}else if(response == ResponseType.Yes){
-				PF.Destroy();
-			}
-			*/
-
 		}
-
+			
 		if(emTest){
 			tempbb = true;
 		}else if (iversionN == 0){
 			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Word version not detected! The application needs Microsoft Word (2010/2013) installed"));
-			PF.Title= "MSWord not installed";
+			PF.Title= "Microsoft Word Not Installed";
 			ResponseType response = (ResponseType) PF.Run();
 			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
 				PF.Destroy();
@@ -126,57 +112,41 @@ public partial class MainWindow: Gtk.Window{
 				version = "2007";
 				break;
 			default:
+				version = "New version";
 				break;
 			}
 
-
-			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, ("Older version of Word detected: " + version + " This application supports Microsoft Word (2010/2013). Do you wish to continue? (Please note issues may arrise)"));
-			PF.Title= "Unsupported Word version detected";
-			ResponseType response = (ResponseType) PF.Run();
-			if (response == ResponseType.No || response == ResponseType.DeleteEvent){
-				PF.Destroy();
-			}else if(response == ResponseType.Yes){
-				tempbb = true;
-				PF.Destroy();
+			string sMessage;
+			bool bError = false;
+			if(version == "New version")
+				sMessage = ("New version of Word detected. This application supports Microsoft Word (2010/2013). Do you wish to continue? (Please note issues may arise)");
+			else if(version == "Undetected version"){
+				sMessage = ("Undetected version - Please report this issue to the tool admin.");
+				bError = true;
 			}
-		}
+			else
+				sMessage = ("Older version of Word detected: " + version + " This application supports Microsoft Word (2010/2013). Do you wish to continue? (Please note issues may arise)");
 
-
-		/*
-			if (version == "Empty"){
-				MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Word version not detected! The application needs Microsoft Word (2010/2013) installed"));
-				PF.Title= "MSWord not installed";
+			if(!bError){
+				MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, sMessage);
+				PF.Title= "Unsupported Word Version Detected";
 				ResponseType response = (ResponseType) PF.Run();
-				if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
+				if (response == ResponseType.No || response == ResponseType.DeleteEvent){
+					PF.Destroy();
+				}else if(response == ResponseType.Yes){
+					tempbb = true;
 					PF.Destroy();
 				}
-			//	break;
-			}else if (version != "2010" ){
-				if (version != "2013"){
-					MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.YesNo, ("Different Word version detected: " + version + " The application supports Microsoft Word (2010/2013). Do you wish to continue? (Please note issues may arrise)"));
-					PF.Title= "Unsupported Word version detected";
-					ResponseType response = (ResponseType) PF.Run();
-					if (response == ResponseType.No || response == ResponseType.DeleteEvent){
-						PF.Destroy();
-					}else if(response == ResponseType.Yes){
-						tempbb = true;
-						PF.Destroy();
-					}
-					break;
+			}else{
+				MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Close, sMessage);
+				PF.Title= "Error";
+				ResponseType response = (ResponseType) PF.Run();
+				if (response == ResponseType.Close || response == ResponseType.DeleteEvent){
+					bError = false;
+					PF.Destroy();
 				}
-				else{
-					tempbb = true;
-					break;
-				}
-			}*/
-		//else if ((version == "2010" ) || (version == "2013") || (versionLat == "2010") || (versionLat =="2013")){
-		//		tempbb = true;
-		//		break;
-		//	}
-
-			//}
-
-		//Console.Write(version);
+			}
+		}
 	}
 
 	public void ReportSectionSeven(){

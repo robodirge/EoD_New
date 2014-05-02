@@ -8,10 +8,8 @@ using Word = NetOffice.WordApi;
 using NetOffice.WordApi.Enums;
 using System.Reflection;
 
-namespace EoD
-{
-	public partial class Level5Dialog : Gtk.Dialog
-	{
+namespace EoD{
+	public partial class Level5Dialog : Gtk.Dialog{
 		static string sToSpellCheck;
 
 		Gtk.ListStore tsSpellingError;
@@ -28,8 +26,7 @@ namespace EoD
 
 		Word._Document doc1;
 
-		public Level5Dialog (ref string sTempText)//sTempText)
-		{
+		public Level5Dialog (ref string sTempText){
 			sToSpellCheck = sTempText;
 
 			this.Build();
@@ -40,19 +37,15 @@ namespace EoD
 		}
 
 		protected void OnDeleteEvent (object sender, DeleteEventArgs a){
-			//if (sToSpellCheck != ""){
 			app.Documents.Close(WdSaveOptions.wdDoNotSaveChanges);
-				app.Quit();
-				app.Dispose();
-			//}
+			app.Quit();
+			app.Dispose();
 		}
 
 		public void AppQuit(){
-			//if (sToSpellCheck != ""){
 			app.Documents.Close(WdSaveOptions.wdDoNotSaveChanges);
 				app.Quit();
 				app.Dispose();
-			//}
 		}
 
 		public string getText(){
@@ -214,19 +207,6 @@ namespace EoD
 
 				sToSpellCheck = textview1.Buffer.Text;
 				CheckSpelling();
-								/*
-				doc1.Range(first, last).Text = "";  ///errrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrorrrrrrrrrrrrrrrrr
-				int ilength = model2.GetValue(iter2, 0).ToString().Length;
-
-				last = ilength;
-				doc1.Range(first, last).Text = model2.GetValue(iter2, 0).ToString();
-				//doc1.Range(first, first).Text = model2.GetValue(iter2, 0).ToString();
-
-				first = 0;
-				last = doc1.Characters.Count - 1;
-				textview1.Buffer.Text = "";
-				textview1.Buffer.Text = doc1.Range(first, last).Text;
-				*/
 			}
 
 		}

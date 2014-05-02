@@ -21,8 +21,6 @@ public partial class MainWindow: Gtk.Window{
 		M1MainTextView1.Sensitive = true;
 		M1MainTextView1.WrapMode = WrapMode.Word;
 
-
-
 		M1MainTextView1.HeightRequest = 100;
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Always);
 		
@@ -49,10 +47,6 @@ public partial class MainWindow: Gtk.Window{
 
 		MainButtonControls1.Label = "Next";
 
-
-
-
-		//M1MainTextView1.Buffer.Text = sTTC;
 		M2MainTextView1.Buffer.Text = sBOOT;
 
 		if(bIssueVoption){
@@ -64,8 +58,6 @@ public partial class MainWindow: Gtk.Window{
 		}else{
 			M1MainTextView1.Buffer.Text = sTTC;
 		}
-
-
 	}
 
 	public void SHLevel5(){
@@ -121,7 +113,7 @@ If a scenario arises where you're not in work the following day - make sure this
 
 		MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close, sTemp);
 		PF.WidthRequest = 450; 
-		PF.Title= "Info";
+		PF.Title= "Task Info";
 		ResponseType response = (ResponseType) PF.Run();
 		if (response == ResponseType.Close || response == ResponseType.DeleteEvent){
 			PF.Destroy();
@@ -155,7 +147,7 @@ DO NOT:
 
 		MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Info, ButtonsType.Close, sTemp);
 		PF.WidthRequest = 450; 
-		PF.Title= "Info";
+		PF.Title= "Overview Info";
 		ResponseType response = (ResponseType) PF.Run();
 		if (response == ResponseType.Close || response == ResponseType.DeleteEvent){
 			PF.Destroy();
@@ -197,7 +189,6 @@ DO NOT:
 		sTTC = M1MainTextView1.Buffer.Text;
 		sBOOT = M2MainTextView1.Buffer.Text;
 
-
 		if(bSmokes){
 			programControl = 7;
 			ReportSectionSeven();
@@ -205,7 +196,6 @@ DO NOT:
 		else{
 			programControl = 7;
 			ReportSectionSeven();
-			//Create Document
 		}
 	}
 
