@@ -133,6 +133,17 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 
+		string trimtemp;
+		trimtemp = M5MainEntryField1.Text;
+		M5MainEntryField1.Text = trimtemp.Trim();
+		trimtemp = M5MainEntryField2.Text;
+		M5MainEntryField2.Text = trimtemp.Trim();
+		trimtemp = M5MainEntryField3.Text;
+		M5MainEntryField3.Text = trimtemp.Trim();
+		trimtemp = M5MainEntryField4.Text;
+		M5MainEntryField4.Text = trimtemp.Trim();
+		trimtemp = M5MainEntryField5.Text;
+		M5MainEntryField5.Text = trimtemp.Trim();
 
 
 		bool bAllBlank = true;

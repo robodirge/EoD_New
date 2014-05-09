@@ -22,7 +22,6 @@ public partial class MainWindow: Gtk.Window{
 	Word.Document newDocument = null;
 
 	public void checkWord(){
-		//RegistryKey localMachine = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Office");
 		RegistryKey localMachine = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Office\");
 
 		string version = "Empty";
@@ -399,7 +398,10 @@ public partial class MainWindow: Gtk.Window{
 		string sTemp = "";
 
 		if(primEnabled){
-			sTemp = "Primary environments:\n";
+			if(primListArray.Length >1)
+				sTemp = "Primary environments:\n";
+			else
+				sTemp = "Primary environment:\n";
 
 			if(primListArray.Length == 1){
 				sTemp += (primListArray[0] + "\n");
