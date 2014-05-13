@@ -2161,10 +2161,9 @@
                         <property name="WidthRequest">400</property>
                         <property name="CanFocus">True</property>
                         <property name="ShowScrollbars">True</property>
-                        <property name="CursorVisible">False</property>
                         <property name="AcceptsTab">False</property>
                         <property name="Text" translatable="yes" />
-                        <property name="WrapMode">WordChar</property>
+                        <property name="WrapMode">Word</property>
                       </widget>
                     </child>
                   </widget>
@@ -2190,7 +2189,6 @@
                   <widget class="Gtk.Label" id="label1">
                     <property name="MemberName" />
                     <property name="WidthRequest">400</property>
-                    <property name="LabelProp" translatable="yes">label1</property>
                   </widget>
                   <packing>
                     <property name="Position">2</property>

@@ -129,7 +129,7 @@ public partial class MainWindow: Gtk.Window{
 				InCheck4.Active = false;
 				break;
 			case 4:
-				initArray[x] = "TY";
+				initArray[x] = "LW";
 				InCheck5.Label = initArray[x];
 				InCheck5.Active = false;
 				break;
@@ -144,7 +144,7 @@ public partial class MainWindow: Gtk.Window{
 				InCheck7.Active = false;
 				break;
 			case 7:
-				initArray[x] = "LW";
+				initArray[x] = "TY";
 				InCheck8.Label = initArray[x];
 				InCheck8.Active = false;
 				break;

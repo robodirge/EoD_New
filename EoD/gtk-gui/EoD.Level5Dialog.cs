@@ -60,9 +60,8 @@ namespace EoD
 			this.textview1.WidthRequest = 400;
 			this.textview1.CanFocus = true;
 			this.textview1.Name = "textview1";
-			this.textview1.CursorVisible = false;
 			this.textview1.AcceptsTab = false;
-			this.textview1.WrapMode = ((global::Gtk.WrapMode)(3));
+			this.textview1.WrapMode = ((global::Gtk.WrapMode)(2));
 			this.GtkScrolledWindow2.Add (this.textview1);
 			this.vbox3.Add (this.GtkScrolledWindow2);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.GtkScrolledWindow2]));
@@ -82,7 +81,6 @@ namespace EoD
 			this.label1 = new global::Gtk.Label ();
 			this.label1.WidthRequest = 400;
 			this.label1.Name = "label1";
-			this.label1.LabelProp = global::Mono.Unix.Catalog.GetString ("label1");
 			this.vbox3.Add (this.label1);
 			global::Gtk.Box.BoxChild w5 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.label1]));
 			w5.Position = 2;

@@ -294,19 +294,19 @@ public partial class MainWindow: Gtk.Window{
 		int iErrorCounter = 0;
 
 		if((radiobutton6.Active)&&(M3MainTextView1.Buffer.Text == "")){
-			sErrorLog += "* No URL entered. Please either supply a URL or mark the field as 'No'.\n";
+			sErrorLog += "No URL entered. Please either supply a URL or mark the field as 'No'.\n\n";
 			iErrorCounter++;
 			bURLcorrect = false;
 		}
 
 		if((radiobutton8.Active)&&(M4MainTextView1.Buffer.Text == "")){
-			sErrorLog += "* No Version/build entered. Please either supply a Version/build or mark the field as 'No'.\n";
+			sErrorLog += "No Version/build entered. Please either supply a Version/build or mark the field as 'No'.\n\n";
 			iErrorCounter++;
 			bVercorrect = false;
 		}
 
 		if((radiobutton10.Active)&&(M5MainEntryField1.Text == "")){
-			sErrorLog += "* Primary environment 1: Text is missing. Please supply an environment and click 'Next'.\n";
+			sErrorLog += "Primary environment 1: Text is missing. Please supply an environment and click 'Next'.";
 			iErrorCounter++;
 			primBool = false;
 		}
@@ -316,11 +316,11 @@ public partial class MainWindow: Gtk.Window{
 				DialogFlags.Modal,
 				MessageType.Warning,
 				ButtonsType.Ok,
-				(@"Error(s): " + iErrorCounter + @"
+				(@"Error count: " + iErrorCounter + @"
 				
 " +sErrorLog));
 
-			ErrorMessage.Title= "Error Log";
+			ErrorMessage.Title= "Error log";
 			ResponseType response = (ResponseType) ErrorMessage.Run();
 			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
 				ErrorMessage.Destroy();
@@ -351,7 +351,7 @@ public partial class MainWindow: Gtk.Window{
 		
 
 		if(illegaltemp == ""){
-			MessageDialog E1 = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, (sTitle + " field is empty"));
+			MessageDialog E1 = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, (sTitle + " field is empty."));
 			E1.WidthRequest = 600; 
 			E1.Title= sTitle + " field is empty";
 
@@ -363,7 +363,7 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 		else if(oldstring != illegaltemp){
-			string errortemp = ("'" + sTitle + "' Is incorrect. Are you happy for this name to be used:     ") + ("'" + illegaltemp + "'");
+			string errortemp = ("'" + sTitle + "' Is incorrect. Are you happy for this name to be used:\n\n") + ("'" + illegaltemp + "'");
 
 			MessageDialog SN;
 
