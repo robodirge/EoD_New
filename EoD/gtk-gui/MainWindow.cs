@@ -4,155 +4,305 @@
 public partial class MainWindow
 {
 	private global::Gtk.VBox MainVboxContainer;
+	
 	private global::Gtk.Label MainLabelTitle;
+	
 	private global::Gtk.HSeparator hseparator1;
+	
 	private global::Gtk.VBox MainVboxSubContainerM1;
+	
 	private global::Gtk.HBox MainHboxSubContainerM1H1;
+	
 	private global::Gtk.Label M1H1MainLabelHeader1;
+	
 	private global::Gtk.HBox MainHboxSubContainerM1H1Sub1;
+	
 	private global::Gtk.RadioButton radiobutton2;
+	
 	private global::Gtk.RadioButton radiobutton3;
+	
 	private global::Gtk.HBox hbox11;
+	
 	private global::Gtk.Label label10;
+	
 	private global::Gtk.Entry M1MainEntryField1;
+	
 	private global::Gtk.HBox hbox8;
+	
 	private global::Gtk.Label label8;
+	
 	private global::Gtk.ScrolledWindow GtkScrolledWindow;
+	
 	private global::Gtk.TextView M1MainTextView1;
+	
 	private global::Gtk.HSeparator hseparator6;
+	
 	private global::Gtk.HBox MainHboxSubContainerM1H2;
+	
 	private global::Gtk.CheckButton M1H2MainCheck1;
+	
 	private global::Gtk.CheckButton M1H2MainCheck2;
+	
 	private global::Gtk.CheckButton M1H2MainCheck3;
+	
 	private global::Gtk.HBox hbox9;
+	
 	private global::Gtk.HSeparator hseparator12;
+	
 	private global::Gtk.Button button8;
+	
 	private global::Gtk.HSeparator hseparator16;
+	
 	private global::Gtk.Button button9;
+	
 	private global::Gtk.HSeparator hseparator15;
+	
 	private global::Gtk.VBox vbox2;
+	
 	private global::Gtk.HBox AllInHbox1;
+	
 	private global::Gtk.CheckButton InCheck1;
+	
 	private global::Gtk.CheckButton InCheck2;
+	
 	private global::Gtk.CheckButton InCheck3;
+	
 	private global::Gtk.CheckButton InCheck4;
+	
 	private global::Gtk.CheckButton InCheck5;
+	
 	private global::Gtk.HBox AllInHbox2;
+	
 	private global::Gtk.CheckButton InCheck6;
+	
 	private global::Gtk.CheckButton InCheck7;
+	
 	private global::Gtk.CheckButton InCheck8;
+	
 	private global::Gtk.CheckButton InCheck9;
+	
 	private global::Gtk.CheckButton InCheck10;
+	
 	private global::Gtk.HBox AllInHbox3;
+	
 	private global::Gtk.CheckButton InCheck11;
+	
 	private global::Gtk.CheckButton InCheck12;
+	
 	private global::Gtk.CheckButton InCheck13;
+	
 	private global::Gtk.CheckButton InCheck14;
+	
 	private global::Gtk.CheckButton InCheck15;
+	
 	private global::Gtk.HBox AllInHbox4;
+	
 	private global::Gtk.Label label9;
+	
 	private global::Gtk.RadioButton Initradiobutton1;
+	
 	private global::Gtk.RadioButton Initradiobutton2;
+	
 	private global::Gtk.HSeparator hseparator2;
+	
 	private global::Gtk.VBox MainVboxSubContainerM2;
+	
 	private global::Gtk.HBox MainHboxSubContainerM2H1;
+	
 	private global::Gtk.Label M2H1MainLabelHeader1;
+	
 	private global::Gtk.HBox MainHboxSubContainerM2H1Sub1;
+	
 	private global::Gtk.RadioButton radiobutton4;
+	
 	private global::Gtk.RadioButton radiobutton5;
+	
 	private global::Gtk.Entry M2MainEntryField1;
+	
 	private global::Gtk.ScrolledWindow GtkScrolledWindow1;
+	
 	private global::Gtk.TextView M2MainTextView1;
+	
 	private global::Gtk.HSeparator hseparator8;
+	
 	private global::Gtk.HBox MainHboxSubContainerM2H2;
+	
 	private global::Gtk.CheckButton M2H2MainCheck1;
+	
 	private global::Gtk.CheckButton M2H2MainCheck2;
+	
 	private global::Gtk.CheckButton M2H2MainCheck3;
+	
 	private global::Gtk.HBox hbox10;
+	
 	private global::Gtk.HSeparator hseparator13;
+	
 	private global::Gtk.Button button10;
+	
 	private global::Gtk.HSeparator hseparator17;
+	
 	private global::Gtk.Button button11;
+	
 	private global::Gtk.HSeparator hseparator14;
+	
 	private global::Gtk.HSeparator hseparator3;
+	
 	private global::Gtk.VBox MainVboxSubContainerM3;
+	
 	private global::Gtk.HBox MainHboxSubContainerM3H1;
+	
 	private global::Gtk.Label M3H1MainLabelHeader1;
+	
 	private global::Gtk.HBox MainHboxSubContainerM3H1Sub1;
+	
 	private global::Gtk.RadioButton radiobutton6;
+	
 	private global::Gtk.RadioButton radiobutton7;
+	
 	private global::Gtk.Entry M3MainEntryField1;
+	
 	private global::Gtk.ScrolledWindow GtkScrolledWindow2;
+	
 	private global::Gtk.TextView M3MainTextView1;
+	
 	private global::Gtk.HSeparator hseparator9;
+	
 	private global::Gtk.HBox MainHboxSubContainerM3H2;
+	
 	private global::Gtk.CheckButton M3H2MainCheck1;
+	
 	private global::Gtk.CheckButton M3H2MainCheck2;
+	
 	private global::Gtk.CheckButton M3H2MainCheck3;
+	
 	private global::Gtk.HSeparator hseparator4;
+	
 	private global::Gtk.VBox MainVboxSubContainerM4;
+	
 	private global::Gtk.HBox MainHboxSubContainerM4H1;
+	
 	private global::Gtk.Label M4H1MainLabelHeader1;
+	
 	private global::Gtk.HBox MainHboxSubContainerM4H1Sub1;
+	
 	private global::Gtk.RadioButton radiobutton8;
+	
 	private global::Gtk.RadioButton radiobutton9;
+	
 	private global::Gtk.Entry M4MainEntryField1;
+	
 	private global::Gtk.ScrolledWindow GtkScrolledWindow3;
+	
 	private global::Gtk.TextView M4MainTextView1;
+	
 	private global::Gtk.HSeparator hseparator10;
+	
 	private global::Gtk.HBox MainHboxSubContainerM4H2;
+	
 	private global::Gtk.CheckButton M4H2MainCheck1;
+	
 	private global::Gtk.CheckButton M4H2MainCheck2;
+	
 	private global::Gtk.CheckButton M4H2MainCheck3;
+	
 	private global::Gtk.HSeparator hseparator5;
+	
 	private global::Gtk.VBox MainVboxSubContainerM5;
+	
 	private global::Gtk.HBox MainHboxSubContainerM5H1;
+	
 	private global::Gtk.Label M5H1MainLabelHeader1;
+	
 	private global::Gtk.HBox MainHboxSubContainerM5H1Sub1;
+	
 	private global::Gtk.RadioButton radiobutton10;
+	
 	private global::Gtk.RadioButton radiobutton11;
+	
 	private global::Gtk.VBox vbox1;
+	
 	private global::Gtk.HBox hbox1;
+	
 	private global::Gtk.Label label1;
+	
 	private global::Gtk.Entry M5MainEntryField1;
+	
 	private global::Gtk.Button button1;
+	
 	private global::Gtk.HBox hbox2;
+	
 	private global::Gtk.Label label2;
+	
 	private global::Gtk.Entry M5MainEntryField2;
+	
 	private global::Gtk.Button button2;
+	
 	private global::Gtk.HBox hbox3;
+	
 	private global::Gtk.Label label3;
+	
 	private global::Gtk.Entry M5MainEntryField3;
+	
 	private global::Gtk.Button button3;
+	
 	private global::Gtk.HBox hbox4;
+	
 	private global::Gtk.Label label4;
+	
 	private global::Gtk.Entry M5MainEntryField4;
+	
 	private global::Gtk.Button button4;
+	
 	private global::Gtk.HBox hbox5;
+	
 	private global::Gtk.Label label5;
+	
 	private global::Gtk.Entry M5MainEntryField5;
+	
 	private global::Gtk.Button button5;
+	
 	private global::Gtk.HBox hbox6;
+	
 	private global::Gtk.Label label6;
+	
 	private global::Gtk.Entry M5MainEntryField6;
+	
 	private global::Gtk.Button button6;
+	
 	private global::Gtk.HBox hbox7;
+	
 	private global::Gtk.Label label7;
+	
 	private global::Gtk.Entry M5MainEntryField7;
+	
 	private global::Gtk.Button button7;
+	
 	private global::Gtk.TextView M5MainTextView1;
+	
 	private global::Gtk.HSeparator hseparator11;
+	
 	private global::Gtk.HBox MainHboxSubContainerM5H2;
+	
 	private global::Gtk.CheckButton M5H2MainCheck1;
+	
 	private global::Gtk.CheckButton M5H2MainCheck2;
+	
 	private global::Gtk.CheckButton M5H2MainCheck3;
+	
 	private global::Gtk.HSeparator hseparator7;
+	
 	private global::Gtk.Fixed fixed4;
+	
 	private global::Gtk.HBox MainHboxSubContainer;
+	
 	private global::Gtk.Button MainButtonControls3;
+	
 	private global::Gtk.Fixed Empty1;
+	
 	private global::Gtk.Button MainButtonControls2;
+	
 	private global::Gtk.Fixed Empty2;
+	
 	private global::Gtk.Button MainButtonControls1;
 
 	protected virtual void Build ()
@@ -260,7 +410,6 @@ public partial class MainWindow
 		this.M1MainEntryField1.CanFocus = true;
 		this.M1MainEntryField1.Name = "M1MainEntryField1";
 		this.M1MainEntryField1.IsEditable = true;
-		this.M1MainEntryField1.MaxLength = 50;
 		this.M1MainEntryField1.ActivatesDefault = true;
 		this.M1MainEntryField1.InvisibleChar = '●';
 		this.hbox11.Add (this.M1MainEntryField1);
@@ -293,7 +442,7 @@ public partial class MainWindow
 		this.M1MainTextView1.CanFocus = true;
 		this.M1MainTextView1.Name = "M1MainTextView1";
 		this.M1MainTextView1.AcceptsTab = false;
-		this.M1MainTextView1.WrapMode = ((global::Gtk.WrapMode)(1));
+		this.M1MainTextView1.WrapMode = ((global::Gtk.WrapMode)(3));
 		this.M1MainTextView1.LeftMargin = 5;
 		this.M1MainTextView1.RightMargin = 5;
 		this.GtkScrolledWindow.Add (this.M1MainTextView1);
@@ -709,7 +858,6 @@ public partial class MainWindow
 		this.M2MainEntryField1.CanFocus = true;
 		this.M2MainEntryField1.Name = "M2MainEntryField1";
 		this.M2MainEntryField1.IsEditable = true;
-		this.M2MainEntryField1.MaxLength = 50;
 		this.M2MainEntryField1.ActivatesDefault = true;
 		this.M2MainEntryField1.InvisibleChar = '●';
 		this.MainVboxSubContainerM2.Add (this.M2MainEntryField1);
@@ -726,7 +874,7 @@ public partial class MainWindow
 		this.M2MainTextView1.CanFocus = true;
 		this.M2MainTextView1.Name = "M2MainTextView1";
 		this.M2MainTextView1.AcceptsTab = false;
-		this.M2MainTextView1.WrapMode = ((global::Gtk.WrapMode)(1));
+		this.M2MainTextView1.WrapMode = ((global::Gtk.WrapMode)(3));
 		this.M2MainTextView1.LeftMargin = 5;
 		this.M2MainTextView1.RightMargin = 5;
 		this.GtkScrolledWindow1.Add (this.M2MainTextView1);
@@ -895,7 +1043,6 @@ public partial class MainWindow
 		this.M3MainEntryField1.CanFocus = true;
 		this.M3MainEntryField1.Name = "M3MainEntryField1";
 		this.M3MainEntryField1.IsEditable = true;
-		this.M3MainEntryField1.MaxLength = 50;
 		this.M3MainEntryField1.ActivatesDefault = true;
 		this.M3MainEntryField1.InvisibleChar = '●';
 		this.MainVboxSubContainerM3.Add (this.M3MainEntryField1);
@@ -911,7 +1058,7 @@ public partial class MainWindow
 		this.M3MainTextView1 = new global::Gtk.TextView ();
 		this.M3MainTextView1.CanFocus = true;
 		this.M3MainTextView1.Name = "M3MainTextView1";
-		this.M3MainTextView1.WrapMode = ((global::Gtk.WrapMode)(1));
+		this.M3MainTextView1.WrapMode = ((global::Gtk.WrapMode)(3));
 		this.M3MainTextView1.LeftMargin = 5;
 		this.M3MainTextView1.RightMargin = 5;
 		this.GtkScrolledWindow2.Add (this.M3MainTextView1);
@@ -1035,7 +1182,6 @@ public partial class MainWindow
 		this.M4MainEntryField1.CanFocus = true;
 		this.M4MainEntryField1.Name = "M4MainEntryField1";
 		this.M4MainEntryField1.IsEditable = true;
-		this.M4MainEntryField1.MaxLength = 50;
 		this.M4MainEntryField1.ActivatesDefault = true;
 		this.M4MainEntryField1.InvisibleChar = '●';
 		this.MainVboxSubContainerM4.Add (this.M4MainEntryField1);
@@ -1051,7 +1197,7 @@ public partial class MainWindow
 		this.M4MainTextView1 = new global::Gtk.TextView ();
 		this.M4MainTextView1.CanFocus = true;
 		this.M4MainTextView1.Name = "M4MainTextView1";
-		this.M4MainTextView1.WrapMode = ((global::Gtk.WrapMode)(1));
+		this.M4MainTextView1.WrapMode = ((global::Gtk.WrapMode)(3));
 		this.M4MainTextView1.LeftMargin = 5;
 		this.M4MainTextView1.RightMargin = 5;
 		this.GtkScrolledWindow3.Add (this.M4MainTextView1);

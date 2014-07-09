@@ -61,7 +61,7 @@ namespace EoD
 			this.textview1.CanFocus = true;
 			this.textview1.Name = "textview1";
 			this.textview1.AcceptsTab = false;
-			this.textview1.WrapMode = ((global::Gtk.WrapMode)(2));
+			this.textview1.WrapMode = ((global::Gtk.WrapMode)(3));
 			this.GtkScrolledWindow2.Add (this.textview1);
 			this.vbox3.Add (this.GtkScrolledWindow2);
 			global::Gtk.Box.BoxChild w3 = ((global::Gtk.Box.BoxChild)(this.vbox3 [this.GtkScrolledWindow2]));

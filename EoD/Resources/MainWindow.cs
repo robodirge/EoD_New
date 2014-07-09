@@ -109,67 +109,67 @@ public partial class MainWindow: Gtk.Window{
 		for(int x = 0; x < initArray.Length; x++){
 			switch(x){
 			case 0:
-				initArray[x] = "BV";
+				initArray[x] = "AF";
 				InCheck1.Label = initArray[x];
 				InCheck1.Active = false;
 				break;
 			case 1:
-				initArray[x] = "ELR";
+				initArray[x] = "BV";
 				InCheck2.Label = initArray[x];
 				InCheck2.Active = false;
 				break;
 			case 2:
-				initArray[x] = "SA";
+				initArray[x] = "ELR";
 				InCheck3.Label = initArray[x];
 				InCheck3.Active = false;
 				break;
 			case 3:
-				initArray[x] = "AF";
+				initArray[x] = "GH";
 				InCheck4.Label = initArray[x];
 				InCheck4.Active = false;
 				break;
 			case 4:
-				initArray[x] = "LW";
+				initArray[x] = "JG";
 				InCheck5.Label = initArray[x];
 				InCheck5.Active = false;
 				break;
 			case 5:
-				initArray[x] = "TG";
+				initArray[x] = "KH";
 				InCheck6.Label = initArray[x];
 				InCheck6.Active = false;
 				break;
 			case 6:
-				initArray[x] = "GH";
+				initArray[x] = "LHW";
 				InCheck7.Label = initArray[x];
 				InCheck7.Active = false;
 				break;
 			case 7:
-				initArray[x] = "TY";
+				initArray[x] = "LW";
 				InCheck8.Label = initArray[x];
 				InCheck8.Active = false;
 				break;
 			case 8: 
-				initArray[x] = "JG";
+				initArray[x] = "MG";
 				InCheck9.Label = initArray[x];
 				InCheck9.Active = false;
 				break;
 			case 9: 
-				initArray[x] = "KH";
+				initArray[x] = "SA";
 				InCheck10.Label = initArray[x];
 				InCheck10.Active = false;
 				break;
 			case 10: 
-				initArray[x] = "MG";
+				initArray[x] = "SS";
 				InCheck11.Label = initArray[x];
 				InCheck11.Active = false;
 				break;
 			case 11: 
-				initArray[x] = "SS";
+				initArray[x] = "TG";
 				InCheck12.Label = initArray[x];
 				InCheck12.Active = false;
 				break;
 			case 12: 
-				initArray[x] = "LHW";
+				initArray[x] = "TY";
 				InCheck13.Label = initArray[x];
 				InCheck13.Active = false;
 				break;

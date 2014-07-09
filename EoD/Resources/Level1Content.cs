@@ -14,12 +14,12 @@ public partial class MainWindow: Gtk.Window{
 		MainLabelTitle.Text = "Project Details";
 		
 		// Client fields
-		M1H1MainLabelHeader1.Text = "Client name: (50 Characters)";
+		M1H1MainLabelHeader1.Text = "Client name:";
 		M1MainEntryField1.Sensitive = true;
 		M1MainEntryField1.Text = "";
 
 		// Project fields
-		M2H1MainLabelHeader1.Text = "Project name: (50 Characters)";
+		M2H1MainLabelHeader1.Text = "Project name:";
 		M2MainEntryField1.Sensitive = true;
 		M2MainEntryField1.Text = "";
 
@@ -279,6 +279,8 @@ public partial class MainWindow: Gtk.Window{
 		bool projectNameBool = false;
 		projectNameString = IsInvalid(M2MainEntryField1.Text, ref projectNameBool, "Project name");
 
+		clientNameString = Regex.Replace(clientNameString, @"(\u2012|\u2013|\2014|u2015)", "-");
+		projectNameString = Regex.Replace(projectNameString, @"(\u2012|\u2013|\2014|u2015)", "-");
 
 		if(clientNameBool)
 			M1MainEntryField1.Text = clientNameString;
@@ -363,12 +365,12 @@ public partial class MainWindow: Gtk.Window{
 			}
 		}
 		else if(oldstring != illegaltemp){
-			string errortemp = ("'" + sTitle + "' Is incorrect. Are you happy for this name to be used:\n\n") + ("'" + illegaltemp + "'");
+			string errortemp = ("'" + sTitle + "' is incorrect. Are you happy for this name to be used:\n\n") + ("'" + illegaltemp + "'");
 
 			MessageDialog SN;
 
 			if(errortemp.Contains("&")){
-				errortemp = ("'" + sTitle + "' Is incorrect. Cannot display the corrected string. Please see the amendment in the '" + sTitle + "' field.");
+				errortemp = ("'" + sTitle + "' is incorrect. Cannot display the corrected string. Please see the amendment in the '" + sTitle + "' field.");
 				SN = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, errortemp);
 			}
 			else{

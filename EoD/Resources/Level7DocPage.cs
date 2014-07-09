@@ -21,6 +21,8 @@ public partial class MainWindow: Gtk.Window{
 	Word.Application wordApplication = null;
 	Word.Document newDocument = null;
 
+	String bobone = null;
+
 	public void checkWord(){
 		RegistryKey localMachine = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Office\");
 
@@ -31,8 +33,7 @@ public partial class MainWindow: Gtk.Window{
 		int iversionN = 0;
 
 
-		foreach(string key in localMachine.GetSubKeyNames())
-		{
+		foreach(string key in localMachine.GetSubKeyNames()){
 			if (key == "7.0"){
 				//version = "1995";
 				if( 1 > iversionN)
@@ -80,14 +81,16 @@ public partial class MainWindow: Gtk.Window{
 			
 		if(emTest){
 			tempbb = true;
-		}else if (iversionN == 0){
+		}
+		else if (iversionN == 0){
 			MessageDialog PF = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, ("Word version not detected! The application needs Microsoft Word (2010/2013) installed"));
 			PF.Title= "Microsoft Word Not Installed";
 			ResponseType response = (ResponseType) PF.Run();
 			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
 				PF.Destroy();
 			}
-		}else{
+		}
+		else{
 			switch(iversionN){
 			case 0:
 				version = "Undetected version";
@@ -156,10 +159,10 @@ public partial class MainWindow: Gtk.Window{
 		M1H1MainLabelHeader1.WidthRequest = 700;
 		M1H1MainLabelHeader1.Text = ("                                                                Select a file location then click 'Finish'.");
 
-		button8.Label = "Set File Location";
+		button8.Label = "Set File Location.";
 		label10.Text = "Path: ";
 		if(mytempfilename == ""){
-			M1MainTextView1.Buffer.Text = "No path selected";
+			M1MainTextView1.Buffer.Text = "No path selected.";
 			MainButtonControls1.Sensitive = false;
 		}else{
 			M1MainTextView1.Buffer.Text = mytempfilename;
@@ -174,7 +177,7 @@ public partial class MainWindow: Gtk.Window{
 
 		button8.WidthRequest = 150;
 		button8.Sensitive = true;
-		MainButtonControls1.Label = "Finish";
+		MainButtonControls1.Label = @"Create & Close";
 	}
 
 	public void SHLevel7(){
@@ -203,6 +206,8 @@ public partial class MainWindow: Gtk.Window{
 
 	public void CreateDoc(){
 		wordApplication = new Word.Application();
+		bobone = wordApplication.Version;
+
 		wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
 		newDocument = wordApplication.Documents.Add();
 
@@ -220,7 +225,6 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.Font.Size = 11;
 		wordApplication.Selection.Font.Name = "Corbel";
 
-		//wordApplication.Selection.TypeParagraph();
 		firstTable();
 		moveDownpar();
 		secondTable();
@@ -232,23 +236,16 @@ public partial class MainWindow: Gtk.Window{
 		fithTable();
 		moveDownpar();
 
-		//if(bSmokes){
-		//	wordApplication.Selection.TypeText(@"*Environments checked in this test run");
-		//}
-
 		wordApplication.ActiveWindow.View.SeekView = WdSeekView.wdSeekCurrentPageHeader;
 		string sImageLoc = Environment.CurrentDirectory + @"\Resources\ZoonouLogo.jpg";
 		wordApplication.Selection.InlineShapes.AddPicture(sImageLoc); 
 		wordApplication.Selection.MoveRight();
-		//wordApplication.ActiveWindow.Selection.TypeParagraph();
 		wordApplication.Selection.PageSetup.HeaderDistance = 12.00f;
 		wordApplication.Selection.PageSetup.FooterDistance = 12.00f;
 		wordApplication.ActiveWindow.View.SeekView = WdSeekView.wdSeekMainDocument;
 		wordApplication.Selection.WholeStory();
 		wordApplication.Selection.Font.Color = WdColor.wdColorBlack;
 		string documentFile = null;
-
-		//Console.WriteLine(mytempfilename);
 
 		if(Directory.Exists(mytempfilename)){
 
@@ -276,8 +273,7 @@ public partial class MainWindow: Gtk.Window{
 			}else{
 				newDocument.SaveAs(documentFile);
 			}
-
-			// close word and dispose reference
+				
 			object saveOption = WdSaveOptions.wdDoNotSaveChanges;
 			object orginalFormat = WdOriginalFormat.wdOriginalDocumentFormat;
 			object routeDocument = false;
@@ -294,7 +290,7 @@ public partial class MainWindow: Gtk.Window{
 
 			MessageDialog E1 = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, "Folder path removed - Please retry.");
 			E1.WidthRequest = 600; 
-			E1.Title= "Folder path removed";
+			E1.Title= "Folder Path Removed";
 
 			ResponseType response = (ResponseType) E1.Run();
 			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
@@ -339,7 +335,6 @@ public partial class MainWindow: Gtk.Window{
 
                                                     This application will close once completed.");
 
-					//label10.Text = "Path: " + mytempfilename;
 					M1MainTextView1.Buffer.Text = mytempfilename;
 
 					fc.Destroy();
@@ -363,9 +358,7 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	public void firstTable(){
-		int r = 6;
-		int c = 2;
-		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, r, c);
+		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 6, 2);
 
 		for(int x = 1; x < 7; x++){
 			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
@@ -434,9 +427,13 @@ public partial class MainWindow: Gtk.Window{
 		}
 
 		wordApplication.Selection.TypeText(sTemp);
+		tableVersion(ref table);
 
-		String bobone = wordApplication.Version;
-		//Console.WriteLine(bobone);
+		table.Dispose();
+		return;
+	}
+
+	public void tableVersion(ref Word.Table table){
 		if(bobone == "14.0"){
 			table.Style = "Light Shading - Accent 1";
 			table.ApplyStyleFirstColumn = false;
@@ -446,15 +443,11 @@ public partial class MainWindow: Gtk.Window{
 			table.ApplyStyleFirstColumn = false;
 			table.ApplyStyleHeadingRows = false;
 		}
-
-		table.Dispose();
 		return;
 	}
 
 	public void secondTable(){
-		int r = 3;
-		int c = 2;
-		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, r, c);
+		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 3, 2);
 
 		for(int x = 1; x < 4; x++){
 			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
@@ -473,33 +466,20 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(3,2).Select();
 		wordApplication.Selection.TypeText(sDateTested);
 
-		String bobone = wordApplication.Version;
-
-		if(bobone == "14.0"){
-			table.Style = "Light Shading - Accent 1";
-			table.ApplyStyleFirstColumn = false;
-			table.ApplyStyleHeadingRows = false;
-		}else{
-			table.Style = "List Table 6 Colorful - Accent 1";
-			table.ApplyStyleFirstColumn = false;
-			table.ApplyStyleHeadingRows = false;
-		}
-
+		tableVersion(ref table);
 		table.Dispose();
 		return;
 	}
 
 	public void thirdTable(){
-		int r = 4;
-		int c = 2;
-		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, r, c);
+		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 4, 2);
 
 		for(int x = 1; x < 5; x++){
 			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
 		}
 
 		table.Cell(1,1).Select();
-		wordApplication.Selection.Font.Bold = 0;
+		wordApplication.Selection.Font.Bold = 1;
 		wordApplication.Selection.TypeText(@"Report Detail");
 		table.Cell(2,1).Select();
 		wordApplication.Selection.TypeText(@"Test activities:");
@@ -533,25 +513,15 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.TypeText(sTTC);
 		table.Cell(4,2).Select();
 		wordApplication.Selection.TypeText(sBOOT);
-
-		String bobone = wordApplication.Version;
-
-		if(bobone == "14.0"){
-			table.Style = "Light Shading - Accent 1";
-			table.ApplyStyleFirstColumn = false;
-		}else{
-			table.Style = "List Table 6 Colorful - Accent 1";
-			table.ApplyStyleFirstColumn = false;
-		}
+	
+		tableVersion(ref table);
 
 		table.Dispose();
 		return;
 	}
 
 	public void fouthTable(){
-		int r = 9;
-		int c = 2;
-		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, r, c);
+		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 9, 2);
 
 		for(int x = 1; x < 10; x++){
 			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
@@ -566,17 +536,6 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.TypeText(@"Issues blocking testing:");
 		table.Cell(4,1).Select();
 		wordApplication.Selection.TypeText(@"Top 5 issues of concern:");
-		table.Cell(5,1).Select();
-		wordApplication.Selection.TypeText(@"");
-		table.Cell(6,1).Select();
-		wordApplication.Selection.TypeText(@"");
-		table.Cell(7,1).Select();
-		wordApplication.Selection.TypeText(@"");
-		table.Cell(8,1).Select();
-		wordApplication.Selection.TypeText(@"");
-		table.Cell(9,1).Select();
-		wordApplication.Selection.TypeText(@"");
-
 
 		table.Cell(5,1).Select();
 		wordApplication.Selection.TypeText(@"1:");
@@ -609,26 +568,13 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(9,2).Select();
 		wordApplication.Selection.TypeText(top5ListArray[4]);
 
-		String bobone = wordApplication.Version;
-
-		if(bobone == "14.0"){
-			table.Style = "Light Shading - Accent 1";
-			table.ApplyStyleFirstColumn = false;
-			table.ApplyStyleHeadingRows = false;
-		}else{
-			table.Style = "List Table 6 Colorful - Accent 1";
-			table.ApplyStyleFirstColumn = false;
-			table.ApplyStyleHeadingRows = false;
-		}
-
+		tableVersion(ref table);
 		table.Dispose();
 		return;
 	}
 
 	public void fithTable(){
-		int r = 5;
-		int c = 2;
-		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, r, c);
+		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 5, 2);
 
 		for(int x = 1; x < 6; x++){
 			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
@@ -655,18 +601,7 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(5,2).Select();
 		wordApplication.Selection.TypeText(sMetric4);
 
-		String bobone = wordApplication.Version;
-
-		if(bobone == "14.0"){
-			table.Style = "Light Shading - Accent 1";
-			table.ApplyStyleFirstColumn = false;
-			table.ApplyStyleHeadingRows = false;
-		}else{
-			table.Style = "List Table 6 Colorful - Accent 1";
-			table.ApplyStyleFirstColumn = false;
-			table.ApplyStyleHeadingRows = false;
-		}
-
+		tableVersion(ref table);
 		table.Dispose();
 		return;
 	}
