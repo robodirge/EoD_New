@@ -5,25 +5,45 @@ namespace EoD
 	public partial class Level5Dialog
 	{
 		private global::Gtk.HBox hbox1;
+		
 		private global::Gtk.VBox vbox3;
+		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow2;
+		
 		private global::Gtk.TextView textview1;
+		
 		private global::Gtk.Label label2;
+		
 		private global::Gtk.Label label1;
+		
 		private global::Gtk.HBox hbox2;
+		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow;
+		
 		private global::Gtk.TreeView treeViewError1;
+		
 		private global::Gtk.ScrolledWindow GtkScrolledWindow1;
+		
 		private global::Gtk.TreeView treeViewCorrection1;
+		
 		private global::Gtk.VBox vbox2;
+		
 		private global::Gtk.VSeparator vseparator4;
+		
 		private global::Gtk.VSeparator vseparator3;
+		
 		private global::Gtk.VSeparator vseparator5;
+		
 		private global::Gtk.Button button7;
+		
 		private global::Gtk.Button button8;
+		
 		private global::Gtk.Button button9;
+		
 		private global::Gtk.Button button10;
+		
 		private global::Gtk.VSeparator vseparator2;
+		
 		private global::Gtk.Button button23;
 
 		protected virtual void Build ()

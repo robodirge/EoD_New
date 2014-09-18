@@ -5,6 +5,7 @@ namespace EoD
 	public partial class AcceptNameDialog
 	{
 		private global::Gtk.Button buttonCancel;
+		
 		private global::Gtk.Button buttonOk;
 
 		protected virtual void Build ()

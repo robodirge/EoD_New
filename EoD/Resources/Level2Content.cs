@@ -170,6 +170,14 @@ public partial class MainWindow: Gtk.Window{
 					InCheck15.Label = initArray[x];
 					InCheck15.Active = true;
 					break;
+				case 15: 
+					InCheck16.Label = initArray[x];
+					InCheck16.Active = true;
+					break;
+				case 16: 
+					InCheck17.Label = initArray[x];
+					InCheck17.Active = true;
+					break;
 				default:
 					break;
 				}
@@ -271,6 +279,14 @@ public partial class MainWindow: Gtk.Window{
 					InCheck15.Label = initArray[x];
 					InCheck15.Active = true;
 					break;
+				case 15: 
+					InCheck16.Label = initArray[x];
+					InCheck16.Active = true;
+					break;
+				case 16: 
+					InCheck17.Label = initArray[x];
+					InCheck17.Active = true;
+					break;
 				default:
 					break;
 				}
@@ -294,6 +310,8 @@ public partial class MainWindow: Gtk.Window{
 		InCheck13.Active = false;
 		InCheck14.Active = false;
 		InCheck15.Active = false;
+		InCheck16.Active = false;
+		InCheck17.Active = false;
 		return;
 	}
 

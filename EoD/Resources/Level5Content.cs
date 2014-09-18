@@ -86,6 +86,10 @@ public partial class MainWindow: Gtk.Window{
 		hseparator3.Show();
 		MainHboxSubContainerM2H2.Show();
 		hbox10.ShowAll();
+
+		//hiding spell check
+		button9.Sensitive = false;
+		button11.Sensitive = false;
 	}
 
 	public void backlevel5(){

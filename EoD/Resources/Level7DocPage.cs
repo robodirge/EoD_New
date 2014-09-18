@@ -157,7 +157,7 @@ public partial class MainWindow: Gtk.Window{
 		
 		GtkScrolledWindow.SetPolicy(PolicyType.Never,PolicyType.Never);
 		M1H1MainLabelHeader1.WidthRequest = 700;
-		M1H1MainLabelHeader1.Text = ("                                                                Select a file location then click 'Finish'.");
+		M1H1MainLabelHeader1.Text = ("                                                                Select a file location then click 'Create & Close'.");
 
 		button8.Label = "Set File Location.";
 		label10.Text = "Path: ";
@@ -205,6 +205,7 @@ public partial class MainWindow: Gtk.Window{
 	#region doc Start
 
 	public void CreateDoc(){
+
 		wordApplication = new Word.Application();
 		bobone = wordApplication.Version;
 
@@ -221,6 +222,10 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	public void startDoc (){
+
+
+		//tw.ShowAll ();
+
 
 		wordApplication.Selection.Font.Size = 11;
 		wordApplication.Selection.Font.Name = "Corbel";
@@ -242,8 +247,18 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.MoveRight();
 		wordApplication.Selection.PageSetup.HeaderDistance = 12.00f;
 		wordApplication.Selection.PageSetup.FooterDistance = 12.00f;
+		wordApplication.Selection.PageSetup.LeftMargin = 72;
+		wordApplication.Selection.PageSetup.RightMargin = 72;
 		wordApplication.ActiveWindow.View.SeekView = WdSeekView.wdSeekMainDocument;
 		wordApplication.Selection.WholeStory();
+
+		if(bobone == "14.0"){
+			wordApplication.Selection.ParagraphFormat.LeftIndent = 4.50f;
+		}
+		else{
+			wordApplication.Selection.ParagraphFormat.LeftIndent = 0;
+		}
+
 		wordApplication.Selection.Font.Color = WdColor.wdColorBlack;
 		string documentFile = null;
 
@@ -270,7 +285,8 @@ public partial class MainWindow: Gtk.Window{
 			double wordVersion = Convert.ToDouble(wordApplication.Version, CultureInfo.InvariantCulture);
 			if (wordVersion >= 12.0){
 				newDocument.SaveAs(documentFile, WdSaveFormat.wdFormatDocumentDefault);
-			}else{
+			}
+			else{
 				newDocument.SaveAs(documentFile);
 			}
 				
@@ -286,7 +302,8 @@ public partial class MainWindow: Gtk.Window{
 			Application.Quit();
 
 
-		}else{
+		}
+		else{
 
 			MessageDialog E1 = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, "Folder path removed - Please retry.");
 			E1.WidthRequest = 600; 
@@ -331,7 +348,7 @@ public partial class MainWindow: Gtk.Window{
 
 					M2H1MainLabelHeader1.Text = (@"
 					
-                                                   When you click 'Finish' the daily report will be created.
+                                                   When you click 'Create & Close' the daily report will be created.
 
                                                     This application will close once completed.");
 
@@ -360,9 +377,8 @@ public partial class MainWindow: Gtk.Window{
 	public void firstTable(){
 		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 6, 2);
 
-		for(int x = 1; x < 7; x++){
-			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
-		}
+		table.Columns[1].SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn); 
+		table.Columns[2].SetWidth(291.50f, WdRulerStyle.wdAdjustSameWidth); 
 
 		table.Cell(1,1).Select();
 		wordApplication.Selection.Font.Bold = 1;
@@ -427,17 +443,25 @@ public partial class MainWindow: Gtk.Window{
 		}
 
 		wordApplication.Selection.TypeText(sTemp);
-		tableVersion(ref table);
+		tableVersion(ref table,6);
 
 		table.Dispose();
 		return;
 	}
 
-	public void tableVersion(ref Word.Table table){
+	public void tableVersion(ref Word.Table table, int rows){
 		if(bobone == "14.0"){
 			table.Style = "Light Shading - Accent 1";
 			table.ApplyStyleFirstColumn = false;
 			table.ApplyStyleHeadingRows = false;
+			table.Rows.SetLeftIndent(4.50f, WdRulerStyle.wdAdjustNone);
+
+			WdColor test = (WdColor)16181982;
+
+			for(int n = 1; n <= rows; n += 2)
+			{
+				table.Rows[n].Shading.BackgroundPatternColor = test;
+			}
 		}else{
 			table.Style = "List Table 6 Colorful - Accent 1";
 			table.ApplyStyleFirstColumn = false;
@@ -449,9 +473,8 @@ public partial class MainWindow: Gtk.Window{
 	public void secondTable(){
 		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 3, 2);
 
-		for(int x = 1; x < 4; x++){
-			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
-		}
+		table.Columns[1].SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn); 
+		table.Columns[2].SetWidth(291.50f, WdRulerStyle.wdAdjustSameWidth); 
 
 		table.Cell(1,1).Select();
 		wordApplication.Selection.Font.Bold = 1;
@@ -466,7 +489,8 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(3,2).Select();
 		wordApplication.Selection.TypeText(sDateTested);
 
-		tableVersion(ref table);
+		tableVersion(ref table,3);
+
 		table.Dispose();
 		return;
 	}
@@ -474,9 +498,8 @@ public partial class MainWindow: Gtk.Window{
 	public void thirdTable(){
 		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 4, 2);
 
-		for(int x = 1; x < 5; x++){
-			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
-		}
+		table.Columns[1].SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn); 
+		table.Columns[2].SetWidth(291.50f, WdRulerStyle.wdAdjustSameWidth);  
 
 		table.Cell(1,1).Select();
 		wordApplication.Selection.Font.Bold = 1;
@@ -514,7 +537,7 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(4,2).Select();
 		wordApplication.Selection.TypeText(sBOOT);
 	
-		tableVersion(ref table);
+		tableVersion(ref table,4);
 
 		table.Dispose();
 		return;
@@ -523,9 +546,8 @@ public partial class MainWindow: Gtk.Window{
 	public void fouthTable(){
 		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 9, 2);
 
-		for(int x = 1; x < 10; x++){
-			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
-		}
+		table.Columns[1].SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn); 
+		table.Columns[2].SetWidth(291.50f, WdRulerStyle.wdAdjustSameWidth); 
 
 		table.Cell(1,1).Select();
 		wordApplication.Selection.Font.Bold = 1;
@@ -568,7 +590,8 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(9,2).Select();
 		wordApplication.Selection.TypeText(top5ListArray[4]);
 
-		tableVersion(ref table);
+		tableVersion(ref table,9);
+
 		table.Dispose();
 		return;
 	}
@@ -576,9 +599,8 @@ public partial class MainWindow: Gtk.Window{
 	public void fithTable(){
 		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 5, 2);
 
-		for(int x = 1; x < 6; x++){
-			table.Cell(x,1).SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn);
-		}
+		table.Columns[1].SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn); 
+		table.Columns[2].SetWidth(291.50f, WdRulerStyle.wdAdjustSameWidth); 
 
 		table.Cell(1,1).Select();
 		wordApplication.Selection.Font.Bold = 1;
@@ -601,7 +623,8 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(5,2).Select();
 		wordApplication.Selection.TypeText(sMetric4);
 
-		tableVersion(ref table);
+		tableVersion(ref table,5);
+
 		table.Dispose();
 		return;
 	}

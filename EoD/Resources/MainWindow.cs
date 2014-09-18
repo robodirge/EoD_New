@@ -19,8 +19,8 @@ public partial class MainWindow: Gtk.Window{
 	public static bool bSmokes;
 	public static bool bRetests;
 	public static bool bInitEnabled;
-	public string[] initArray = new string[15];
-	public bool[] initEnabledArray = new bool[15];
+	public string[] initArray = new string[17];
+	public bool[] initEnabledArray = new bool[17];
 	public static string sAllinitials;
 	public static string sDateTested;
 	public static string Otherinitials;
@@ -149,39 +149,49 @@ public partial class MainWindow: Gtk.Window{
 				InCheck8.Active = false;
 				break;
 			case 8: 
-				initArray[x] = "MG";
+				initArray[x] = "LP";
 				InCheck9.Label = initArray[x];
 				InCheck9.Active = false;
 				break;
 			case 9: 
-				initArray[x] = "SA";
+				initArray[x] = "MG";
 				InCheck10.Label = initArray[x];
 				InCheck10.Active = false;
 				break;
 			case 10: 
-				initArray[x] = "SS";
+				initArray[x] = "RN";
 				InCheck11.Label = initArray[x];
 				InCheck11.Active = false;
 				break;
 			case 11: 
-				initArray[x] = "TG";
+				initArray[x] = "SA";
 				InCheck12.Label = initArray[x];
 				InCheck12.Active = false;
 				break;
 			case 12: 
-				initArray[x] = "TY";
+				initArray[x] = "SJ";
 				InCheck13.Label = initArray[x];
 				InCheck13.Active = false;
 				break;
 			case 13: 
-				initArray[x] = "WT";
+				initArray[x] = "SS";
 				InCheck14.Label = initArray[x];
 				InCheck14.Active = false;
 				break;
 			case 14: 
-				initArray[x] = "ZHC";
+				initArray[x] = "TG";
 				InCheck15.Label = initArray[x];
 				InCheck15.Active = false;
+				break;
+			case 15: 
+				initArray[x] = "TY";
+				InCheck16.Label = initArray[x];
+				InCheck16.Active = false;
+				break;
+			case 16: 
+				initArray[x] = "ZHC";
+				InCheck17.Label = initArray[x];
+				InCheck17.Active = false;
 				break;
 			default:
 				break;
@@ -242,8 +252,10 @@ public partial class MainWindow: Gtk.Window{
 			Level6Button();
 			break;
 		case 7:
-			if(!bDocRan)
+			if(!bDocRan){
+				EoD.TempWindow tw = new EoD.TempWindow();
 				CreateDoc ();
+			}
 			else
 				restartDoc();
 			break;
@@ -586,6 +598,24 @@ public partial class MainWindow: Gtk.Window{
 		}
 		else{
 			initEnabledArray[14] = false;
+		}
+	} 
+
+	protected void OnInCheck16Toggled (object sender, EventArgs e){
+		if(InCheck16.Active){
+			initEnabledArray[15] = true;
+		}
+		else{
+			initEnabledArray[15] = false;
+		}
+	} 
+
+	protected void OnInCheck17Toggled (object sender, EventArgs e){
+		if(InCheck17.Active){
+			initEnabledArray[16] = true;
+		}
+		else{
+			initEnabledArray[16] = false;
 		}
 	} 
 

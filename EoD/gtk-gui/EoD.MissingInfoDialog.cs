@@ -5,6 +5,7 @@ namespace EoD
 	public partial class MissingInfoDialog
 	{
 		private global::Gtk.Label MILabel1;
+		
 		private global::Gtk.Button button19;
 
 		protected virtual void Build ()

@@ -27,5 +27,6 @@ Global
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = EoD\EoD.csproj
+		outputpath = build-test
 	EndGlobalSection
 EndGlobal

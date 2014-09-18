@@ -5,8 +5,11 @@ namespace EoD
 	public partial class Window
 	{
 		private global::Gtk.VBox vbox2;
+		
 		private global::Gtk.Calendar calendar2;
+		
 		private global::Gtk.Label label2;
+		
 		private global::Gtk.Calendar calendar1;
 
 		protected virtual void Build ()
