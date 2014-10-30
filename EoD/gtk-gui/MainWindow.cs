@@ -783,7 +783,6 @@ public partial class MainWindow
 		// Container child AllInHbox5.Gtk.Box+BoxChild
 		this.InCheck18 = new global::Gtk.CheckButton ();
 		this.InCheck18.WidthRequest = 20;
-		this.InCheck18.Sensitive = false;
 		this.InCheck18.CanFocus = true;
 		this.InCheck18.Name = "InCheck18";
 		this.InCheck18.Label = "";
@@ -795,7 +794,6 @@ public partial class MainWindow
 		// Container child AllInHbox5.Gtk.Box+BoxChild
 		this.InCheck19 = new global::Gtk.CheckButton ();
 		this.InCheck19.WidthRequest = 20;
-		this.InCheck19.Sensitive = false;
 		this.InCheck19.CanFocus = true;
 		this.InCheck19.Name = "InCheck19";
 		this.InCheck19.Label = "";
@@ -1137,6 +1135,7 @@ public partial class MainWindow
 		this.M3MainTextView1 = new global::Gtk.TextView ();
 		this.M3MainTextView1.CanFocus = true;
 		this.M3MainTextView1.Name = "M3MainTextView1";
+		this.M3MainTextView1.AcceptsTab = false;
 		this.M3MainTextView1.WrapMode = ((global::Gtk.WrapMode)(3));
 		this.M3MainTextView1.LeftMargin = 5;
 		this.M3MainTextView1.RightMargin = 5;
@@ -1276,6 +1275,7 @@ public partial class MainWindow
 		this.M4MainTextView1 = new global::Gtk.TextView ();
 		this.M4MainTextView1.CanFocus = true;
 		this.M4MainTextView1.Name = "M4MainTextView1";
+		this.M4MainTextView1.AcceptsTab = false;
 		this.M4MainTextView1.WrapMode = ((global::Gtk.WrapMode)(3));
 		this.M4MainTextView1.LeftMargin = 5;
 		this.M4MainTextView1.RightMargin = 5;
@@ -1824,8 +1824,6 @@ public partial class MainWindow
 		this.MainHboxSubContainerM1H1Sub1.Hide ();
 		this.M1MainTextView1.Hide ();
 		this.MainHboxSubContainerM1H2.Hide ();
-		this.InCheck18.Hide ();
-		this.InCheck19.Hide ();
 		this.InCheck20.Hide ();
 		this.MainHboxSubContainerM2H1Sub1.Hide ();
 		this.M2MainTextView1.Hide ();
@@ -1861,8 +1859,8 @@ public partial class MainWindow
 		this.InCheck15.Toggled += new global::System.EventHandler (this.OnInCheck15Toggled);
 		this.InCheck16.Toggled += new global::System.EventHandler (this.OnInCheck16Toggled);
 		this.InCheck17.Toggled += new global::System.EventHandler (this.OnInCheck17Toggled);
-		this.InCheck18.Toggled += new global::System.EventHandler (this.OnInCheck13Toggled);
-		this.InCheck19.Toggled += new global::System.EventHandler (this.OnInCheck14Toggled);
+		this.InCheck18.Toggled += new global::System.EventHandler (this.OnInCheck18Toggled);
+		this.InCheck19.Toggled += new global::System.EventHandler (this.OnInCheck19Toggled);
 		this.InCheck20.Toggled += new global::System.EventHandler (this.OnInCheck15Toggled);
 		this.Initradiobutton1.Toggled += new global::System.EventHandler (this.OnInitradiobutton1Toggled);
 		this.button10.Clicked += new global::System.EventHandler (this.OnButton10Clicked);

@@ -222,18 +222,13 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	public void startDoc (){
-
-
-		//tw.ShowAll ();
-
-
 		wordApplication.Selection.Font.Size = 11;
 		wordApplication.Selection.Font.Name = "Corbel";
 
 		firstTable();
 		moveDownpar();
-		secondTable();
-		moveDownpar();
+		//secondTable();
+		//moveDownpar();
 		thirdTable();
 		moveDownpar();
 		fouthTable();
@@ -246,7 +241,7 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.InlineShapes.AddPicture(sImageLoc); 
 		wordApplication.Selection.MoveRight();
 		wordApplication.Selection.PageSetup.HeaderDistance = 12.00f;
-		wordApplication.Selection.PageSetup.FooterDistance = 12.00f;
+		wordApplication.Selection.PageSetup.FooterDistance = 6.00f;
 		wordApplication.Selection.PageSetup.LeftMargin = 72;
 		wordApplication.Selection.PageSetup.RightMargin = 72;
 		wordApplication.ActiveWindow.View.SeekView = WdSeekView.wdSeekMainDocument;
@@ -375,7 +370,7 @@ public partial class MainWindow: Gtk.Window{
 	}
 
 	public void firstTable(){
-		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 6, 2);
+		Word.Table table = newDocument.Tables.Add(wordApplication.Selection.Range, 8, 2);
 
 		table.Columns[1].SetWidth(160.00f, WdRulerStyle.wdAdjustFirstColumn); 
 		table.Columns[2].SetWidth(291.50f, WdRulerStyle.wdAdjustSameWidth); 
@@ -386,12 +381,25 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(2,1).Select();
 		wordApplication.Selection.TypeText(@"Client:");
 		table.Cell(3,1).Select();
-		wordApplication.Selection.TypeText(@"Project name:");
+		wordApplication.Selection.TypeText(@"Project:");
 		table.Cell(4,1).Select();
 		wordApplication.Selection.TypeText(@"URL(s) tested:");
 		table.Cell(5,1).Select();
 		wordApplication.Selection.TypeText(@"Build version(s) tested:");
+
+
 		table.Cell(6,1).Select();
+		wordApplication.Selection.TypeText(@"Tester(s):");
+		table.Cell(7,1).Select();
+		wordApplication.Selection.TypeText(@"Date:");
+
+		table.Cell(6,2).Select();
+		wordApplication.Selection.TypeText(sAllinitials);
+		table.Cell(7,2).Select();
+		wordApplication.Selection.TypeText(sDateTested);
+
+
+		table.Cell(8,1).Select();
 		wordApplication.Selection.TypeText(@"Test environment(s):");
 
 		table.Cell(2,2).Select();
@@ -402,7 +410,7 @@ public partial class MainWindow: Gtk.Window{
 		wordApplication.Selection.TypeText(urlUsedString);
 		table.Cell(5,2).Select();
 		wordApplication.Selection.TypeText(buildVersionString);
-		table.Cell(6,2).Select();
+		table.Cell(8,2).Select();
 
 		string sTemp = "";
 
@@ -442,8 +450,11 @@ public partial class MainWindow: Gtk.Window{
 			sTemp += ("Retests executed in environments the issues were originally raised in.\n");
 		}
 
+	
 		wordApplication.Selection.TypeText(sTemp);
-		tableVersion(ref table,6);
+		wordApplication.Selection.TypeBackspace();
+
+		tableVersion(ref table,8);
 
 		table.Dispose();
 		return;
@@ -462,7 +473,13 @@ public partial class MainWindow: Gtk.Window{
 			{
 				table.Rows[n].Shading.BackgroundPatternColor = test;
 			}
-		}else{
+		}
+		else if(bobone == "15.0"){
+			table.Style = "List Table 6 Colorful - Accent 1";
+			table.ApplyStyleFirstColumn = false;
+			table.ApplyStyleHeadingRows = false;
+		}
+		else{
 			table.Style = "List Table 6 Colorful - Accent 1";
 			table.ApplyStyleFirstColumn = false;
 			table.ApplyStyleHeadingRows = false;
@@ -503,7 +520,7 @@ public partial class MainWindow: Gtk.Window{
 
 		table.Cell(1,1).Select();
 		wordApplication.Selection.Font.Bold = 1;
-		wordApplication.Selection.TypeText(@"Report Detail");
+		wordApplication.Selection.TypeText(@"Report Details");
 		table.Cell(2,1).Select();
 		wordApplication.Selection.TypeText(@"Test activities:");
 		table.Cell(3,1).Select();
@@ -519,15 +536,15 @@ public partial class MainWindow: Gtk.Window{
 				activtemp = activtemp + @"/ Test Execution ";
 			}
 			if(bIssueVoption){
-				activtemp = activtemp + @"/ Issue Verification & Retest ";
+				activtemp = activtemp + @"/ Issue Verification & Retests ";
 			}
 		}else if(bTestExe){
 			activtemp = activtemp + @"Test Execution ";
 			if(bIssueVoption){
-				activtemp = activtemp + @"/ Issue Verification & Retest ";
+				activtemp = activtemp + @"/ Issue Verification & Retests ";
 			}
 		}else if(bIssueVoption){
-			activtemp = activtemp + @"Issue Verification & Retest ";
+			activtemp = activtemp + @"Issue Verification & Retests ";
 		}
 
 		table.Cell(2,2).Select();
@@ -555,7 +572,7 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(2,1).Select();
 		wordApplication.Selection.TypeText(@"Have any issues been found that block test progress?");
 		table.Cell(3,1).Select();
-		wordApplication.Selection.TypeText(@"Issues blocking testing:");
+		wordApplication.Selection.TypeText(@"Blocking Issue(s) found:");
 		table.Cell(4,1).Select();
 		wordApplication.Selection.TypeText(@"Top 5 issues of concern:");
 
@@ -612,7 +629,7 @@ public partial class MainWindow: Gtk.Window{
 		table.Cell(4,1).Select();
 		wordApplication.Selection.TypeText(@"Issues closed today:");
 		table.Cell(5,1).Select();
-		wordApplication.Selection.TypeText(@"Total number of issues open against this project:");
+		wordApplication.Selection.TypeText(@"Total number of open issues:");
 
 		table.Cell(2,2).Select();
 		wordApplication.Selection.TypeText(sMetric1);

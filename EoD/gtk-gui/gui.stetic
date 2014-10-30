@@ -79,6 +79,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">radiobutton2</property>
+                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
@@ -656,14 +657,12 @@
                       <widget class="Gtk.CheckButton" id="InCheck18">
                         <property name="MemberName" />
                         <property name="WidthRequest">20</property>
-                        <property name="Visible">False</property>
-                        <property name="Sensitive">False</property>
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes" />
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
-                        <signal name="Toggled" handler="OnInCheck13Toggled" />
+                        <signal name="Toggled" handler="OnInCheck18Toggled" after="yes" />
                       </widget>
                       <packing>
                         <property name="Position">2</property>
@@ -674,14 +673,12 @@
                       <widget class="Gtk.CheckButton" id="InCheck19">
                         <property name="MemberName" />
                         <property name="WidthRequest">20</property>
-                        <property name="Visible">False</property>
-                        <property name="Sensitive">False</property>
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes" />
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
-                        <signal name="Toggled" handler="OnInCheck14Toggled" />
+                        <signal name="Toggled" handler="OnInCheck19Toggled" />
                       </widget>
                       <packing>
                         <property name="Position">3</property>
@@ -738,6 +735,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">Yes</property>
+                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
@@ -832,6 +830,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">radiobutton3</property>
+                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
@@ -1094,6 +1093,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">radiobutton3</property>
+                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
@@ -1159,6 +1159,7 @@
                     <property name="Visible">False</property>
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
+                    <property name="AcceptsTab">False</property>
                     <property name="Text" translatable="yes" />
                     <property name="WrapMode">WordChar</property>
                     <property name="LeftMargin">5</property>
@@ -1292,6 +1293,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">radiobutton3</property>
+                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>
@@ -1357,6 +1359,7 @@
                     <property name="Visible">False</property>
                     <property name="CanFocus">True</property>
                     <property name="ShowScrollbars">True</property>
+                    <property name="AcceptsTab">False</property>
                     <property name="Text" translatable="yes" />
                     <property name="WrapMode">WordChar</property>
                     <property name="LeftMargin">5</property>
@@ -1487,6 +1490,7 @@
                         <property name="MemberName" />
                         <property name="CanFocus">True</property>
                         <property name="Label" translatable="yes">radiobutton3</property>
+                        <property name="Active">True</property>
                         <property name="DrawIndicator">True</property>
                         <property name="HasLabel">True</property>
                         <property name="UseUnderline">True</property>

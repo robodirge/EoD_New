@@ -19,8 +19,8 @@ public partial class MainWindow: Gtk.Window{
 	public static bool bSmokes;
 	public static bool bRetests;
 	public static bool bInitEnabled;
-	public string[] initArray = new string[17];
-	public bool[] initEnabledArray = new bool[17];
+	public string[] initArray = new string[19];
+	public bool[] initEnabledArray = new bool[19];
 	public static string sAllinitials;
 	public static string sDateTested;
 	public static string Otherinitials;
@@ -192,6 +192,16 @@ public partial class MainWindow: Gtk.Window{
 				initArray[x] = "ZHC";
 				InCheck17.Label = initArray[x];
 				InCheck17.Active = false;
+				break;
+			case 17: 
+				initArray[x] = "LH";
+				InCheck18.Label = initArray[x];
+				InCheck18.Active = false;
+				break;
+			case 18: 
+				initArray[x] = "JC";
+				InCheck19.Label = initArray[x];
+				InCheck19.Active = false;
 				break;
 			default:
 				break;
@@ -618,6 +628,24 @@ public partial class MainWindow: Gtk.Window{
 			initEnabledArray[16] = false;
 		}
 	} 
+
+	protected void OnInCheck18Toggled (object sender, EventArgs e){
+		if(InCheck18.Active){
+			initEnabledArray[17] = true;
+		}
+		else{
+			initEnabledArray[17] = false;
+		}
+	} 
+
+	protected void OnInCheck19Toggled (object sender, EventArgs e){
+		if(InCheck19.Active){
+			initEnabledArray[18] = true;
+		}
+		else{
+			initEnabledArray[18] = false;
+		}
+	}
 
 	#endregion 
 
