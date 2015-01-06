@@ -74,6 +74,10 @@ public partial class MainWindow: Gtk.Window{
 	}
 		
 	public void onSetUpVar(){
+		if(File.Exists((GetTempPath() + @"EoD_Log_File.txt"))){
+			File.WriteAllText((GetTempPath() + "EoD_Log_File.txt"), String.Empty);
+		}
+
 		sTTC = "";
 		sBOOT = "";
 
@@ -263,11 +267,12 @@ public partial class MainWindow: Gtk.Window{
 			break;
 		case 7:
 			if(!bDocRan){
-				EoD.TempWindow tw = new EoD.TempWindow();
-				CreateDoc ();
+				//EoD.TempWindow tw = new EoD.TempWindow();
+				CreateDoc();
 			}
-			else
+			else{
 				restartDoc();
+			}
 			break;
 		default:
 			break;
@@ -446,7 +451,6 @@ public partial class MainWindow: Gtk.Window{
 			sMetric2 = M5MainEntryField2.Text;
 			sMetric3 = M5MainEntryField3.Text;
 			sMetric4 = M5MainEntryField4.Text;
-
 
 			programControl = 3;
 			ReportSectionThree();

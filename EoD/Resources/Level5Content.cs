@@ -29,6 +29,7 @@ public partial class MainWindow: Gtk.Window{
 		M2MainTextView1.Buffer.Text = "";
 		M2MainTextView1.WrapMode = WrapMode.WordChar;
 		M2MainTextView1.HeightRequest = 300;
+		M1MainTextView1.Editable = true;
 
 		GtkScrolledWindow1.SetPolicy(PolicyType.Never,PolicyType.Always);
 
@@ -53,7 +54,8 @@ public partial class MainWindow: Gtk.Window{
 			if(sTTC != "Retests including verification of all issues marked as resolved in the tracker."){
 				M1MainTextView1.Buffer.Text = sTTC;
 			}else{
-				M1MainTextView1.Buffer.Text =  "Retests including verification of all issues marked as resolved in the tracker.";
+				M1MainTextView1.Buffer.Text =  @"Retests including verification of all issues marked as resolved in the tracker.
+Additional regression testing carried out in the time remaining.";
 			}
 		}else{
 			M1MainTextView1.Buffer.Text = sTTC;

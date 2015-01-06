@@ -1,12 +1,18 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|x86" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="EoD\Resources\MainWindow.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="EoD\Resources\Level7DocPage.cs">
     <Files>
-      <File FileName="EoD\Resources\MainWindow.cs" Line="24" Column="24" />
+      <File FileName="EoD\Resources\Level7DocPage.cs" Line="19" Column="19" />
+      <File FileName="EoD\Resources\AcceptNameDialog.cs" Line="1" Column="1" />
+      <File FileName="EoD\Resources\Level1Content.cs" Line="1" Column="1" />
+      <File FileName="EoD\Resources\MainWindow.cs" Line="1" Column="1" />
+      <File FileName="EoD\Resources\Level5Content.cs" Line="3" Column="3" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="EoD\Resources\Level7DocPage.cs" line="31" offsetX="214" offsetY="480" expression="path" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
 </Properties>

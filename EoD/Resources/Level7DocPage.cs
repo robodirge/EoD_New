@@ -23,7 +23,31 @@ public partial class MainWindow: Gtk.Window{
 
 	String bobone = null;
 
+	public string GetTempPath(){
+		string path = System.Environment.GetEnvironmentVariable("TEMP");
+		if (!path.EndsWith("\\")) path += "\\";
+
+		return path;
+	}
+
+	public void LogMessageToFile(string msg)
+	{
+		System.IO.StreamWriter sw = System.IO.File.AppendText(
+			GetTempPath() + "EoD_Log_File.txt");
+		try
+		{
+			string logLine = System.String.Format(
+				"{0:G}: {1}.", System.DateTime.Now, msg);
+			sw.WriteLine(logLine);
+		}
+		finally
+		{
+			sw.Close();
+		}
+	}
+		
 	public void checkWord(){
+		LogMessageToFile("Checking Word Version...");
 		RegistryKey localMachine = Registry.LocalMachine.OpenSubKey(@"SOFTWARE\Microsoft\Office\");
 
 		string version = "Empty";
@@ -78,6 +102,8 @@ public partial class MainWindow: Gtk.Window{
 				break;
 			}
 		}
+
+		LogMessageToFile(("Version - " + version + "/" + versionLat));
 			
 		if(emTest){
 			tempbb = true;
@@ -161,6 +187,7 @@ public partial class MainWindow: Gtk.Window{
 
 		button8.Label = "Set File Location.";
 		label10.Text = "Path: ";
+
 		if(mytempfilename == ""){
 			M1MainTextView1.Buffer.Text = "No path selected.";
 			MainButtonControls1.Sensitive = false;
@@ -178,6 +205,10 @@ public partial class MainWindow: Gtk.Window{
 		button8.WidthRequest = 150;
 		button8.Sensitive = true;
 		MainButtonControls1.Label = @"Create & Close";
+
+		//open report setting
+		M1H2MainCheck1.Label = "Open report after creation";
+		M1H2MainCheck1.Active = true;
 	}
 
 	public void SHLevel7(){
@@ -186,6 +217,8 @@ public partial class MainWindow: Gtk.Window{
 		MainHboxSubContainerM1H1.Show();
 		M1H1MainLabelHeader1.Show();
 		MainHboxSubContainerM1H2.Show();
+
+		M1H2MainCheck1.ShowAll();
 
 		hbox8.Show();
 		GtkScrolledWindow.ShowAll();
@@ -196,6 +229,7 @@ public partial class MainWindow: Gtk.Window{
 		hbox11.Show();
 		label10.Show();
 
+		//Hide other sections
 		MainVboxSubContainerM2.Hide();
 		MainVboxSubContainerM3.Hide();
 		MainVboxSubContainerM4.Hide();
@@ -205,30 +239,76 @@ public partial class MainWindow: Gtk.Window{
 	#region doc Start
 
 	public void CreateDoc(){
+		LogMessageToFile(@"////////////// CREATE \\\\\\\\\\\\\\\");
+		LogMessageToFile("Starting application...");
+		LogMessageToFile("Start a new word process...");
 
 		wordApplication = new Word.Application();
 		bobone = wordApplication.Version;
 
+		LogMessageToFile("Remove alerts...");
 		wordApplication.DisplayAlerts = WdAlertLevel.wdAlertsNone;
+		LogMessageToFile("Add a new document to the active word session...");
 		newDocument = wordApplication.Documents.Add();
 
+		LogMessageToFile("Start Main creation...");
 		startDoc();
 	}
 
 	public void restartDoc(){
+		LogMessageToFile("Restart creation / word session");
 		wordApplication = new Word.Application();
 		newDocument = wordApplication.Documents.Add();
 		startDoc();
 	}
 
 	public void startDoc (){
+		LogMessageToFile("Set font and size");
 		wordApplication.Selection.Font.Size = 11;
 		wordApplication.Selection.Font.Name = "Corbel";
 
+		LogMessageToFile("Start table creation");
+
+		//log
+		string contentText = "--User Entered details---" + "\r\n"
+			+ "---File: \r\n" 
+			+ mytempfilename + "\r\n"
+			+ "---Client name: \r\n"
+			+ clientNameString + "\r\n"
+			+ "---Project: \n"
+			+ projectNameString + "\r\n"
+			+ "---Tester(s): " + "\r\n"
+			+ sAllinitials + "\r\n"
+			+ "---Date: " + "\r\n"
+			+ sDateTested + "\r\n"
+			+ "---URL(s) tested:" + "\r\n"
+			+ urlUsedString + "\r\n"
+			+ "---Build version(s) tested:" + "\r\n"
+			+ buildVersionString + "\r\n"
+			+ "---Report Details---" + "\r\n"
+			+ sTTC + "\r\n"
+			+ "----Main report----" + "\r\n"
+			+ sBOOT + "\r\n"
+			+ "---Blocking---" + "\r\n"
+			+ sBlockingyN + "\r\n"
+			+ "---Blocking Issues:"  + "\r\n"
+			+ sBlockingNumbers + "\r\n"
+			+ "---Top5---" + "\r\n"
+			+ top5ListArray[0] + "\r\n"
+			+ top5ListArray[1] + "\r\n"
+			+ top5ListArray[2] + "\r\n"
+			+ top5ListArray[3] + "\r\n"
+			+ top5ListArray[4] + "\r\n"
+			+ "---Mecs---" + "\r\n"
+			+ sMetric1 + "\r\n"
+			+ sMetric2 + "\r\n"
+			+ sMetric3 + "\r\n"
+			+ sMetric4;
+
+		LogMessageToFile(contentText);
+
 		firstTable();
 		moveDownpar();
-		//secondTable();
-		//moveDownpar();
 		thirdTable();
 		moveDownpar();
 		fouthTable();
@@ -236,6 +316,7 @@ public partial class MainWindow: Gtk.Window{
 		fithTable();
 		moveDownpar();
 
+		LogMessageToFile("Adjust various page settings...");
 		wordApplication.ActiveWindow.View.SeekView = WdSeekView.wdSeekCurrentPageHeader;
 		string sImageLoc = Environment.CurrentDirectory + @"\Resources\ZoonouLogo.jpg";
 		wordApplication.Selection.InlineShapes.AddPicture(sImageLoc); 
@@ -261,6 +342,7 @@ public partial class MainWindow: Gtk.Window{
 
 			string sDateTemp = sDateTested;
 			string invalid = new string(System.IO.Path.GetInvalidFileNameChars()) + new string(System.IO.Path.GetInvalidPathChars());
+
 			foreach (char c in invalid){
 				sDateTemp = sDateTemp.Replace(c.ToString(), ""); 
 			}
@@ -268,16 +350,20 @@ public partial class MainWindow: Gtk.Window{
 			documentFile = (mytempfilename + @"\" + clientNameString + " - " + projectNameString + " - Daily Report " + sDateTemp +  @".docx");
 			bool mynewloop = false;
 			int myloopint= 0;
+
+			LogMessageToFile("Detect if file exists already...");
 			do{
 				if(File.Exists(documentFile)){
 					documentFile = (mytempfilename + @"\" + clientNameString + " - " + projectNameString + " - Daily Report " + sDateTemp + " (v" + (++myloopint) + ")" + @".docx");
+					LogMessageToFile("File existed - adding number to file name...");
 				}else{
 					mynewloop = true;
 				}
-
 			}while(!mynewloop);
 
 			double wordVersion = Convert.ToDouble(wordApplication.Version, CultureInfo.InvariantCulture);
+
+			LogMessageToFile("Save file...");
 			if (wordVersion >= 12.0){
 				newDocument.SaveAs(documentFile, WdSaveFormat.wdFormatDocumentDefault);
 			}
@@ -288,25 +374,29 @@ public partial class MainWindow: Gtk.Window{
 			object saveOption = WdSaveOptions.wdDoNotSaveChanges;
 			object orginalFormat = WdOriginalFormat.wdOriginalDocumentFormat;
 			object routeDocument = false;
-			newDocument.Close(saveOption, orginalFormat, routeDocument);
 
+			LogMessageToFile("Release resources...");
+
+			newDocument.Close(saveOption, orginalFormat, routeDocument);
 			wordApplication.Quit();
 			wordApplication.Dispose();
 
-			Process.Start(documentFile);
+			if(M1H2MainCheck1.Active){
+				LogMessageToFile("Open Doc...");
+				Process.Start(documentFile);
+			}
+
+			LogMessageToFile("---Finish---");
 			Application.Quit();
-
-
 		}
 		else{
-
 			MessageDialog E1 = new MessageDialog(this, DialogFlags.Modal, MessageType.Warning, ButtonsType.Ok, "Folder path removed - Please retry.");
 			E1.WidthRequest = 600; 
 			E1.Title= "Folder Path Removed";
 
 			ResponseType response = (ResponseType) E1.Run();
-			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
 
+			if (response == ResponseType.Ok || response == ResponseType.DeleteEvent){
 				E1.Destroy();
 			}
 
@@ -321,7 +411,6 @@ public partial class MainWindow: Gtk.Window{
 
 			FilePickerClicked();
 		}
-
 	}
 
 	protected void FilePickerClicked(){
@@ -363,8 +452,11 @@ public partial class MainWindow: Gtk.Window{
 	#region Tables
 
 	public void moveDownpar(){
-		wordApplication.Selection.MoveDown();
-		wordApplication.Selection.MoveDown();
+		wordApplication.ActiveDocument.Characters.Last.Select();
+		wordApplication.Selection.Collapse();
+
+		//wordApplication.Selection.MoveDown();
+		//wordApplication.Selection.MoveDown();
 		wordApplication.Selection.TypeParagraph();
 		return;
 	}
@@ -432,9 +524,9 @@ public partial class MainWindow: Gtk.Window{
 		}
 
 		if(bSmokes){
-			if(primEnabled)
+			if(primEnabled){
 				sTemp += "\n";
-
+			}
 			sTemp += ("For cross environment checks/smoke tests, please see the environments detailed in the table at the end of the report.\n");
 		}
 
@@ -447,7 +539,8 @@ public partial class MainWindow: Gtk.Window{
 				sTemp += "\n";
 			}
 				
-			sTemp += ("Retests executed in environments the issues were originally raised in.\n");
+			sTemp += ("Retests executed in environments the issues were originally raised in.\n\n");
+			//sTemp += ("Additional regression testing carried out in the time remaining.\n");
 		}
 
 	
@@ -465,7 +558,7 @@ public partial class MainWindow: Gtk.Window{
 			table.Style = "Light Shading - Accent 1";
 			table.ApplyStyleFirstColumn = false;
 			table.ApplyStyleHeadingRows = false;
-			table.Rows.SetLeftIndent(4.50f, WdRulerStyle.wdAdjustNone);
+			//table.Rows.SetLeftIndent(4.50f, WdRulerStyle.wdAdjustNone);
 
 			WdColor test = (WdColor)16181982;
 

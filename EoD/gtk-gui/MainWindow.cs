@@ -483,6 +483,7 @@ public partial class MainWindow
 		this.M1H2MainCheck1.CanFocus = true;
 		this.M1H2MainCheck1.Name = "M1H2MainCheck1";
 		this.M1H2MainCheck1.Label = global::Mono.Unix.Catalog.GetString ("checkbutton1");
+		this.M1H2MainCheck1.Active = true;
 		this.M1H2MainCheck1.DrawIndicator = true;
 		this.M1H2MainCheck1.UseUnderline = true;
 		this.MainHboxSubContainerM1H2.Add (this.M1H2MainCheck1);
